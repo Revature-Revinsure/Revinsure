@@ -44,4 +44,6 @@ public class UserInfo {
 	
 	@Column(name = "zip")
 	private String zip;
+	
+	
 }
