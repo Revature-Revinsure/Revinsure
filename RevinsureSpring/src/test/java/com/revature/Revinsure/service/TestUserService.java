@@ -1,5 +1,6 @@
 package com.revature.Revinsure.service;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -25,7 +26,7 @@ import com.revature.Revinsure.services.UserServiceImpl;
 public class TestUserService {
 	
 	@MockBean
-	private UserDao userDao;
+	private static UserDao userDao;
 	
 	private static User fakeUser = new User(-1,"fake@gmail.com","fake", UserType.PATIENT);     
 	private static User realUser = new User(1,"realEmail@hotmail.com","real", UserType.EMPLOYEE);     
@@ -33,7 +34,7 @@ public class TestUserService {
 	
 	@Autowired
 	@InjectMocks
-	private UserService userService = new UserServiceImpl(userDao);
+	public static UserService userService = new UserServiceImpl(userDao);
 	
 	@BeforeClass
 	void setup() {
@@ -41,23 +42,25 @@ public class TestUserService {
 	}
 	
 	@Test
-	void testGetUser() {
+	public static void testGetUser() {
 		when(userDao.getUserByEmail("realEmail@gmail.com")).thenReturn(secondUser);
 		when(userDao.getUserByEmail("realEmail@hotmail.com")).thenReturn(realUser);
 		when(userDao.getUserByEmail("fake")).thenReturn(null);
-		assertTrue(UserServiceImpl.getUserByEmail(realUser.email) == realUser);
+		assertTrue(userService.getUserByEmail(realUser.getEmail()) == realUser);
+		assertTrue(userService.getUserByEmail(secondUser.getEmail()) == secondUser);
+		assertTrue(userService.getUserByEmail(fakeUser.getEmail()) == null);
+		assertFalse(userService.getUserByEmail(realUser.getEmail()) != realUser);
+		assertFalse(userService.getUserByEmail(secondUser.getEmail()) != secondUser);
+		assertFalse(userService.getUserByEmail(fakeUser.getEmail()) != null);
 	}
 	
 	@Test
-	void testAuthenticateUser() {}
-	
-
-
-			
-	@Test
-	void authenticate() {
-		List<Book> fake1 = new ArrayList<>();
-		User fakeuser =  new User ("yibeltal","yib@gmail.com","pass",fake1);
-
-
+	public static void testAuthenticateUser() {
+		when(userDao.getUserByEmail("realEmail@gmail.com")).thenReturn(secondUser);
+		when(userDao.getUserByEmail("realEmail@hotmail.com")).thenReturn(realUser);
+		when(userDao.getUserByEmail("fake")).thenReturn(null);
+		assertTrue(userService.authenticate(realUser));
+		assertTrue(userService.authenticate(secondUser));
+		assertFalse(userService.authenticate(fakeUser));
+	}
 }

@@ -26,17 +26,22 @@ public class UserServiceImpl implements UserService {
 		this.userDao = userDao;
 	}
 
-
 	@Override
 	public User getUserByEmail(String email) {
-		// TODO Auto-generated method stub
 		return userDao.getUserByEmail(email);
 	}
 
 	@Override
 	public boolean authenticate(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		User databaseUser = getUserByEmail(user.getEmail());
+		
+		boolean success = false;
+		
+		if(databaseUser.getPassword() == user.getPassword()) {
+			success = true;
+		} 
+		
+		return success;
 	}
 
 	@Override
