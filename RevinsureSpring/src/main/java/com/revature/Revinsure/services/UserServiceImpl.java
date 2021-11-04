@@ -22,14 +22,15 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserInfoDao userInfoDao;
 	
-	public UserServiceImpl() {
-		// TODO Auto-generated constructor stub
+	public UserServiceImpl(UserDao userDao) {
+		this.userDao = userDao;
 	}
+
 
 	@Override
 	public User getUserByEmail(String email) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.getUserByEmail(email);
 	}
 
 	@Override

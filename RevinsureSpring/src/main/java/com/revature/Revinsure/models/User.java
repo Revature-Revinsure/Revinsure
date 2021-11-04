@@ -17,6 +17,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,6 +27,14 @@ import lombok.NoArgsConstructor;
 @Table(name = "users")
 public class User {
 	
+	public User(int id, String email, String password, UserType type) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.type = type;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
@@ -55,3 +65,5 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<DiscussionResponse> responses;
 }
+
+
