@@ -11,7 +11,7 @@ import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.repo.ClaimDao;
 import com.revature.Revinsure.repo.UserDao;
 
-@Service
+@Service("claimService")
 public class ClaimServiceImpl implements ClaimService {
 
 	@Autowired
@@ -23,8 +23,20 @@ public class ClaimServiceImpl implements ClaimService {
 
 	@Override
 	public boolean addClaim(User user, Claim claim) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		claim.setUser(user);
+		
+		try {
+			claimDao.save(claim);
+			success = true;
+		}
+		catch(Exception e) {
+//			e.printStackTrace();
+			
+		}
+		
+		
+		return success;
 	}
 
 	@Override
