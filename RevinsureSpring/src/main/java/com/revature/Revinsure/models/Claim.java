@@ -53,4 +53,12 @@ public class Claim {
 	
 	@Column(name = "description")
 	private String description;
+
+	@Override
+	public String toString() {
+		return "Claim [id=" + id + ", user=" + user.getId() + ", dateOfService=" + dateOfService + ", dateOfClaim="
+				+ dateOfClaim + ", amount=" + amount + ", status=" + status + ", description=" + description + "]";
+	}
+	
+	
 }

@@ -37,4 +37,11 @@ public class CovidQuestion {
 	@Column(name = "date_answered")
 	private Date dateAnswered;
 
+	@Override
+	public String toString() {
+		return "CovidQuestion [user=" + user.getId() + ", hasCovid=" + hasCovid + ", aroundCovid=" + aroundCovid
+				+ ", dateAnswered=" + dateAnswered + "]";
+	}
+
+	
 }

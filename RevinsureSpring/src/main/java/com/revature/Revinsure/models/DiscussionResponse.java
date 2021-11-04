@@ -42,5 +42,11 @@ public class DiscussionResponse {
 	@ManyToOne
 	@JoinColumn(name = "post_id")
 	private DiscussionPost post;
+
+	@Override
+	public String toString() {
+		return "DiscussionResponse [id=" + id + ", content=" + content + ", user=" + user.getId() + ", post=" + post.getId() + "]";
+	}
+	
 	
 }
