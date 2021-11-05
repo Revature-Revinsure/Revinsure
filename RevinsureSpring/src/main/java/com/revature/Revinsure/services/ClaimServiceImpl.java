@@ -25,7 +25,7 @@ public class ClaimServiceImpl implements ClaimService {
 	public boolean addClaim(User user, Claim claim) {
 		boolean success = false;
 		
-		if(claim != null) {
+		if(claim != null && claim.getDateOfClaim() != null && claim.getDescription() != null && claim.getStatus() != null) {
 			claim.setUser(user);
 			
 			try {

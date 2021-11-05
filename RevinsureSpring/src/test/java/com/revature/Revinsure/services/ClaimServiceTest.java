@@ -23,7 +23,7 @@ import com.revature.Revinsure.repo.ClaimDao;
 import java.util.Date;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CaimServiceTest extends RevinsureApplicationTests {
+public class ClaimServiceTest extends RevinsureApplicationTests {
 	
 	@MockBean
 	private static ClaimDao claimDao;
@@ -35,7 +35,6 @@ public class CaimServiceTest extends RevinsureApplicationTests {
 	private final User fakeUser = new User(83, "fake@email.com", "password", UserType.PATIENT, null, null, null, null, null);
 	private final Claim fakeClaim = new Claim(-1, null, null, new Date(), 100, Status.PENDING, "test description");
 	private final Claim updatedFakeClaim = new Claim(10, null, null, new Date(), 100, Status.PENDING, "test description");
-	private final Claim nullClaimUser = new Claim(-1, null, null, new Date(), 100, Status.PENDING, "test description");
 	private final Claim nullDate = new Claim(-1, null, null, null, 100, Status.PENDING, "test description");
 	private final Claim nullStatus = new Claim(-1, null, null, new Date(), 100, null, "test description");
 	private final Claim nullDescription = new Claim(-1, null, null, new Date(), 100, Status.PENDING, null);
@@ -51,15 +50,12 @@ public class CaimServiceTest extends RevinsureApplicationTests {
 	@Test
 	public void testAddClaim() {
 		when(claimDao.save(fakeClaim)).thenReturn(updatedFakeClaim);
-		when(claimDao.save(nullClaimUser)).thenReturn(nullClaimUser);
 		when(claimDao.save(nullDate)).thenReturn(nullDate);
 		when(claimDao.save(nullStatus)).thenReturn(nullStatus);
 		when(claimDao.save(nullDescription)).thenReturn(nullDescription);
 		
 		assertTrue(claimService.addClaim(fakeUser, fakeClaim));
 		assertFalse(claimService.addClaim(fakeUser, null));
-		
-		assertFalse(claimService.addClaim(fakeUser, nullClaimUser));
 		assertFalse(claimService.addClaim(fakeUser, nullDate));
 		assertFalse(claimService.addClaim(fakeUser, nullStatus));
 		assertFalse(claimService.addClaim(fakeUser, nullDescription));
