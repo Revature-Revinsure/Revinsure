@@ -6,7 +6,6 @@ import { DataService } from '../service/data.service';
 import { RegisterService } from '../service/register.service';
 import { User } from '../models/user';
 import { UserInfo } from '../models/user-info';
-import { userInfo } from 'os';
 
 
 @Component({
