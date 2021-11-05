@@ -23,6 +23,7 @@ public class UserController {
 	@PostMapping(value = "/login")
 	public User login(HttpSession session, @RequestBody User user) {
 		
+		System.out.println(user);
 		boolean isAuthenticated = userServiceImpl.authenticate(user);
 		
 		User currentUser = userServiceImpl.getUserByEmail(user.getEmail());
@@ -30,8 +31,10 @@ public class UserController {
 		if(isAuthenticated == true) {
 			session.setAttribute("loggedInUser", currentUser);
 		} else {
+			System.out.println("inside"+currentUser);
 			currentUser = null;
 		}
+		System.out.println("aaaa"+currentUser);
 		
 		return currentUser;
 	}
