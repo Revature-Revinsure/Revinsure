@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.revature.Revinsure.models.User;
+import com.revature.Revinsure.models.UserInfo;
 import com.revature.Revinsure.models.UserType;
 import com.revature.Revinsure.repo.UserDao;
 import com.revature.Revinsure.repo.UserInfoDao;
@@ -35,6 +36,11 @@ public class UserServiceTest extends RevinsureApplicationTests{
 	private static User u5 = new User(5, null, null, null, null, null, null, null, null);
 	private static User u6 = new User(6, null, "newPassword2", null, null, null, null, null, null);
 	private static User u7 = new User(7, "u3@test.com", null, null, null, null, null, null, null);
+	
+	private static UserInfo ui1 = new UserInfo(u1, "firstname1", "lastname1", "1 Street", "Testington", "Test State", "12345");
+	private static UserInfo ui2 = new UserInfo(u2, null, "lastname2", "1 Street", "Testington", "Test State", "12345");
+	private static UserInfo ui3 = new UserInfo(u3, "firstname3", null, "1 Street", "Testington", "Test State", "12345");
+	private static UserInfo ui4 = new UserInfo(u4, "firstname4", "lastname4", null, "Testington", "Test State", "12345");
 	
 	
 	@MockBean
@@ -88,15 +94,15 @@ public class UserServiceTest extends RevinsureApplicationTests{
 	@Test
 	public void testUpdateUserInfo() {
 		
-		when(uiDao.updateInfo()).thenReturn(true);
-		when(uiDao.updateInfo()).thenReturn(false);
-		when(uiDao.updateInfo()).thenReturn(false);
-		when(uiDao.updateInfo()).thenReturn(false);
+		when(uiDao.updateInfo(ui1.getFirstName(), ui1.getLastName(), ui1.getAddress(), ui1.getCity(), ui1.getState(), ui1.getZip(), u1.getId())).thenReturn(true);
+		when(uiDao.updateInfo(ui2.getFirstName(), ui2.getLastName(), ui2.getAddress(), ui2.getCity(), ui2.getState(), ui2.getZip(), u2.getId())).thenReturn(false);
+		when(uiDao.updateInfo(ui3.getFirstName(), ui3.getLastName(), ui3.getAddress(), ui3.getCity(), ui3.getState(), ui3.getZip(), u3.getId())).thenReturn(false);
+		when(uiDao.updateInfo(ui4.getFirstName(), ui4.getLastName(), ui4.getAddress(), ui4.getCity(), ui4.getState(), ui4.getZip(), u4.getId())).thenReturn(false);
 		
-		assertTrue(uService.updateUserInfo(u3, u3.getInfo()));
-		assertFalse(uService.updateUserInfo(u4, u4.getInfo()));
-		assertFalse(uService.updateUserInfo(u5, u5.getInfo()));
-		assertFalse(uService.updateUserInfo(u7, u7.getInfo()));
+		assertTrue(uService.updateUserInfo(u1, ui1));
+		assertFalse(uService.updateUserInfo(u2, ui2));
+		assertFalse(uService.updateUserInfo(u3, ui3));
+		assertFalse(uService.updateUserInfo(u4, ui4));
 		
 	}
 	
