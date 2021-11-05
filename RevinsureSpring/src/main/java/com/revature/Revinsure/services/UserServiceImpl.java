@@ -1,6 +1,8 @@
 package com.revature.Revinsure.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 
 import com.revature.Revinsure.models.CovidQuestion;
 import com.revature.Revinsure.models.User;
@@ -9,16 +11,21 @@ import com.revature.Revinsure.repo.CovidQuestionDao;
 import com.revature.Revinsure.repo.UserDao;
 import com.revature.Revinsure.repo.UserInfoDao;
 
-public class UserServiceImpl implements UserService{
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	private CovidQuestionDao covidQuestionDao;
 	
 	@Autowired
-	private UserDao uDao;
-	
-	@Autowired 
-	private UserInfoDao uiDao;
+	private UserDao userDao;
 	
 	@Autowired
-	private CovidQuestionDao cqDao;
+	private UserInfoDao userInfoDao;
+	
+	public UserServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public User getUserByEmail(String email) {
@@ -67,7 +74,6 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
+
 
 }

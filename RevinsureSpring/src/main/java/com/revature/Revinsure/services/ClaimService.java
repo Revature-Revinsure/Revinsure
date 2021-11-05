@@ -15,5 +15,6 @@ public interface ClaimService {
 	boolean updateClaimStatus(Claim claim, Status newStatus);
 	
 	List<Claim> getAllClaims();
-	
+
+	//remember @Service annotation when building corresponding named class
 }

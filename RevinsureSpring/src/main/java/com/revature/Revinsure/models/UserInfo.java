@@ -44,6 +44,13 @@ public class UserInfo {
 	
 	@Column(name = "zip")
 	private String zip;
+
+	@Override
+	public String toString() {
+		return "UserInfo [user=" + user.getId() + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
+				+ ", city=" + city + ", state=" + state + ", zip=" + zip + "]";
+	}
+
 	
 	
 }

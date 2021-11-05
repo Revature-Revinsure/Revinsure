@@ -41,5 +41,11 @@ public class DiscussionPost {
 	
 	@OneToMany(mappedBy = "post")
 	private List<DiscussionResponse> responses;
+
+	@Override
+	public String toString() {
+		return "DiscussionPost [id=" + id + ", title=" + title + ", user=" + user.getId() + ", responses=" + responses + "]";
+	}
+	
 	
 }
