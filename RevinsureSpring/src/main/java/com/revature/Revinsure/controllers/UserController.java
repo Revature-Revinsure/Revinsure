@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.services.UserServiceImpl;
 
-@RestController
+@RestController("userController")
 @RequestMapping("/user")
 @CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
 public class UserController {

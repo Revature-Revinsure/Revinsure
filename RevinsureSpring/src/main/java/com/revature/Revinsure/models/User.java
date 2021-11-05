@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "users")
+@Table(name = "users_table")
 public class User {
 	
 	public User(int id, String email, String password, UserType type) {

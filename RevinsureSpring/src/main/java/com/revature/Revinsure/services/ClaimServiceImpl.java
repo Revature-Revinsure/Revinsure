@@ -11,7 +11,7 @@ import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.repo.ClaimDao;
 import com.revature.Revinsure.repo.UserDao;
 
-@Service
+@Service("claimService")
 public class ClaimServiceImpl implements ClaimService {
 
 	@Autowired

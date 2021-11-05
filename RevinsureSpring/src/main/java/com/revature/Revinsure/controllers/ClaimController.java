@@ -2,7 +2,7 @@ package com.revature.Revinsure.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController("claimController")
 public class ClaimController {
 
 	public ClaimController() {

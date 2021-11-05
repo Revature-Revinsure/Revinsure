@@ -10,7 +10,7 @@ import com.revature.Revinsure.repo.CovidQuestionDao;
 import com.revature.Revinsure.repo.UserDao;
 import com.revature.Revinsure.repo.UserInfoDao;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
 	@Autowired

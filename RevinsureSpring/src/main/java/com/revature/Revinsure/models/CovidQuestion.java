@@ -1,12 +1,14 @@
 package com.revature.Revinsure.models;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,8 +26,13 @@ import lombok.NoArgsConstructor;
 public class CovidQuestion {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "info_id")
+	private int id;
+	
 	@JsonIgnore
-	@JoinColumn(name = "user_id")
+	@OneToOne
+	@JoinColumn(name = "id")
 	private User user;
 	
 	@Column(name = "has_covid")
