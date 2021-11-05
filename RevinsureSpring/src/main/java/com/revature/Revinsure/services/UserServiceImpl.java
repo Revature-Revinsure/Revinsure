@@ -47,20 +47,23 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean updatePassword(User user, String password) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return userDao.updateUser(user.getEmail(), password, user.getId());
+	
 	}
 
 	@Override
 	public boolean updateEmail(User user, String email) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return userDao.updateUser(user.getEmail(), email, user.getId());
+	
 	}
 
 	@Override
 	public boolean updateUserInfo(User user, UserInfo userInfo) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return userInfoDao.updateInfo(userInfo.getFirstName(), userInfo.getLastName(), userInfo.getAddress(), userInfo.getCity(), userInfo.getState(), userInfo.getZip(), user.getId());
+		
 	}
 
 	@Override
