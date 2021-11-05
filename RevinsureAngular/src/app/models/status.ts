@@ -1,5 +1,5 @@
 export enum Status{
-    PENDING,
-    DENIED,
-    APPROVED
+    PENDING = "PENDING",
+    DENIED = "DENIED",
+    APPROVED = "APPROVED"
 }

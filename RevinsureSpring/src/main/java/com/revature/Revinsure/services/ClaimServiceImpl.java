@@ -24,16 +24,22 @@ public class ClaimServiceImpl implements ClaimService {
 	@Override
 	public boolean addClaim(User user, Claim claim) {
 		boolean success = false;
-		claim.setUser(user);
 		
-		try {
-			claimDao.save(claim);
-			success = true;
-		}
-		catch(Exception e) {
-//			e.printStackTrace();
+		if(claim != null) {
+			claim.setUser(user);
 			
+			try {
+				claimDao.save(claim);
+				success = true;
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				
+			}
 		}
+		
+		
+		
 		
 		
 		return success;

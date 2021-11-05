@@ -11,6 +11,8 @@ import { ClaimComponent } from './claim/claim.component';
 import { CovidQuestionsComponent } from './covid-questions/covid-questions.component';
 import { DisscussionBoardComponent } from './disscussion-board/disscussion-board.component';
 import { DisscussionPostComponent } from './disscussion-post/disscussion-post.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ClaimService } from './service/claim.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import { DisscussionPostComponent } from './disscussion-post/disscussion-post.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ClaimService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,7 +13,7 @@ export class ClaimService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = "";
+  baseUrl: string = "http://localhost:8000/api";
   claim!: Claim; //= {id: -1, dateOfService: Date, dateOfClaim: Date, amount: 100, 
   //status: Status.PENDING, description: ""};
   httpOptions = {
