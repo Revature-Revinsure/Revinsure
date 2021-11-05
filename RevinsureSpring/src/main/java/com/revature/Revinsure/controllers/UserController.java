@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserInfo;
 import com.revature.Revinsure.services.UserService;
@@ -19,8 +18,9 @@ public class UserController {
 	private UserService userService;
 	
 	public UserController() {
-		// TODO Auto-generated constructor stub
+		
 	}
+
 
 	@PostMapping(value = "/register")
 	public boolean register(@RequestBody User user, @RequestBody UserInfo userInfo) {
