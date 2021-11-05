@@ -25,6 +25,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "users")
 public class User {
 	
+	public User(String string, String string2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
