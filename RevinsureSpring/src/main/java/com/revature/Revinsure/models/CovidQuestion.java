@@ -5,9 +5,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,9 +27,15 @@ import lombok.NoArgsConstructor;
 public class CovidQuestion {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "covid_form_id")
+	private int id;
+	
 	@JsonIgnore
+	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+
 	
 	@Column(name = "has_covid")
 	private boolean hasCovid;

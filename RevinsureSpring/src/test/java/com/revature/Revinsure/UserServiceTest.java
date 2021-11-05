@@ -29,7 +29,7 @@ import com.revature.Revinsure.services.UserServiceImpl;
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest extends RevinsureApplicationTests{
 	
-	private static User u1 = new User(1, "newEmail@test.com", "oldPassword", null, null, null, null, null, null);
+	private static User u1 = new User(1, "oldEmail@test.com", "oldPassword", null, null, null, null, null, null);
 	private static User u2 = new User(-1, "newEmail2@test.com", "oldPassword2", null, null, null, null, null, null);
 	private static User u3 = new User(3, "u3@test.com", "newPassword", null, null, null, null, null, null);
 	private static User u4 = new User(-2, "u3@test.com", "newPassword2", null, null, null, null, null, null);
@@ -37,10 +37,10 @@ public class UserServiceTest extends RevinsureApplicationTests{
 	private static User u6 = new User(6, null, "newPassword2", null, null, null, null, null, null);
 	private static User u7 = new User(7, "u3@test.com", null, null, null, null, null, null, null);
 	
-	private static UserInfo ui1 = new UserInfo(u1, "firstname1", "lastname1", "1 Street", "Testington", "Test State", "12345");
-	private static UserInfo ui2 = new UserInfo(u2, null, "lastname2", "1 Street", "Testington", "Test State", "12345");
-	private static UserInfo ui3 = new UserInfo(u3, "firstname3", null, "1 Street", "Testington", "Test State", "12345");
-	private static UserInfo ui4 = new UserInfo(u4, "firstname4", "lastname4", null, "Testington", "Test State", "12345");
+	private static UserInfo ui1 = new UserInfo(-1, u1, "firstname1", "lastname1", "1 Street", "Testington", "Test State", "12345");
+	private static UserInfo ui2 = new UserInfo(-1, u2, null, "lastname2", "1 Street", "Testington", "Test State", "12345");
+	private static UserInfo ui3 = new UserInfo(-1, u3, "firstname3", null, "1 Street", "Testington", "Test State", "12345");
+	private static UserInfo ui4 = new UserInfo(-1, u4, "firstname4", "lastname4", null, "Testington", "Test State", "12345");
 	
 	
 	@MockBean
@@ -64,12 +64,12 @@ public class UserServiceTest extends RevinsureApplicationTests{
 	@Test
 	public void testUpdateEmail() {
 		
-		when(uDao.updateUser(u1.getEmail(), u1.getPassword(), u1.getId())).thenReturn(true);
+		when(uDao.updateUser("newEmail@test.com", u1.getPassword(), u1.getId())).thenReturn(true);
 		when(uDao.updateUser(u2.getEmail(), u2.getPassword(), u2.getId())).thenReturn(false);
 		when(uDao.updateUser(u5.getEmail(), u5.getPassword(), u5.getId())).thenReturn(false);
 		when(uDao.updateUser(u6.getEmail(), u6.getPassword(), u6.getId())).thenReturn(false);
 		
-		assertTrue(uService.updateEmail(u1, u1.getEmail()));
+		assertTrue(uService.updateEmail(u1, "newEmail@test.com"));
 		assertFalse(uService.updateEmail(u2, u2.getEmail()));
 		assertFalse(uService.updateEmail(u5, u5.getEmail()));
 		assertFalse(uService.updateEmail(u6, u6.getEmail()));

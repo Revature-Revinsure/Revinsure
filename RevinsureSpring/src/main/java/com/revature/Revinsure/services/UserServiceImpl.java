@@ -11,7 +11,7 @@ import com.revature.Revinsure.repo.CovidQuestionDao;
 import com.revature.Revinsure.repo.UserDao;
 import com.revature.Revinsure.repo.UserInfoDao;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean updateEmail(User user, String email) {
 		
-		return userDao.updateUser(user.getEmail(), email, user.getId());
+		return userDao.updateUser(email, user.getPassword(), user.getId());
 	
 	}
 
