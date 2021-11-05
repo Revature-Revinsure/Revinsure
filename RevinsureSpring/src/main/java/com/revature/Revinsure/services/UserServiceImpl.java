@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 		
 		boolean success = false;
 		
-		if(databaseUser.getPassword() == user.getPassword()) {
+		if(databaseUser.getPassword().equals(user.getPassword())) {
 			success = true;
 		} 
 		
