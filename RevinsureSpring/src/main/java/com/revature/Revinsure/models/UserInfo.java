@@ -5,6 +5,10 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -25,6 +29,10 @@ import lombok.NoArgsConstructor;
 public class UserInfo {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "info_id")
+	private int id;
+	
 	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
@@ -48,6 +56,7 @@ public class UserInfo {
 	@Column(name = "zip")
 	private String zip;
 
+	
 	@Override
 	public String toString() {
 		return "UserInfo [user=" + user.getId() + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address

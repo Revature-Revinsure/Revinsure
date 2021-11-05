@@ -1,6 +1,7 @@
 package com.revature.Revinsure.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.revature.Revinsure.models.CovidQuestion;
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUserByEmail(String email) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByEmail(email);
 	}
 
 	@Override
@@ -39,8 +40,28 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean registerUser(User user) {
-		// TODO Auto-generated method stub
+	public User registerUser(User user) {
+		
+		System.out.println(user);
+		user = userDao.save(user);
+		if(user.getId()>0) {
+			
+//			user.getInfo().setUser(user);
+			System.out.println(user);
+//			if(userInfoDao.save(user.getInfo()) != null) {
+//				return true;
+//			}
+			return user;
+		}
+		
+		return null;
+				
+	}
+	public boolean registerUserInfo(UserInfo userInfo) {
+		System.out.println(userInfo);
+		if(userInfoDao.save(userInfo)!=null) {
+			return true;
+		}
 		return false;
 	}
 
@@ -74,4 +95,5 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
+	
 }
