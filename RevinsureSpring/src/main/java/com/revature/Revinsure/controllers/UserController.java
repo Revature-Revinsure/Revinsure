@@ -1,5 +1,7 @@
 package com.revature.Revinsure.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +25,22 @@ public class UserController {
 
 
 	@PostMapping(value = "/register")
-	public boolean register(@RequestBody User user, @RequestBody UserInfo userInfo) {
-		user.setInfo(userInfo);
-		boolean result = userService.registerUser(user);
+	public User register(HttpSession session, @RequestBody User user) {
+//		user.setInfo(userInfo);
+		System.out.println(user);
+		user = userService.registerUser(user);
+		session.setAttribute("user", user);
+		return user;
+	
+	}
+	@PostMapping(value = "/registerInfo")
+	public boolean register(HttpSession session, @RequestBody UserInfo userInfo) {
+//		user.setInfo(userInfo);
+		
+		
+		userInfo.setUser((User) session.getAttribute("user"));
+		System.out.println(userInfo);
+		boolean result = userService.registerUserInfo(userInfo);
 		
 		return result;
 	

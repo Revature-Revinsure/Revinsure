@@ -40,17 +40,29 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean registerUser(User user) {
+	public User registerUser(User user) {
 		
-		if(userDao.save(user) != null) {
-			if(userInfoDao.save(user.getInfo()) != null) {
-				return true;
-			}
-			return false;
+		System.out.println(user);
+		user = userDao.save(user);
+		if(user.getId()>0) {
+			
+//			user.getInfo().setUser(user);
+			System.out.println(user);
+//			if(userInfoDao.save(user.getInfo()) != null) {
+//				return true;
+//			}
+			return user;
 		}
 		
-		return false;
+		return null;
 				
+	}
+	public boolean registerUserInfo(UserInfo userInfo) {
+		System.out.println(userInfo);
+		if(userInfoDao.save(userInfo)!=null) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override

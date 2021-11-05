@@ -39,16 +39,16 @@ public class TestUserServices extends RevinsureApplicationTests{
 		UserInfo userInfo = new UserInfo(1, user, "Firstname","Lastname","123 Avenue", "Buffalo", "New York", "12345");
 		UserInfo userInfoTwo = new UserInfo();
 				
-		user.setInfo(userInfo);
-		userTwo.setInfo(userInfoTwo);
+//		user.setInfo(userInfo);
+//		userTwo.setInfo(userInfoTwo);
 		
 		when(userDao.save(user)).thenReturn(user);
 		when(userDao.save(userTwo)).thenReturn(null);
 		when(userInfoDao.save(userInfo)).thenReturn(userInfo);
 		when(userInfoDao.save(userInfoTwo)).thenReturn(userInfoTwo);
 		
-		assertTrue(userService.registerUser(user));	
-		assertFalse(userService.registerUser(userTwo));
+		assertTrue(userService.registerUser(user) == user);	
+		assertFalse(userService.registerUser(userTwo) == null);
 		
 		
 	}

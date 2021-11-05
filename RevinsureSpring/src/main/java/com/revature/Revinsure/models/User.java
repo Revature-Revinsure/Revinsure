@@ -43,12 +43,12 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_type")
 	private UserType type;
-	
-	@OneToOne(mappedBy = "user")
-	private UserInfo info;
-	
-	@OneToOne(mappedBy = "user")
-	private CovidQuestion question;
+//	
+//	@OneToOne(mappedBy = "user")
+//	private UserInfo info;
+//	
+//	@OneToOne(mappedBy = "user")
+//	private CovidQuestion question;
 	
 	@OneToMany(mappedBy = "user")
 	private List<Claim> claims;
