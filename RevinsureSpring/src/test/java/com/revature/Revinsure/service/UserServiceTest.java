@@ -21,7 +21,7 @@ import com.revature.Revinsure.repo.UserDao;
 import com.revature.Revinsure.services.UserService;
 import com.revature.Revinsure.services.UserServiceImpl;
 
-public class TestUserService extends RevinsureApplicationTests {
+public class UserServiceTest extends RevinsureApplicationTests {
 	
 	@MockBean
 	private static UserDao userDao;
