@@ -14,6 +14,7 @@ import { CovidQuestionsComponent } from './covid-questions/covid-questions.compo
 import { DisscussionBoardComponent } from './disscussion-board/disscussion-board.component';
 import { DisscussionPostComponent } from './disscussion-post/disscussion-post.component';
 import { RoutGuard } from './route.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RoutGuard } from './route.guard';
     CovidQuestionsComponent,
     DisscussionBoardComponent,
     DisscussionPostComponent,
+    DashboardComponent,
     
   ],
   imports: [
