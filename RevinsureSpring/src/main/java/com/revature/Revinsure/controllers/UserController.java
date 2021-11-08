@@ -14,7 +14,7 @@ import com.revature.Revinsure.models.UserInfo;
 import com.revature.Revinsure.services.UserService;
 
 
-@RestController
+@RestController("UserController")
 @CrossOrigin(origins = "http://localhost:4200/", allowCredentials = "true")
 public class UserController {
 	
