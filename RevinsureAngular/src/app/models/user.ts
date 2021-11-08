@@ -1,8 +1,8 @@
-export interface User {
+export interface User{
 
-    id: number; //no access mods, right?
-    email: String;
-    password: String;
-    type: String;
+    id:number,
+    email:string,
+    password:string,
+    type:string
 
 }

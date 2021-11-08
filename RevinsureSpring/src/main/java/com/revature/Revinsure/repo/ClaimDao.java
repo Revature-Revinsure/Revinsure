@@ -11,4 +11,6 @@ import com.revature.Revinsure.models.Claim;
 @Transactional
 public interface ClaimDao extends JpaRepository <Claim, Integer> {
 
+	
+	
 }

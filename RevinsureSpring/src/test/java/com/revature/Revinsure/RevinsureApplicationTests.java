@@ -1,13 +1,17 @@
 package com.revature.Revinsure;
 
 import org.junit.jupiter.api.Test;
+
 import org.springframework.boot.test.context.SpringBootTest;
 
+
+
 @SpringBootTest
-class RevinsureApplicationTests {
+public class RevinsureApplicationTests {
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
+		
 	}
 
 }

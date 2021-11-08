@@ -23,8 +23,26 @@ public class ClaimServiceImpl implements ClaimService {
 
 	@Override
 	public boolean addClaim(User user, Claim claim) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		
+		if(claim != null && claim.getDateOfClaim() != null && claim.getDescription() != null && claim.getStatus() != null) {
+			claim.setUser(user);
+			
+			try {
+				claimDao.save(claim);
+				success = true;
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				
+			}
+		}
+		
+		
+		
+		
+		
+		return success;
 	}
 
 	@Override

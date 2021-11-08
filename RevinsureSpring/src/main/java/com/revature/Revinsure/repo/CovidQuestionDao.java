@@ -12,4 +12,5 @@ import com.revature.Revinsure.models.User;
 @Transactional
 public interface CovidQuestionDao extends JpaRepository <CovidQuestion, User> { //user or integer for key?
 
+
 }

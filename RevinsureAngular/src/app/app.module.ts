@@ -14,6 +14,11 @@ import { DisscussionPostComponent } from './disscussion-post/disscussion-post.co
 import { UserInfoComponent } from './user-info/user-info.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormGroup } from '@angular/forms';
+import { RoutGuard } from './route.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { ClaimService } from './service/claim.service';
 
 @NgModule({
   declarations: [
@@ -26,15 +31,19 @@ import { HttpClientModule } from '@angular/common/http';
     CovidQuestionsComponent,
     DisscussionBoardComponent,
     DisscussionPostComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
     HttpClientModule,
+    FormGroup
   ],
-  providers: [],
+  providers: [RoutGuard,
+    ClaimService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
