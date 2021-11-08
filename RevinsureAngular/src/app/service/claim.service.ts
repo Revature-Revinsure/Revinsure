@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
 import { Claim } from '../models/claim';
 import { Status } from '../models/status';
 import { Message } from '../models/message';
+//import { User } from '../models/user';
+
 
 @Injectable({
   providedIn: 'root'
