@@ -63,15 +63,43 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean createCovidForm(User user, CovidQuestion covidform) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean createCovidForm(User user, CovidQuestion covidForm) {
+		boolean success = false;
+		
+		if(covidForm != null && covidForm.getDateAnswered() != null) {
+			covidForm.setUser(user);
+			
+			try {
+				covidQuestionDao.save(covidForm);
+				success = true;
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				
+			}
+		}
+		
+		return success;
 	}
 
 	@Override
-	public boolean updateCovidForm(User user, CovidQuestion covidform) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateCovidForm(User user, CovidQuestion covidForm) {
+		boolean success = false;
+		
+		if(covidForm != null && covidForm.getDateAnswered() != null) {
+			covidForm.setUser(user);
+			
+			try {
+				covidQuestionDao.updateCovidQuestion(covidForm);
+				success = true;
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				
+			}
+		}
+		
+		return success;
 	}
 
 }
