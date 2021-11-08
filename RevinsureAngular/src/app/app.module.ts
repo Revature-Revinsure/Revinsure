@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +14,10 @@ import { ClaimComponent } from './claim/claim.component';
 import { CovidQuestionsComponent } from './covid-questions/covid-questions.component';
 import { DisscussionBoardComponent } from './disscussion-board/disscussion-board.component';
 import { DisscussionPostComponent } from './disscussion-post/disscussion-post.component';
+
 import { RoutGuard } from './route.guard';
+
+import { ClaimService } from './service/claim.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,7 @@ import { RoutGuard } from './route.guard';
     CovidQuestionsComponent,
     DisscussionBoardComponent,
     DisscussionPostComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,15 @@ import { RoutGuard } from './route.guard';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RoutGuard],
+  providers: [RoutGuard,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ClaimService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

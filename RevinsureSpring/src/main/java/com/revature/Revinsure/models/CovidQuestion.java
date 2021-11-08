@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,12 +28,12 @@ public class CovidQuestion {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "info_id")
+	@Column(name = "question_id")
 	private int id;
 	
 	@JsonIgnore
-	@OneToOne
-	@JoinColumn(name = "id")
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
 	private User user;
 	
 	@Column(name = "has_covid")
