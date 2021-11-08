@@ -45,7 +45,7 @@ public class UserController {
 		return result;
 	
 	}
-	
+
 	@PostMapping(value = "/register/check")
 	public boolean checkUser(@RequestBody String email) {
 		User result = userService.getUserByEmail(email);
@@ -53,6 +53,7 @@ public class UserController {
 			return false;
 		}
 		return true;
+
 	}
 	
 	
