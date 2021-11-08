@@ -9,10 +9,10 @@ export class RoutGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let status = false;
-    
+
     if (sessionStorage.getItem('isLoggedIn') == "true") {
       status = true;
-    }else{
+    } else {
       this.router.navigate(['/login']);
     }
 

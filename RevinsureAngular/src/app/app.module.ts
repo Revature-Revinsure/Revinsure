@@ -16,6 +16,7 @@ import { DisscussionBoardComponent } from './disscussion-board/disscussion-board
 import { DisscussionPostComponent } from './disscussion-post/disscussion-post.component';
 
 import { RoutGuard } from './route.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { ClaimService } from './service/claim.service';
 
@@ -30,7 +31,8 @@ import { ClaimService } from './service/claim.service';
     CovidQuestionsComponent,
     DisscussionBoardComponent,
     DisscussionPostComponent,
-
+    DashboardComponent,
+    
   ],
   imports: [
     BrowserModule,
