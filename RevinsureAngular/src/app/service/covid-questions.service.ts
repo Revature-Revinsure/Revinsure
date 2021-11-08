@@ -23,15 +23,15 @@ export class CovidQuestionsService {
   
   //call this method when a user logs in
   getCurrentForm(): Observable<HttpResponse<Date>>{
-    let addonUrl: string = "";
+    let addonUrl: string = "/covid";
     let fullUrl: string = this.baseUrl + addonUrl;
 
     //I just want the date of the last form
     return this.http.get<Date>(fullUrl, this.httpOptions);
   }
 
-  submitNewForm(form: CovidQuestion): Observable<HttpResponse<Message>>{
-    let addonUrl: string = "";
+  submitCovidForm(form: CovidQuestion): Observable<HttpResponse<Message>>{
+    let addonUrl: string = "/covid";
     let fullUrl: string = this.baseUrl + addonUrl;
 
     return this.http.post<Message>(fullUrl, form, this.httpOptions);
