@@ -34,10 +34,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean authenticate(User user) {
 		
-		System.out.println("service");
-		
 		User databaseUser = getUserByEmail(user.getEmail());
-		System.out.println(databaseUser);
 		boolean success = false;
 		
 		if(databaseUser.getPassword().equals(user.getPassword())) {
