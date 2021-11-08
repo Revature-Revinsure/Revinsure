@@ -1,9 +1,8 @@
-import { Type } from "@angular/core";
-import { UserType } from "./user-type";
-
 export interface User {
-    id: number
-    email: string;
-    password: string;
-    type: UserType;
+
+    id: number; //no access mods, right?
+    email: String;
+    password: String;
+    type: String;
+
 }
