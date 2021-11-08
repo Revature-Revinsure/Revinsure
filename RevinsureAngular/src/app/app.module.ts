@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -12,6 +15,11 @@ import { CovidQuestionsComponent } from './covid-questions/covid-questions.compo
 import { DisscussionBoardComponent } from './disscussion-board/disscussion-board.component';
 import { DisscussionPostComponent } from './disscussion-post/disscussion-post.component';
 
+import { RoutGuard } from './route.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { ClaimService } from './service/claim.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +30,26 @@ import { DisscussionPostComponent } from './disscussion-post/disscussion-post.co
     ClaimComponent,
     CovidQuestionsComponent,
     DisscussionBoardComponent,
-    DisscussionPostComponent
+    DisscussionPostComponent,
+    DashboardComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [RoutGuard,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ClaimService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 package com.revature.Revinsure.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.revature.Revinsure.models.CovidQuestion;
@@ -10,7 +11,7 @@ import com.revature.Revinsure.repo.CovidQuestionDao;
 import com.revature.Revinsure.repo.UserDao;
 import com.revature.Revinsure.repo.UserInfoDao;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -22,25 +23,48 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserInfoDao userInfoDao;
 	
-	public UserServiceImpl() {
-		// TODO Auto-generated constructor stub
+	public UserServiceImpl(UserDao userDao) {
+		this.userDao = userDao;
 	}
 
 	@Override
 	public User getUserByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.getUserByEmail(email);
 	}
 
 	@Override
 	public boolean authenticate(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		User databaseUser = getUserByEmail(user.getEmail());
+		boolean success = false;
+		
+		if(databaseUser.getPassword().equals(user.getPassword())) {
+			success = true;
+		} 
+		
+		return success;
 	}
 
 	@Override
-	public boolean registerUser(User user) {
-		// TODO Auto-generated method stub
+	public User registerUser(User user) {
+		
+		System.out.println(user);
+		user = userDao.save(user);
+		if(user.getId()>0) {
+
+			System.out.println(user);
+
+			return user;
+		}
+		
+		return null;
+				
+	}
+	public boolean registerUserInfo(UserInfo userInfo) {
+		System.out.println(userInfo);
+		if(userInfoDao.save(userInfo)!=null) {
+			return true;
+		}
 		return false;
 	}
 
@@ -90,7 +114,7 @@ public class UserServiceImpl implements UserService {
 			covidForm.setUser(user);
 			
 			try {
-				covidQuestionDao.updateCovidQuestion(covidForm);
+				covidQuestionDao.save(covidForm);
 				success = true;
 			}
 			catch(Exception e) {
@@ -102,4 +126,5 @@ public class UserServiceImpl implements UserService {
 		return success;
 	}
 
+	
 }

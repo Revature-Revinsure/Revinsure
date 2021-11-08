@@ -1,1 +1,18 @@
-<p>covid-questions works!</p>
+<div>
+    <div>
+      <div>
+        <h2>Covid Qusetioniar</h2>
+        <div>Today's Date</div>
+        {{currentDate | date: 'yyyy-MM-dd'}}
+        <div>Have You Had Covid-19 with in the last 14 days</div>
+        <input #haveOrnot type="checkbox" id="haveOrnot" name="haveORnot" [checked]="haveORnot" (change)="onChangedA(haveOrnot.checked)" >
+        <label for="haveOrnot"> I have</label><br>
+
+        <div>Have You Been Around Covid-19 with in the last 14 days</div>
+        <input #haveOrbeenA type="checkbox" id="haveOrbeenA" name="haveORnot" [checked]="haveORbeenA" (change)="onChangedB(haveOrbeenA.checked)" >
+        <label for="haveOrbeenA"> I have</label><br>
+        
+        <button name ="submitCovid" type ="submit" (click)="submit()">Submit</button>       
+      </div>
+    </div>
+</div>
