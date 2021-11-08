@@ -1,5 +1,15 @@
 # Revinsure
 
+Technologies Used
+-----------
+* Spring Boot - v 2.5.6
+* Angular - v 12.2.10
+* Amazon EC2
+* Jenkins
+* Java 8
+
+Project summary
+-----------
 Revinsure is a insurance claim application that allows for patients to file a claim or post on our discussion boards. With the recent pandemic of Covid-19 we have also included a form for patients to fill out concerning if they have had, currently have, or have been exposed to the virus recently. Along with patients we have employees who will in the future have the ability to aprove or deny the claims made by patients.
 
 User Stories:
