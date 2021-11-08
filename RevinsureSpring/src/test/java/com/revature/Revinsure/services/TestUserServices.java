@@ -17,6 +17,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import com.revature.Revinsure.RevinsureApplicationTests;
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserInfo;
+import com.revature.Revinsure.models.UserType;
 import com.revature.Revinsure.repo.UserDao;
 import com.revature.Revinsure.repo.UserInfoDao;
 
@@ -31,14 +32,14 @@ public class TestUserServices extends RevinsureApplicationTests{
 	
 	@Autowired
 	@InjectMocks
-	private UserService userService = new UserServiceImpl();
+	private UserService userService = new UserServiceImpl(userDao);
 	
 	@Test
 	public void testRegisterUser() {
-		User user = new User("abc@gmail.com", "1234567");
+		User user = new User(-1,"abc@gmail.com", "1234567",UserType.PATIENT);
 		User userTwo =  new User();
-		User userThree = new User(null, "1234567");
-		User userFour = new User("abc@gmail.com", null);
+		User userThree = new User(-1,null, "1234567",UserType.EMPLOYEE);
+		User userFour = new User(-1,"abc@gmail.com", null, UserType.PATIENT);
 			
 		when(userDao.save(user)).thenReturn(user);
 		when(userDao.save(userTwo)).thenReturn(null);
@@ -55,7 +56,7 @@ public class TestUserServices extends RevinsureApplicationTests{
 	
 	@Test
 	public void testRegisterUserInfo() {
-		User user = new User("abc@gmail.com", "1234567");
+		User user = new User(-1,"abc@gmail.com", "1234567",UserType.PATIENT);
 		User userTwo =  new User();
 		//User userThree = new User("abc@gmail.com", "1234567");
 		//User userFour = new User("abc@gmail.com", "1234567");
@@ -92,11 +93,11 @@ public class TestUserServices extends RevinsureApplicationTests{
 	
 	@Test
 	public void testValidateUser() {
-		User user = new User("abc@gmail.com", "1234567");
-		User userTwo = new User("random@gmail.com", "1234567");
+		User user = new User(-1,"abc@gmail.com", "1234567",UserType.PATIENT);
+		User userTwo = new User(-1,"randomEmail@gmail.com", "1234567",UserType.EMPLOYEE);
 		
-		when(userDao.findByEmail(user.getEmail())).thenReturn(user);
-		when(userDao.findByEmail(userTwo.getEmail())).thenReturn(null);		
+		when(userDao.getUserByEmail(user.getEmail())).thenReturn(user);
+		when(userDao.getUserByEmail(userTwo.getEmail())).thenReturn(null);		
 		
 		assertEquals(user, userService.getUserByEmail(user.getEmail()));
 		assertNull(userService.getUserByEmail(userTwo.getEmail()));

@@ -10,23 +10,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
 @Entity
-@Table(name = "users")
+@Table(name = "users_table")
 public class User {
 	
-	public User(String string, String string2) {
-		// TODO Auto-generated constructor stub
+	public User(int id, String email, String password, UserType type) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.type = type;
 	}
 
 	@Id
@@ -59,3 +64,5 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<DiscussionResponse> responses;
 }
+
+
