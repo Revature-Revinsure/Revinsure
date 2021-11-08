@@ -46,8 +46,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean updatePassword(User user, String password) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = userDao.updatePassword(password, user.getEmail());
+		return result;			
 	}
 
 	@Override
@@ -72,6 +72,12 @@ public class UserServiceImpl implements UserService {
 	public boolean updateCovidForm(User user, CovidQuestion covidform) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public boolean updatePasswordByEmail(User user) {
+		boolean result = userDao.updatePassword(user.getPassword(), user.getEmail());
+		return result;	
 	}
 
 }
