@@ -11,7 +11,7 @@ import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.repo.DiscussionPostDao;
 import com.revature.Revinsure.repo.DiscussionResponseDao;
 
-@Service
+@Service("forumService")
 public class ForumServiceImpl implements ForumService {
 
 	@Autowired

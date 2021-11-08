@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -13,7 +14,10 @@ import { ClaimComponent } from './claim/claim.component';
 import { CovidQuestionsComponent } from './covid-questions/covid-questions.component';
 import { DisscussionBoardComponent } from './disscussion-board/disscussion-board.component';
 import { DisscussionPostComponent } from './disscussion-post/disscussion-post.component';
-import { HttpClientModule } from '@angular/common/http';
+
+import { RoutGuard } from './route.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { ClaimService } from './service/claim.service';
 
 @NgModule({
@@ -26,26 +30,26 @@ import { ClaimService } from './service/claim.service';
     ClaimComponent,
     CovidQuestionsComponent,
     DisscussionBoardComponent,
-    DisscussionPostComponent
+    DisscussionPostComponent,
+    DashboardComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-<<<<<<< HEAD
-<<<<<<< HEAD
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
-=======
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
->>>>>>> 41612e69dbcfc4f9b9466aa5be3811ecbd9a0162
-=======
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
->>>>>>> f6c4ea428612ed318f4c28e19ea2159cfe899890
   ],
-  providers: [ClaimService],
+  providers: [RoutGuard,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ClaimService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

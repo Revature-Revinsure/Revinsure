@@ -5,22 +5,33 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserInfo;
 import com.revature.Revinsure.services.UserService;
+import com.revature.Revinsure.services.UserServiceImpl;
+
 
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.services.UserService;
 
-@RestController
+@RestController("userController")
+@RequestMapping("/user")
+
 @CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
 public class UserController {
+
+	@Autowired
+	private UserServiceImpl userServiceImpl;
 
 	@Autowired
 	private UserService userService;
@@ -75,7 +86,7 @@ public class UserController {
 
 	}
 
-	
+
 	@PutMapping(value = "/updatePasswordByEmail")
 	public boolean changePasswordBeforeLogin(@RequestBody User user) {
 		
@@ -84,5 +95,24 @@ public class UserController {
 		return result;
 
 	}
-	
+
+	@PostMapping(value = "/login")
+	public User login(HttpSession session, @RequestBody User user) {
+		
+		System.out.println(user);
+		boolean isAuthenticated = userServiceImpl.authenticate(user);
+		
+		User currentUser = userServiceImpl.getUserByEmail(user.getEmail());
+		
+		if(isAuthenticated == true) {
+			session.setAttribute("loggedInUser", currentUser);
+		} else {
+			System.out.println("inside"+currentUser);
+			currentUser = null;
+		}
+		System.out.println("aaaa"+currentUser);
+		
+		return currentUser;
+	}
+
 }
