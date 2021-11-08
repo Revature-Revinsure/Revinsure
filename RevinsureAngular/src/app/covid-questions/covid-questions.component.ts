@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CovidQuestion} from '../models/covid-question';
+
 
 @Component({
   selector: 'app-covid-questions',
@@ -10,54 +12,40 @@ export class CovidQuestionsComponent implements OnInit {
   currentDate: number = Date.now();
   message: string | undefined = "";
 
-  //As a User, I should have to submit a form stating whether I have had, or currently have, covid-19.have uou had it or been exposed
+  
   constructor() { }
 
   ngOnInit(): void {
   }
   haveORnot:boolean = false;
-  haveOrbeenA:boolean =false;
+  haveORbeenA:boolean =false;
 
-  submit(event:any){
-    //make a modle for covid input
+  covidQ!:CovidQuestion;
+
+
+  submit(){
+    
+    this.covidQ ={hasCovid: this.haveORnot,
+              aroundCovid: this.haveORbeenA,
+              dateAnswered: this.currentDate
+            }
+
+            console.log(this.covidQ);
+
   }
 
-  //model have 
-  /*
-  export interface CovidQuestion {
-    hasCovid: boolean,
-    aroundCovid: boolean,
-    dateAnswered: Date | number;
-}
-
-
-  */
-
+ 
 onChangedB(value:boolean){
-  this.haveOrbeenA = value;
-  console.log(this.haveOrbeenA);
+  this.haveORbeenA = value;
+  console.log(this.haveORbeenA);
 }
 
-  //value:boolean
+ 
   onChangedA(value:boolean){
     this.haveORnot = value;
-    /*
-    let claim: Claim = {id: -1,
-      dateOfService: null,
-      dateOfClaim: this.currentDate,
-      amount: <number>(<unknown>amount),
-      status: Status.PENDING,
-      description: description};
-    */
+   
       console.log(this.haveORnot);
 
-    /*this.claimService.makeClaim(claim).subscribe(
-      response => {
-        this.message= response.body?.message;
-
-        console.log(this.message);
-      }
-    );*/
 
   }
 
