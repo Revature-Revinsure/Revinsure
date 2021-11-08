@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { UserInfo } from '../models/user-info';
 import { DataService } from './data.service';
+//import { User } from '../models/user';
+//import { User } from '../models/user';
+
 
 @Injectable({
   providedIn: 'root'

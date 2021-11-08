@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
 
     let newUserInfo: UserInfo = {
       id: -1,
-      user: unregisteredUser,
+     //user: unregisteredUser,
       firstname: this.registerform.value.firstname,
       lastname: this.registerform.value.lastname, 
       address: this.registerform.value.address, 
