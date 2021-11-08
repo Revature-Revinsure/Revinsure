@@ -103,4 +103,31 @@ public class TestUserServices extends RevinsureApplicationTests{
 	}
 	
 	
+	@Test
+	public void testChangePassword() {
+		User testUser1 = new User("test1@email.com", "fakepass");
+		User testUser2 = new User("test2@email.com", "");
+		User testUser3 = new User("", "");
+		User testUser4 = new User("", "fakepass");
+		User testUser5 = new User();
+		User testUser6 = new User("unregistered@email.com", "fakepass");
+		
+		
+		when(userDao.updatePassword(testUser1)).thenReturn(testUser1);
+		when(userDao.updatePassword(testUser2)).thenReturn(null);
+		when(userDao.updatePassword(testUser3)).thenReturn(null);
+		when(userDao.updatePassword(testUser4)).thenReturn(null);
+		when(userDao.updatePassword(testUser5)).thenReturn(null);
+		when(userDao.updatePassword(testUser6)).thenReturn(null);
+		
+		
+		assertTrue(userService.updatePassword(testUser1, testUser1.getPassword()));
+		assertFalse(userService.updatePassword(testUser2, testUser2.getPassword()));
+		assertFalse(userService.updatePassword(testUser3, testUser3.getPassword()));
+		assertFalse(userService.updatePassword(testUser4, testUser4.getPassword()));
+		assertFalse(userService.updatePassword(testUser5, testUser5.getPassword()));
+		assertFalse(userService.updatePassword(testUser6, testUser6.getPassword()));
+		
+	}
+	
 }
