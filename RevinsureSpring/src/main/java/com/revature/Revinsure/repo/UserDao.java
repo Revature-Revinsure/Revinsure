@@ -15,4 +15,7 @@ public interface UserDao extends JpaRepository <User, Integer> {
 	@Query("update User u set u.userPassword = ?1 where u.email = ?2")
 	boolean updatePassword(String password, String email);
 
+	User findByEmail(String email);
+	
+	
 }

@@ -12,7 +12,7 @@ public interface UserService {
 	
 	boolean authenticate(User user);
 	
-	boolean registerUser(User user);
+	User registerUser(User user);
 	
 	boolean updatePassword(User user, String password);
 	
@@ -25,5 +25,8 @@ public interface UserService {
 	boolean updateCovidForm(User user, CovidQuestion covidform);
 
 	boolean updatePasswordByEmail(User user);
+
+	boolean registerUserInfo(UserInfo userInfo);
+
 
 }
