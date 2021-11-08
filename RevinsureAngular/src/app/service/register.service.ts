@@ -9,39 +9,61 @@ import { DataService } from './data.service';
   providedIn: 'root'
 })
 export class RegisterService {
-  
+
 
   httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      withCredentials: true,
-      observe: 'response' as 'response'
-      }; 
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    withCredentials: true,
+    observe: 'response' as 'response'
+  };
 
-  constructor(private httpClient: HttpClient, private dataService: DataService ) { }
-  
+  constructor(private httpClient: HttpClient, private dataService: DataService) { }
+
   userExists(email: string): Observable<HttpResponse<boolean>> {
+    console.log(email);
     let options = {
       withCredentials: true,
       observe: 'response' as 'response',
       body: {
         "email": email
       }
+
     };
-      let addOnURL: string = '/register';
-      let fullURL: string = this.dataService.BaseURL + addOnURL;
-      return this.httpClient.get<boolean>(fullURL, options);
+
+    console.log('The options is: ' + options);
+    console.log('The options.body is: ' + options.body);
+    console.log('The options.body.email is: ' + options.body.email);
+    let addOnURL: string = '/register/check';
+    let fullURL: string = this.dataService.BaseURL + addOnURL;
+    return this.httpClient.post<HttpResponse<boolean>>(fullURL, options);
   }
-  
+
 
   registerNewUser(unregisteredUser: User): Observable<HttpResponse<User>> {
     let addOnURL: string = '/register';
     let fullURL: string = this.dataService.BaseURL + addOnURL;
-    return this.httpClient.post<User>(fullURL, {unregisteredUser}, this.httpOptions)
+    return this.httpClient.post<User>(fullURL, {
+
+      "id": -1,
+      "email":unregisteredUser.email,
+      "password":unregisteredUser.password,
+      "type": unregisteredUser.type
+
+
+    }, this.httpOptions)
   }
 
   registerNewUserInfo(infoForm: UserInfo): Observable<HttpResponse<UserInfo>> {
     let addOnURL: string = '/registerInfo';
     let fullURL: string = this.dataService.BaseURL + addOnURL;
-    return this.httpClient.post<UserInfo>(fullURL, {infoForm}, this.httpOptions)
+    return this.httpClient.post<UserInfo>(fullURL, {
+      "id": -1,
+      "firstName": infoForm.firstname,
+      "lastName": infoForm.lastname,
+      "address": infoForm.address,
+      "city": infoForm.city,
+      "state": infoForm.state,
+      "zip": infoForm.zip
+    }, this.httpOptions)
   }
 }
