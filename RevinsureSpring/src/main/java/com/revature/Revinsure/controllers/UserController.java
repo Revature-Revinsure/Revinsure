@@ -4,13 +4,18 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RestController;
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserInfo;
+import com.revature.Revinsure.services.UserService;
+
+import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.services.UserService;
 
 @RestController
@@ -22,6 +27,17 @@ public class UserController {
 	
 	public UserController() {
 		
+	}
+	
+	@PutMapping(value = "/updatePassword")
+	public boolean changePasswordAfterLogin(HttpSession session, @RequestBody User user) {
+		
+		User oldUser = (User)session.getAttribute("user");
+		boolean result = userService.updatePassword(oldUser, user.getPassword());
+		
+		return result;
+
+
 	}
 
 
@@ -58,7 +74,15 @@ public class UserController {
 		return true;
 
 	}
+
 	
-	
+	@PutMapping(value = "/updatePasswordByEmail")
+	public boolean changePasswordBeforeLogin(@RequestBody User user) {
+		
+		boolean result = userService.updatePasswordByEmail(user);
+		
+		return result;
+
+	}
 	
 }

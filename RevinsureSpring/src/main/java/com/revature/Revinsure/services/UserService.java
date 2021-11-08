@@ -24,7 +24,9 @@ public interface UserService {
 	
 	boolean updateCovidForm(User user, CovidQuestion covidform);
 
+	boolean updatePasswordByEmail(User user);
+
 	boolean registerUserInfo(UserInfo userInfo);
 
-	
+
 }
