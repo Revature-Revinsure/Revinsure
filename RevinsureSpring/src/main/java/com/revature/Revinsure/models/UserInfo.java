@@ -30,6 +30,7 @@ public class UserInfo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "info_id")
 	private int id;
+
 	
 	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY)

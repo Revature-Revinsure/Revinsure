@@ -11,7 +11,7 @@ import com.revature.Revinsure.repo.CovidQuestionDao;
 import com.revature.Revinsure.repo.UserDao;
 import com.revature.Revinsure.repo.UserInfoDao;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -23,20 +23,26 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserInfoDao userInfoDao;
 	
-	public UserServiceImpl() {
-		// TODO Auto-generated constructor stub
+	public UserServiceImpl(UserDao userDao) {
+		this.userDao = userDao;
 	}
 
 	@Override
 	public User getUserByEmail(String email) {
-		// TODO Auto-generated method stub
-		return userDao.findByEmail(email);
+		return userDao.getUserByEmail(email);
 	}
 
 	@Override
 	public boolean authenticate(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		User databaseUser = getUserByEmail(user.getEmail());
+		boolean success = false;
+		
+		if(databaseUser.getPassword().equals(user.getPassword())) {
+			success = true;
+		} 
+		
+		return success;
 	}
 
 	@Override
@@ -64,8 +70,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean updatePassword(User user, String password) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = userDao.updatePassword(password, user.getEmail());
+		return result;			
 	}
 
 	@Override
@@ -92,5 +98,11 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
-	
+	@Override
+	public boolean updatePasswordByEmail(User user) {
+		boolean result = userDao.updatePassword(user.getPassword(), user.getEmail());
+		return result;	
+	}
+
+
 }
