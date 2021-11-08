@@ -32,12 +32,18 @@ import { ClaimService } from './service/claim.service';
     BrowserModule,
     AppRoutingModule,
 <<<<<<< HEAD
+<<<<<<< HEAD
     HttpClientModule
 =======
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
 >>>>>>> 41612e69dbcfc4f9b9466aa5be3811ecbd9a0162
+=======
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+>>>>>>> f6c4ea428612ed318f4c28e19ea2159cfe899890
   ],
   providers: [ClaimService],
   bootstrap: [AppComponent]
