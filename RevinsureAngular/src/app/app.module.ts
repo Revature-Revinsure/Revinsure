@@ -13,6 +13,8 @@ import { ClaimComponent } from './claim/claim.component';
 import { CovidQuestionsComponent } from './covid-questions/covid-questions.component';
 import { DisscussionBoardComponent } from './disscussion-board/disscussion-board.component';
 import { DisscussionPostComponent } from './disscussion-post/disscussion-post.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ClaimService } from './service/claim.service';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,21 @@ import { DisscussionPostComponent } from './disscussion-post/disscussion-post.co
   imports: [
     BrowserModule,
     AppRoutingModule,
+<<<<<<< HEAD
+<<<<<<< HEAD
+    HttpClientModule
+=======
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
+>>>>>>> 41612e69dbcfc4f9b9466aa5be3811ecbd9a0162
+=======
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+>>>>>>> f6c4ea428612ed318f4c28e19ea2159cfe899890
   ],
-  providers: [],
+  providers: [ClaimService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

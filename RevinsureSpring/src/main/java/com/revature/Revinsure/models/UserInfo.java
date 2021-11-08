@@ -1,9 +1,8 @@
 package com.revature.Revinsure.models;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.FetchType;
 
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Entity
 @Table(name = "user_info")
 public class UserInfo {
