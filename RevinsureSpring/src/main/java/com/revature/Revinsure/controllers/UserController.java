@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.revature.Revinsure.models.User;
@@ -46,7 +47,7 @@ public class UserController {
 	
 	}
 	
-	@GetMapping(value = "/register")
+	@PostMapping(value = "/register")
 	public boolean checkUser(@RequestBody User user) {
 		boolean result = false;
 		if(userService.getUserByEmail(user.getEmail()) != null) {
@@ -55,6 +56,7 @@ public class UserController {
 		
 		return result;
 	}
+	
 	
 	
 }

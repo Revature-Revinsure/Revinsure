@@ -1,5 +1,6 @@
 package com.revature.Revinsure.services;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -44,10 +45,11 @@ public class TestUserServices extends RevinsureApplicationTests{
 		when(userDao.save(userThree)).thenReturn(null);
 		when(userDao.save(userFour)).thenReturn(null);
 				
-		assertTrue(userService.registerUser(user) == user);	
-		assertFalse(userService.registerUser(userTwo) == null);
-		assertFalse(userService.registerUser(userThree) == null);
-		assertFalse(userService.registerUser(userFour) == null);
+		assertNotNull(userService.registerUser(user));	
+		assertEquals(user, userService.registerUser(user));
+		assertNull(userService.registerUser(userTwo));
+		assertNull(userService.registerUser(userThree));
+		assertNull(userService.registerUser(userFour));
 				
 	}
 	
@@ -68,14 +70,14 @@ public class TestUserServices extends RevinsureApplicationTests{
 		UserInfo userInfoNine = new UserInfo(1, user, "Firstname","Lastname","123 Avenue", "Buffalo", "New York", null);
 		
 		when(userInfoDao.save(userInfo)).thenReturn(userInfo);
-		when(userInfoDao.save(userInfoTwo)).thenReturn(userInfoTwo);
-		when(userInfoDao.save(userInfoThree)).thenReturn(userInfoThree);
-		when(userInfoDao.save(userInfoFour)).thenReturn(userInfoFour);
-		when(userInfoDao.save(userInfoFive)).thenReturn(userInfoFive);
-		when(userInfoDao.save(userInfoSix)).thenReturn(userInfoSix);
-		when(userInfoDao.save(userInfoSeven)).thenReturn(userInfoSeven);
-		when(userInfoDao.save(userInfoEight)).thenReturn(userInfoEight);
-		when(userInfoDao.save(userInfoNine)).thenReturn(userInfoNine);
+		when(userInfoDao.save(userInfoTwo)).thenReturn(null);
+		when(userInfoDao.save(userInfoThree)).thenReturn(null);
+		when(userInfoDao.save(userInfoFour)).thenReturn(null);
+		when(userInfoDao.save(userInfoFive)).thenReturn(null);
+		when(userInfoDao.save(userInfoSix)).thenReturn(null);
+		when(userInfoDao.save(userInfoSeven)).thenReturn(null);
+		when(userInfoDao.save(userInfoEight)).thenReturn(null);
+		when(userInfoDao.save(userInfoNine)).thenReturn(null);
 		
 		assertTrue(userService.registerUserInfo(userInfo));
 		assertFalse(userService.registerUserInfo(userInfoTwo));		
@@ -96,8 +98,9 @@ public class TestUserServices extends RevinsureApplicationTests{
 		when(userDao.findByEmail(user.getEmail())).thenReturn(user);
 		when(userDao.findByEmail(userTwo.getEmail())).thenReturn(null);		
 		
-		assertTrue(userService.getUserByEmail(user.getEmail()).equals(user));
-		assertFalse(userService.getUserByEmail(userTwo.getEmail()) != null);
+		assertEquals(user, userService.getUserByEmail(user.getEmail()));
+		assertNull(userService.getUserByEmail(userTwo.getEmail()));
 	}
-
+	
+	
 }
