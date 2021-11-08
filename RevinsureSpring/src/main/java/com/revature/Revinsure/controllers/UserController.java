@@ -45,15 +45,15 @@ public class UserController {
 		return result;
 	
 	}
-	
-	@GetMapping(value = "/register")
-	public boolean checkUser(@RequestBody User user) {
-		boolean result = false;
-		if(userService.getUserByEmail(user.getEmail()) != null) {
-			result = true;
+
+	@PostMapping(value = "/register/check")
+	public boolean checkUser(@RequestBody String email) {
+		User result = userService.getUserByEmail(email);
+		if(result == null) {
+			return false;
 		}
-		
-		return result;
+		return true;
+
 	}
 	
 	
