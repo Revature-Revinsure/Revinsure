@@ -32,7 +32,7 @@ public class ClaimServiceTest extends RevinsureApplicationTests {
 	@InjectMocks
 	private ClaimService claimService = new ClaimServiceImpl();
 	
-	private final User fakeUser = new User(83, "fake@email.com", "password", UserType.PATIENT, null, null, null, null, null);
+	private final User fakeUser = new User(83, "fake@email.com", "password", UserType.PATIENT, null, null, null);
 	private final Claim fakeClaim = new Claim(-1, null, null, new Date(), 100, Status.PENDING, "test description");
 	private final Claim updatedFakeClaim = new Claim(10, null, null, new Date(), 100, Status.PENDING, "test description");
 	private final Claim nullDate = new Claim(-1, null, null, null, 100, Status.PENDING, "test description");

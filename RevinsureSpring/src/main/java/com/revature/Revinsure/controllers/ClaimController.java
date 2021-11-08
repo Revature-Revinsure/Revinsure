@@ -30,7 +30,7 @@ public class ClaimController {
 		Message message = new Message();
 		
 //		User user = (User) session.getAttribute("user");//attribute with the user goes here
-		User user = new User(1, "lauren.pena@revature.net", "2108Java", UserType.PATIENT, null, null, null, null, null);
+		User user = new User(1, "lauren.pena@revature.net", "2108Java", UserType.PATIENT, null, null, null);
 		
 		if(cServ.addClaim(user, claim)) {
 			message.setMessage("Claim submitted successfully.");

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +31,13 @@ import { ClaimService } from './service/claim.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+<<<<<<< HEAD
     HttpClientModule
+=======
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+>>>>>>> 41612e69dbcfc4f9b9466aa5be3811ecbd9a0162
   ],
   providers: [ClaimService],
   bootstrap: [AppComponent]
