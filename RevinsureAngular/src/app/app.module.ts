@@ -12,7 +12,7 @@ import { CovidQuestionsComponent } from './covid-questions/covid-questions.compo
 import { DisscussionBoardComponent } from './disscussion-board/disscussion-board.component';
 import { DisscussionPostComponent } from './disscussion-post/disscussion-post.component';
 import { UserInfoComponent } from './user-info/user-info.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 import { RoutGuard } from './route.guard';
@@ -31,17 +31,23 @@ import { ClaimService } from './service/claim.service';
     CovidQuestionsComponent,
     DisscussionBoardComponent,
     DisscussionPostComponent,
+    DashboardComponent,
     UserInfoComponent,
-    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    FormGroup
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [RoutGuard,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     ClaimService
   ],
   bootstrap: [AppComponent]

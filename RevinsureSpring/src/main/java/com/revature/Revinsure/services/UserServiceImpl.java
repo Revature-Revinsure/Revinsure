@@ -86,6 +86,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean updateUserInfo(User user, UserInfo userInfo) {
 		
+		
 		return userInfoDao.updateInfo(userInfo.getFirstName(), userInfo.getLastName(), userInfo.getAddress(), userInfo.getCity(), userInfo.getState(), userInfo.getZip(), user.getId());
 		
 	}

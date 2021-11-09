@@ -10,7 +10,7 @@ export class DataService {
   currentUser!: User;
   constructor() { }
 
-  get BaseURL(){
+  BaseURL(){
     return this.baseURL;
   }
 

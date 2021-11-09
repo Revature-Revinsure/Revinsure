@@ -17,12 +17,8 @@ public interface UserDao extends JpaRepository <User, Integer> {
 	
 	@Modifying
 	@Query("UPDATE User u SET u.email = ?1, u.password = ?2 WHERE u.id = ?3")
-	public boolean updateUser(String email, String password, int id);
+	boolean updateUser(String email, String password, int id);
 	
-	
-//	@Modifying
-//    @Query("UPDATE U c SET c.address = :address WHERE c.id = :companyId")
-//    public boolean updateUser(@Param("id") int user_id, @Param("password") String password, @Param("email") String email);
 
 	
 	User getUserByEmail(String email);

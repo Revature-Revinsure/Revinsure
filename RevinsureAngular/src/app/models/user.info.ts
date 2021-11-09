@@ -1,10 +1,10 @@
 
-import { User } from "./user";
+//import { User } from "./user";
 
 export interface UserInfo {
 
     id: number;
-    user: User;
+    //user: User;
     firstname: String;
     lastname: String;
     address: String;

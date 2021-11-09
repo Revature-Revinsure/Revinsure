@@ -14,7 +14,7 @@ export class UserInfoComponent implements OnInit {
 
   currentUser: User = {id: 100, email: "test@test.com", password: "test", type: "PATIENT"};
 
-  userInfo: UserInfo = {id: 100, user: this.currentUser, firstname: "Firstname", lastname: "Lastname",
+  userInfo: UserInfo = {id: 100, firstname: "Firstname", lastname: "Lastname",
                         address: "123 Something Road", city: "New York", state: "New York", zip: "12345"};
 
   editEmail: boolean = false;
@@ -38,6 +38,8 @@ export class UserInfoComponent implements OnInit {
   }
 
   //getUserInfo(){}
+
+  //getUser{}
 
   toggleEmail(){
     console.log("running toggle email");
@@ -84,6 +86,15 @@ export class UserInfoComponent implements OnInit {
 
   updatePassword(){
     console.log("running update password");
+    console.log(this.newPassword);
+
+    this.userProfileService.updatePassword(this.newPassword).subscribe(
+      response => {
+        console.log(response.status);
+
+        //if status = 200 then show updated green check mark window
+      }
+    )
   }  
 
   updateUserInfo(){
@@ -94,6 +105,36 @@ export class UserInfoComponent implements OnInit {
     console.log(this.newCity);
     console.log(this.newState);
     console.log(this.newZip);
+
+    if (this.newFirstName != "" ){
+      this.userInfo.firstname = this.newFirstName;
+    }
+
+    if (this.newLastName != "" ){
+      this.userInfo.lastname = this.newLastName;
+    }
+
+    if (this.newAddress != "" ){
+      this.userInfo.address = this.newAddress;
+    }
+
+    if (this.newCity != "" ){
+      this.userInfo.city = this.newCity;
+    }
+
+    if (this.newState != "" ){
+      this.userInfo.state = this.newState;
+    }
+
+    if (this.newZip != "" ){
+      this.userInfo.zip = this.newZip;
+    }
+
+    this.userProfileService.updateUserInfo(this.userInfo).subscribe(
+      response => {
+        console.log(response.status);
+      }
+    )
 
   }  
 }
