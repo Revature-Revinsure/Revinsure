@@ -36,8 +36,8 @@ public class TestUserServices extends RevinsureApplicationTests{
 	
 	@Test
 	public void testRegisterUser() {
-		User user = new User(-1,"abc@gmail.com", "1234567",UserType.PATIENT);
-		User userTwo =  new User();
+		User user = new User(1,"abc@gmail.com", "1234567",UserType.PATIENT);
+		User userTwo =  new User(-1, null, null, null, null, null, null);
 		User userThree = new User(-1,null, "1234567",UserType.EMPLOYEE);
 		User userFour = new User(-1,"abc@gmail.com", null, UserType.PATIENT);
 			
