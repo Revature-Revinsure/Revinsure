@@ -70,8 +70,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean updatePassword(User user, String password) {
-		boolean result = userDao.updatePassword(password, user.getEmail());
-		return result;			
+		int result = userDao.updatePassword(password, user.getEmail());
+		boolean success = false;
+		if (result >0) {
+			success = true;
+		}
+		return success;			
 	}
 
 	@Override
@@ -100,8 +104,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean updatePasswordByEmail(User user) {
-		boolean result = userDao.updatePassword(user.getPassword(), user.getEmail());
-		return result;	
+		int result = userDao.updatePassword(user.getPassword(), user.getEmail());
+		boolean success = false;
+		if (result >0) {
+			success = true;
+		}
+		return success;		
 	}
 
 
