@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 		
 		System.out.println(user);
 		user = userDao.save(user);
-		if(user.getId()>0) {
+		if(user != null) {
 
 			System.out.println(user);
 
