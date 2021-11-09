@@ -19,6 +19,7 @@ import { RoutGuard } from './route.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { ClaimService } from './service/claim.service';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ClaimService } from './service/claim.service';
     DisscussionBoardComponent,
     DisscussionPostComponent,
     DashboardComponent,
+    ResetPasswordComponent,
     
   ],
   imports: [

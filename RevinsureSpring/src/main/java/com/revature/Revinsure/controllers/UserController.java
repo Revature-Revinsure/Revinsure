@@ -76,8 +76,10 @@ public class UserController {
 
 	
 	@PostMapping(value = "/register/check")
-	public boolean checkUser(@RequestBody String email) {
-		User result = userService.getUserByEmail(email);
+	public boolean checkUser(@RequestBody User user) {
+		System.out.println(user);
+		User result = userService.getUserByEmail(user.getEmail());
+		System.out.println(result);
 		if(result == null) {
 			return false;
 
@@ -89,7 +91,7 @@ public class UserController {
 
 	@PutMapping(value = "/updatePasswordByEmail")
 	public boolean changePasswordBeforeLogin(@RequestBody User user) {
-		
+		System.out.println(user);
 		boolean result = userService.updatePasswordByEmail(user);
 		
 		return result;

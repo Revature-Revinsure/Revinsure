@@ -33,14 +33,14 @@ export class RegisterService {
     console.log('The options is: ' + options);
     console.log('The options.body is: ' + options.body);
     console.log('The options.body.email is: ' + options.body.email);
-    let addOnURL: string = '/register/check';
+    let addOnURL: string = '/user/register/check';
     let fullURL: string = this.dataService.BaseURL + addOnURL;
-    return this.httpClient.post<HttpResponse<boolean>>(fullURL, options);
+    return this.httpClient.post<boolean>(fullURL, {"email":email}, this.httpOptions);
   }
 
 
   registerNewUser(unregisteredUser: User): Observable<HttpResponse<User>> {
-    let addOnURL: string = '/register';
+    let addOnURL: string = '/user/register';
     let fullURL: string = this.dataService.BaseURL + addOnURL;
     return this.httpClient.post<User>(fullURL, {
 
@@ -54,7 +54,7 @@ export class RegisterService {
   }
 
   registerNewUserInfo(infoForm: UserInfo): Observable<HttpResponse<UserInfo>> {
-    let addOnURL: string = '/registerInfo';
+    let addOnURL: string = '/user/registerInfo';
     let fullURL: string = this.dataService.BaseURL + addOnURL;
     return this.httpClient.post<UserInfo>(fullURL, {
       "id": -1,
