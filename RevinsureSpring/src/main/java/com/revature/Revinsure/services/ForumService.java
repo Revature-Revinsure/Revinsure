@@ -14,13 +14,13 @@ public interface ForumService {
 	
 	boolean removeResponse(DiscussionResponse response); //patients may remove their responses, employees may remove any response
 	
-	boolean createNewResponse(User user, DiscussionPost post, DiscussionResponse response);
-	
 	List<DiscussionResponse> getResponsesForPost(DiscussionPost post);
 	
 	List<DiscussionPost> getAllPosts(); //any user can see the whole forum
 	
 	List<DiscussionPost> getPostsByUser(User user);
+
+	boolean createNewResponse(User user, DiscussionResponse response);
 	
 	//stretch goal, push notification to users whose posts receive response
 	//stretch goal, push notification when user's claim status changes

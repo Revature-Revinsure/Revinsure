@@ -43,7 +43,7 @@ public class ForumServiceImpl implements ForumService {
 	}
 
 	@Override
-	public boolean createNewResponse(User user, DiscussionPost post, DiscussionResponse response) {
+	public boolean createNewResponse(User user, DiscussionResponse response) {
 		// TODO Auto-generated method stub
 		return false;
 	}
