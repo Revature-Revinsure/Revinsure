@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { Message } from '../models/message';
 import { CovidQuestion } from '../models/covid-question';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CovidQuestionsService {
 
-  baseUrl: String = "http://localhost:8000";
+  baseUrl: String = this.dataService.BaseURL;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -19,7 +20,7 @@ export class CovidQuestionsService {
   observe: 'response' as 'response'
   };  
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dataService: DataService) { }
   
   //call this method when a user logs in
   getCurrentForm(): Observable<HttpResponse<Date>>{
