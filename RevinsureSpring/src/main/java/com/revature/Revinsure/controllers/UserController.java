@@ -73,6 +73,7 @@ public class UserController {
 		
 		if(isAuthenticated == true) {
 			session.setAttribute("loggedInUser", currentUser);
+			session.setAttribute("accessLevel", currentUser.getType());
 		} else {
 			System.out.println("inside"+currentUser);
 			currentUser = null;
