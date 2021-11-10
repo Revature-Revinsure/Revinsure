@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Router } from '@angular/router';
 import {CovidQuestion} from '../models/covid-question';
 import { CovidQuestionsService } from '../service/covid-questions.service';
 import { DataService } from '../service/data.service';
-
 
 @Component({
   selector: 'app-covid-questions',
@@ -22,11 +22,10 @@ export class CovidQuestionsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  haveORnot:boolean = false;
-  haveORbeenA:boolean =false;
+  haveORnot: boolean = false;
+  haveORbeenA: boolean = false;
 
-  covidQ!:CovidQuestion;
-
+  covidQ!: CovidQuestion;
 
   submit(){
     
@@ -53,17 +52,17 @@ export class CovidQuestionsComponent implements OnInit {
   
   }
 
- 
-onChangedB(value:boolean){
-  this.haveORbeenA = value;
-  console.log(this.haveORbeenA);
-}
 
- 
-  onChangedA(value:boolean){
+  onChangedB(value: boolean) {
+    this.haveORbeenA = value;
+    console.log(this.haveORbeenA);
+  }
+
+
+  onChangedA(value: boolean) {
     this.haveORnot = value;
-   
-      console.log(this.haveORnot);
+
+    console.log(this.haveORnot);
 
 
   }
