@@ -1,6 +1,7 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { User } from '../models/user';
 import { UserInfo } from '../models/user-info';
+import { DataService } from '../service/data.service';
 import { UserProfileService } from '../service/user-profile.service';
 
 @Component({
@@ -10,14 +11,11 @@ import { UserProfileService } from '../service/user-profile.service';
 })
 export class UserInfoComponent implements OnInit {
 
-  constructor(private userProfileService: UserProfileService) { }
+  constructor(private userProfileService: UserProfileService, private dataService:DataService) { }
 
-  currentUser: User = { id: 100, email: "test@test.com", password: "test", type: "PATIENT" };
+  currentUser!: User;
 
-  userInfo: UserInfo = {
-    id: 100, firstname: "Firstname", lastname: "Lastname",
-    address: "123 Something Road", city: "New York", state: "New York", zip: "12345"
-  };
+  userInfo!: UserInfo;
 
   editEmail: boolean = false;
   editPassword: boolean = false;
@@ -36,7 +34,8 @@ export class UserInfoComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //this.getUserInfo();
+   this.currentUser = this.dataService.currentUser;
+   this.userInfo = this.dataService.userInfo;
   }
 
   //getUserInfo(){}
