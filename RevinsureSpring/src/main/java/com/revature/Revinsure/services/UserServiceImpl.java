@@ -113,20 +113,17 @@ public class UserServiceImpl implements UserService {
 		Date currentDate = new Date();
 		
 		if(user != null) {
-//			CovidQuestion covid = covidQuestionDao.findByUser(user);
-			Date oldDate = new GregorianCalendar(2020, Calendar.FEBRUARY, 13).getTime();
-			CovidQuestion covid = new CovidQuestion(1, user, false, false, oldDate);
-			System.out.println(covid);
+			CovidQuestion covid = covidQuestionDao.findByUser(user);
 			
-			if(covid.getDateAnswered() == null) {
+			if(covid == null || covid.getDateAnswered() == null) {
 				isAfterFourteenDays = true; //show new COVID-19 form if it's null
-			}
-			
-			long difference = currentDate.getTime() - covid.getDateAnswered().getTime();
-			double daysBetween = (difference / (1000*60*60*24));
-			
-			if (daysBetween >= 14) {
-				isAfterFourteenDays = true; //show new COVID-19 form to user if the last date they answered was less than 14 days ago
+			} else {
+				long difference = currentDate.getTime() - covid.getDateAnswered().getTime();
+				double daysBetween = (difference / (1000*60*60*24));
+				
+				if (daysBetween >= 14) {
+					isAfterFourteenDays = true; //show new COVID-19 form to user if the last date they answered was less than 14 days ago
+				}
 			}
 		}
 		

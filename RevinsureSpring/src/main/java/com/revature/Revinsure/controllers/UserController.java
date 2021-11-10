@@ -84,16 +84,13 @@ public class UserController {
 	
 	@GetMapping(value = "/covid")
 	public boolean checkIfDateIsAfterFourteenDays(HttpSession session) {
-		boolean isAfterFourteenDays = false;
-		User testUser = new User(1,"test@gmail.com","password", UserType.PATIENT);
+		User user = (User) session.getAttribute("user");
 		
-		userService.checkIfAfterFourteenDays(testUser);
-		
-		return isAfterFourteenDays;
+		return userService.checkIfAfterFourteenDays(user);
 	}
 	
 	@PostMapping(value = "/covid")
-	public Message createOrUpdateCovidAnswer(HttpSession session, CovidQuestion covidQuestion) {
+	public Message createOrUpdateCovidAnswer(HttpSession session, @RequestBody CovidQuestion covidQuestion) {
 		Message message = new Message();
 		User user = (User) session.getAttribute("user");
 		
