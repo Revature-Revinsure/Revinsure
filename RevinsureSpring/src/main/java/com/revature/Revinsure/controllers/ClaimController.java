@@ -15,7 +15,7 @@ import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserType;
 import com.revature.Revinsure.services.ClaimService;
 
-@RestController
+@RestController("claimController")
 @CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
 @RequestMapping("/api")
 public class ClaimController {
@@ -26,8 +26,15 @@ public class ClaimController {
 	//new claim
 	@PostMapping("/claim")
 //	public Message submitClaim(@RequestBody Claim claim, HttpSession session) {
-	public Message submitClaim(@RequestBody Claim claim) {
+	public Message submitClaim(HttpSession session, @RequestBody Claim claim) {
 		Message message = new Message();
+		
+		if((session.getAttribute("accessLevel") == null)||!session.getAttribute("accessLevel").equals(UserType.PATIENT)) {
+			message.setMessage("access denied");
+			return message;
+		}
+		
+		
 		
 //		User user = (User) session.getAttribute("user");//attribute with the user goes here
 		User user = new User(1, "lauren.pena@revature.net", "2108Java", UserType.PATIENT, null, null, null);
