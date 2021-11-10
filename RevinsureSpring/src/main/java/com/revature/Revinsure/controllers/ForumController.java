@@ -34,22 +34,26 @@ public class ForumController {
 		return forumService.getAllPosts();
 	}
 
-	@GetMapping(value = "/response")
-	public List<DiscussionResponse> getAllResponsesByPost(DiscussionPost currentPost) {
+	@PostMapping(value = "/get/response")
+	public List<DiscussionResponse> getAllResponsesByPost(HttpSession session,@RequestBody DiscussionPost currentPost) {
+		session.setAttribute("post", currentPost);
+		currentPost.setUser((User)session.getAttribute("loggedInUser"));
+
 		return forumService.getResponsesForPost(currentPost);
 	}
 
 	@PostMapping(value = "/post")
 	public boolean makePost(HttpSession session, @RequestBody DiscussionPost currentPost) {
-		User user = (User) session.getAttribute("user");
+		User user = (User) session.getAttribute("loggedInUser");
 
 		return forumService.createNewPost(user, currentPost);
 	}
 
 	@PostMapping(value = "/response")
 	public boolean makeResponse(HttpSession session, @RequestBody DiscussionResponse currentResponse) {
-		User user = (User) session.getAttribute("user");
+		User user = (User) session.getAttribute("loggedInUser");
 
+		currentResponse.setPost((DiscussionPost)session.getAttribute("post"));
 		return forumService.createNewResponse(user, currentResponse);
 	}
 	

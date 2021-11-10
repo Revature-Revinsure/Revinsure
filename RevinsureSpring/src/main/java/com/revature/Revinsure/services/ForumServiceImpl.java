@@ -50,6 +50,7 @@ public class ForumServiceImpl implements ForumService {
 	@Override
 	public boolean createNewResponse(User user, DiscussionResponse response) {
 		response.setUser(user);
+
 		boolean success = false;
 		if (discussionResponseDao.save(response) != null) {
 			success=true;
@@ -60,8 +61,8 @@ public class ForumServiceImpl implements ForumService {
 
 	@Override
 	public List<DiscussionResponse> getResponsesForPost(DiscussionPost post) {
-		// TODO Auto-generated method stub
-		return discussionResponseDao.findByPostId(post);
+
+		return discussionResponseDao.findByPostId(post.getId());
 	}
 
 	@Override
