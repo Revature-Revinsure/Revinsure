@@ -52,4 +52,5 @@ public class ForumController {
 
 		return forumService.createNewResponse(user, currentResponse);
 	}
+	
 }

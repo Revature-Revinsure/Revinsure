@@ -16,54 +16,63 @@ public class ForumServiceImpl implements ForumService {
 
 	@Autowired
 	private DiscussionPostDao discussionPostDao;
-	
+
 	@Autowired
 	private DiscussionResponseDao discussionResponseDao;
-	
+
 	public ForumServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public boolean createNewPost(User user, DiscussionPost post) {
-		// TODO Auto-generated method stub
-		return false;
+		post.setUser(user);
+		boolean success = false;
+		if (discussionPostDao.save(post) != null) {
+			success=true;
+		}
+
+		return success;
 	}
 
-	@Override
-	public boolean removePost(DiscussionPost post) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean removeResponse(DiscussionResponse response) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean removePost(DiscussionPost post) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
+//
+//	@Override
+//	public boolean removeResponse(DiscussionResponse response) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 	@Override
 	public boolean createNewResponse(User user, DiscussionResponse response) {
-		// TODO Auto-generated method stub
-		return false;
+		response.setUser(user);
+		boolean success = false;
+		if (discussionResponseDao.save(response) != null) {
+			success=true;
+		}
+
+		return success;
 	}
 
 	@Override
 	public List<DiscussionResponse> getResponsesForPost(DiscussionPost post) {
 		// TODO Auto-generated method stub
-		return null;
+		return discussionResponseDao.findByPostId(post);
 	}
 
 	@Override
 	public List<DiscussionPost> getAllPosts() {
-		// TODO Auto-generated method stub
-		return null;
+		return discussionPostDao.findAll();
 	}
 
-	@Override
-	public List<DiscussionPost> getPostsByUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public List<DiscussionPost> getPostsByUser(User user) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }
