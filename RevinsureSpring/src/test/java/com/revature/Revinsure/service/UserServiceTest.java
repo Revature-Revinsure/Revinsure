@@ -7,7 +7,9 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
@@ -45,10 +47,9 @@ public class UserServiceTest extends RevinsureApplicationTests {
 	private UserService userService = new UserServiceImpl(userDao);
 	
 	
-	private static User fakeUser = new User(-1,"fake@gmail.com","fake", UserType.PATIENT);     
-	private static User realUser = new User(1,"realEmail@hotmail.com","real", UserType.EMPLOYEE);     
-	private static User secondUser = new User(2,"realEmail@gmail.com","totallylegit", UserType.PATIENT);
-	private final User fakeCovidUser = new User(-1, "fake@email.com", "password", UserType.PATIENT);
+	private final User fakeUser = new User(-1,"fake@gmail.com","fake", UserType.PATIENT);     
+	private final User realUser = new User(1,"realEmail@hotmail.com","real", UserType.EMPLOYEE);     
+	private final User secondUser = new User(2,"realEmail@gmail.com","totallylegit", UserType.PATIENT);
 	private final CovidQuestion fakeCovidQuestion = new CovidQuestion(-1, null, false, false, new Date());
 	private final CovidQuestion updatedFakeCovidQuestion = new CovidQuestion(94, null, false, false, new Date());
 	private final CovidQuestion nullDate = new CovidQuestion(-1, null, false, false, null);
@@ -92,17 +93,26 @@ public class UserServiceTest extends RevinsureApplicationTests {
 	}
 	
 	@Test
-	public void testCreateCovidForm(User user, CovidQuestion covidform) {
+	public void createOrUpdateCovidForm() {
 		when(covidDao.save(fakeCovidQuestion)).thenReturn(updatedFakeCovidQuestion);
 		when(covidDao.save(nullDate)).thenReturn(nullDate);
 		
-		assertTrue(userService.createCovidForm(fakeUser, fakeCovidQuestion));
-		assertFalse(userService.createCovidForm(fakeUser, null));
-		assertFalse(userService.createCovidForm(fakeUser, nullDate));
+		assertTrue(userService.createOrUpdateCovidForm(fakeUser, fakeCovidQuestion));
+		assertFalse(userService.createOrUpdateCovidForm(fakeUser, null));
+		assertFalse(userService.createOrUpdateCovidForm(fakeUser, nullDate));
 	}
 	
 	@Test
-	public void testUpdateCovidForm(User user, CovidQuestion covidform) {
+	public void checkIfAfterFourteenDays() {
+		Date oldDate = new GregorianCalendar(2020, Calendar.FEBRUARY, 13).getTime();
+		CovidQuestion oldCovidQuestion = new CovidQuestion(-1, null, false, false, oldDate);
 		
+		when(covidDao.findByUser(fakeUser)).thenReturn(oldCovidQuestion);
+		when(covidDao.findByUser(realUser)).thenReturn(fakeCovidQuestion);
+		when(covidDao.findByUser(secondUser)).thenReturn(nullDate);
+		
+		assertTrue(userService.checkIfAfterFourteenDays(fakeUser));
+		assertTrue(userService.checkIfAfterFourteenDays(secondUser));
+		assertFalse(userService.checkIfAfterFourteenDays(realUser));
 	}
 }

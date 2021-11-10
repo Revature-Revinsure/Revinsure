@@ -20,11 +20,11 @@ public interface UserService {
 	
 	boolean updateUserInfo(User user, UserInfo userInfo);
 	
-	boolean createCovidForm(User user, CovidQuestion covidform);
-	
-	boolean updateCovidForm(User user, CovidQuestion covidform);
+	boolean createOrUpdateCovidForm(User user, CovidQuestion covidform);
 
 	boolean registerUserInfo(UserInfo userInfo);
+	
+	boolean checkIfAfterFourteenDays(User user);
 
 	
 }
