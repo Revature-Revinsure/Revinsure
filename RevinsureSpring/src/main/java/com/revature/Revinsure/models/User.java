@@ -48,7 +48,7 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_type")
 	private UserType type;
-//	
+	
 //	@OneToOne(mappedBy = "user")
 //	private UserInfo info;
 //	
