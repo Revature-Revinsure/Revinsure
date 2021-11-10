@@ -71,15 +71,23 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean updatePassword(User user, String password) {
-		
-		return userDao.updateUser(user.getEmail(), password, user.getId());
+		boolean success = false;
+		if(userDao.updatePassword(password, user.getId()) > 0) {
+			success = true;
+		}
+		return success;
+//		return userDao.updateUser(user.getEmail(), password, user.getId());
 	
 	}
 
 	@Override
 	public boolean updateEmail(User user, String email) {
+		boolean success = false;
 		
-		return userDao.updateUser(email, user.getPassword(), user.getId());
+		if(userDao.updateUsername(email, user.getId()) > 0) {
+			success = true;
+		}
+		return success;
 	
 	}
 

@@ -15,8 +15,13 @@ import com.revature.Revinsure.models.User;
 public interface UserDao extends JpaRepository <User, Integer> {
 	
 	@Modifying
-	@Query("UPDATE User u SET u.email = ?1, u.password = ?2 WHERE u.id = ?3")
-	boolean updateUser(String email, String password, int id);
+	@Query("UPDATE User u SET u.email = ?1 WHERE u.id = ?2")
+	int updateUsername(String email, int id);
+	
+	
+	@Modifying
+	@Query("UPDATE User u SET u.password = ?1 WHERE u.id = ?2")
+	int updatePassword(String password, int id);
 	
 
 	

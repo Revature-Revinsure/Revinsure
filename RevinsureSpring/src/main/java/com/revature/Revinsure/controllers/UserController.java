@@ -54,11 +54,14 @@ public class UserController {
 		if (u.getId() == -1) {
 
 			response.setStatus(400);
+			
 
 		} else {
 
 			userService.updatePassword(u, password);
 			response.setStatus(200);
+			User currentUser = userService.getUserByEmail(u.getEmail());
+			session.setAttribute("user", currentUser);
 
 		}
 
@@ -77,6 +80,8 @@ public class UserController {
 
 			userService.updateEmail(u, email);
 			response.setStatus(200);
+			User currentUser = userService.getUserByEmail(email);
+			session.setAttribute("user", currentUser);
 
 		}
 
@@ -95,6 +100,8 @@ public class UserController {
 
 			userService.updateUserInfo(u, userInfo);
 			response.setStatus(200);
+			User currentUser = userService.getUserByEmail(u.getEmail());
+			session.setAttribute("user", currentUser);
 
 		}
 	}
