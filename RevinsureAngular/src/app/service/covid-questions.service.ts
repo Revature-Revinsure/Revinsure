@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { Message } from '../models/message';
 import { CovidQuestion } from '../models/covid-question';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CovidQuestionsService {
 
-  baseUrl: String = "http://localhost:8000";
+  baseUrl: String = this.dataService.BaseURL;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -19,19 +20,19 @@ export class CovidQuestionsService {
   observe: 'response' as 'response'
   };  
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dataService: DataService) { }
   
   //call this method when a user logs in
-  getCurrentForm(): Observable<HttpResponse<Date>>{
-    let addonUrl: string = "/covid";
+  getCurrentForm(): Observable<boolean>{
+    let addonUrl: string = "/user/covid";
     let fullUrl: string = this.baseUrl + addonUrl;
 
     //I just want the date of the last form
-    return this.http.get<Date>(fullUrl, this.httpOptions);
+    return this.http.get<boolean>(fullUrl, {withCredentials: true});
   }
 
   submitCovidForm(form: CovidQuestion): Observable<HttpResponse<Message>>{
-    let addonUrl: string = "/covid";
+    let addonUrl: string = "/user/covid";
     let fullUrl: string = this.baseUrl + addonUrl;
 
     return this.http.post<Message>(fullUrl, form, this.httpOptions);
