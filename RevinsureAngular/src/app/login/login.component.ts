@@ -42,35 +42,26 @@ export class LoginComponent implements OnInit {
   }
 
   getCovidForm(){
+    let showForm: boolean;
+
     this.covidService.getCurrentForm().subscribe(
       response => {
-        let responseDate: number | null = response.body?.valueOf;
-        let currentDate: number = <number>(<unknown>Date());
+        showForm = response;
+        console.log(showForm);
 
-        //if the user is logging in for the first time
-        if(responseDate == null){
-          this.router.navigate(['/covid-question'])
+        if(showForm){
+          this.router.navigate(['/covid-question']);
         }
-        //if the user has previously filled out the covid verification
-        else if(responseDate != null){
-          let difference: number = currentDate - responseDate;
-          difference = Math.ceil(difference / 86400000);
-          
-          //if it has been at least 2 weeks since the user filled out the verification
-          if(difference >= 14){
-            this.router.navigate(['/covid-question']);
-          }
-          //if it has not been 2 weeks since the user filled out the verification
-          else{
-            if(this.dataService.currentUser.type == "EMPLOYEE"){
-              this.router.navigate(['/employeeHome']);
-              } else {
-                this.router.navigate(['/patientHome']);
-              }
-          }
-
+        else{
+          if(this.dataService.currentUser.type == "EMPLOYEE"){
+            this.router.navigate(['/employeeHome']);
+            } 
+            else{
+              this.router.navigate(['/patientHome']);
+            }
         }
       }
-    )
+    )//end of subscription
   }
+  
 }
