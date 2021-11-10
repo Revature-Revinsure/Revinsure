@@ -11,5 +11,5 @@ import com.revature.Revinsure.models.DiscussionResponse;
 @Repository("discussionResponseDao")
 public interface DiscussionResponseDao extends JpaRepository <DiscussionResponse, Integer> {
 
-	List<DiscussionResponse> findByPostId(DiscussionPost post);
+	List<DiscussionResponse> findByPostId(int i);
 }

@@ -39,12 +39,12 @@ public class DiscussionPost {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(mappedBy = "post")
-	private List<DiscussionResponse> responses;
+//	@OneToMany(mappedBy = "post")
+//	private List<DiscussionResponse> responses;
 
 	@Override
 	public String toString() {
-		return "DiscussionPost [id=" + id + ", title=" + title + ", user=" + user.getId() + ", responses=" + responses + "]";
+		return "DiscussionPost [id=" + id + ", title=" + title + ", user=" + user.getId() +  "]";
 	}
 	
 	
