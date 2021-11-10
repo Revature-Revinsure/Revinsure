@@ -1,5 +1,6 @@
 package com.revature.Revinsure.models;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,6 +35,10 @@ public class DiscussionResponse {
 	
 	@Column(name = "content")
 	private String content;
+	
+	@Column(name = "date_submitted")
+	@DateTimeFormat(pattern = "MM.dd.yyyy")
+	private LocalDate  dateOfBirth;
 	
 	@JsonIgnore
 	@ManyToOne
