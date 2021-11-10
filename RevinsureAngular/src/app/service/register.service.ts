@@ -43,7 +43,7 @@ export class RegisterService {
 
 
   registerNewUser(unregisteredUser: User): Observable<HttpResponse<User>> {
-    let addOnURL: string = '/register';
+    let addOnURL: string = '/user/register';
     let fullURL: string = this.dataService.BaseURL + addOnURL;
     return this.httpClient.post<User>(fullURL, {
 
