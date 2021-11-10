@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-
+import com.revature.Revinsure.models.Claim;
 import com.revature.Revinsure.models.CovidQuestion;
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserInfo;
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 		User databaseUser = getUserByEmail(user.getEmail());
 		boolean success = false;
 		
-		if(databaseUser.getPassword().equals(user.getPassword())) {
+		if(databaseUser != null && databaseUser.getPassword().equals(user.getPassword())) {
 			success = true;
 		} 
 		
@@ -102,5 +102,12 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
+	@Override
+	public UserInfo getUserInfo(User user) {
+		return userInfoDao.getUserInfoByUser(user);
+	}
+	
+	
+	
 }

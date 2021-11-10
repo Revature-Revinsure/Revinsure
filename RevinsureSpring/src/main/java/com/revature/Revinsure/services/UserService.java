@@ -26,5 +26,8 @@ public interface UserService {
 
 	boolean registerUserInfo(UserInfo userInfo);
 
+	UserInfo getUserInfo(User user);
+
+
 	
 }

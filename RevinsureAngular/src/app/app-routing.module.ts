@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'file-claim', component: ClaimComponent, canActivate: [RoutGuard] },
-  { path: 'user-info', component: UserInfoComponent/*, canActivate: [RoutGuard] */},
-  { path: 'home', component: DashboardComponent/*, canActivate: [RoutGuard] */},
+  { path: 'user-info', component: UserInfoComponent, canActivate: [RoutGuard]},
+  { path: 'home', component: DashboardComponent, canActivate: [RoutGuard]},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];

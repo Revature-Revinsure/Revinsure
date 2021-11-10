@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService) { }
 
   ngOnInit(): void {
-    sessionStorage.setItem('isLoggedIn',"false");
   }
 
   loginform = this.formBuilder.group({

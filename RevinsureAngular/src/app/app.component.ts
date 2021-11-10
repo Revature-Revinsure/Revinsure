@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private router: Router) { }
 
   logout(): void {
-    sessionStorage.setItem('isLoggedIn', "false");
+    sessionStorage.clear();
     this.router.navigate(['/login']);
   }
 }
