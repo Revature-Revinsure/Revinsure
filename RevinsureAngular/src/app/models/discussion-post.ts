@@ -1,7 +1,7 @@
 export interface DiscussionPost {
     id: number;
     title: string;
-    dateOfPost: string;
-    postBody: string;
+    dateSubmitted: string;
+    content: string;
     //opName: string;
 }

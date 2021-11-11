@@ -71,7 +71,7 @@ public class ForumServiceImpl implements ForumService {
 
 	@Override
 	public List<DiscussionPost> getAllPosts() {
-		return discussionPostDao.findAll();
+		return discussionPostDao.findAllByOrderByIdDesc();
 	}
 
 //	@Override

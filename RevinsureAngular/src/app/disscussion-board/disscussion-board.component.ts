@@ -12,25 +12,10 @@ export class DisscussionBoardComponent implements OnInit {
 
   public postList: DiscussionPost[] = [];
 
-  public singlePost: DiscussionPost = {id: 1, 
-                                      title:  "Discussion Post Title",
-                                      postBody: "Discussion Post Body",
-                                      dateOfPost: "1/5/1999",
-                                      //opName: "op@email.com"
-                                    }
-
-  public anotherPost: DiscussionPost = {id: 2, 
-                                      title:  "Another Discussion Post Title",
-                                      postBody: "Another Discussion Post Body",
-                                      dateOfPost: "5/7/2021",
-                                      //opName: "op2@email.com"
-                                    }
+  constructor(private formBuilder: FormBuilder, private discussionBoardService: DisscussionBoardService) { }
 
 
-  constructor(private formBuilder: FormBuilder,private discussionBoardService: DisscussionBoardService) { }
 
-
- 
 
   postForm = this.formBuilder.group({
     postTitle: ["", Validators.required],
@@ -39,35 +24,43 @@ export class DisscussionBoardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // //this.getDiscussionPosts();
-    this.postList[0] = this.singlePost;
-    this.postList[1] = this.anotherPost;
+    this.getDiscussionPosts();
 
     console.log(this.postList);
   }
 
-  getDiscussionPosts(){
+  getDiscussionPosts() {
     this.discussionBoardService.getAllPosts().subscribe(
-      response => this.postList = response
+      (response) => {
+        this.postList = response;
+        console.log(response);
+        console.log(this.postList);
+      }
     );
 
-    }
+  }
 
- //sortPage(){}
+  selectPost(post: DiscussionPost) {
+    console.log(post);
 
-  createPost(){
+  }
+
+  //sortPage(){}
+
+  createPost() {
     let post: DiscussionPost = {
       id: -1,
-      title:  this.postForm.value.postTitle,
-      postBody: this.postForm.value.postBody,
-      dateOfPost: "",}
+      title: this.postForm.value.postTitle,
+      content: this.postForm.value.postBody,
+      dateSubmitted: "",
+    }
 
     console.log(post);
-    
+
     this.discussionBoardService.createPost(post).subscribe(
-    response => {
-      console.log(response);
-    }
+      response => {
+        this.getDiscussionPosts();
+      }
     )
   }
 
