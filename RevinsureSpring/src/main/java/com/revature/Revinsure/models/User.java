@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -52,8 +53,8 @@ public class User {
 //	@OneToOne(mappedBy = "user")
 //	private UserInfo info;
 //	
-//	@OneToOne(mappedBy = "user")
-//	private CovidQuestion question;
+	@OneToOne(mappedBy = "user")
+	private CovidQuestion question;
 	
 	@OneToMany(mappedBy = "user")
 	private List<Claim> claims;

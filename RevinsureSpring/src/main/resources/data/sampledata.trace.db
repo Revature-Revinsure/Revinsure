@@ -167,3 +167,8 @@ INSERT INTO USERS_TABLE (EMAIL, PASSWORD, USER_TYPE) VALUES (1, 'test@gmail.com'
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-11-11 10:12:49 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM COVID_FORMS 
+DELETE FROM[*] COVID_FORMS WHERE QUESTION_ID = 4"; SQL statement:
+SELECT * FROM COVID_FORMS 
+delete from covid_forms where question_id = 4 [42000-200]

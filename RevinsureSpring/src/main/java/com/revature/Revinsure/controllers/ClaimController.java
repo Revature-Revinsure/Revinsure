@@ -25,12 +25,12 @@ public class ClaimController {
 	
 	//new claim
 	@PostMapping("/claim")
-//	public Message submitClaim(@RequestBody Claim claim, HttpSession session) {
-	public Message submitClaim(@RequestBody Claim claim) {
+	public Message submitClaim(@RequestBody Claim claim, HttpSession session) {
+//	public Message submitClaim(@RequestBody Claim claim) {
 		Message message = new Message();
 		
-//		User user = (User) session.getAttribute("user");//attribute with the user goes here
-		User user = new User(1, "lauren.pena@revature.net", "2108Java", UserType.PATIENT, null, null, null);
+		User user = (User) session.getAttribute("user");//attribute with the user goes here
+//		User user = new User(1, "lauren.pena@revature.net", "2108Java", UserType.PATIENT, null, null, null);
 		
 		if(cServ.addClaim(user, claim)) {
 			message.setMessage("Claim submitted successfully.");

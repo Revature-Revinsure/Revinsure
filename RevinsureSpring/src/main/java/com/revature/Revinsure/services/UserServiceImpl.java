@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -90,12 +91,31 @@ public class UserServiceImpl implements UserService {
 	public boolean createOrUpdateCovidForm(User user, CovidQuestion covidForm) {
 		boolean success = false;
 		
+		
+		
+		
 		if(covidForm != null && covidForm.getDateAnswered() != null) {
 			covidForm.setUser(user);
+//			System.out.println(covidForm);
 			
 			try {
-				covidQuestionDao.save(covidForm);
-				success = true;
+				CovidQuestion currentForm = covidQuestionDao.findByUser(user);
+				if(currentForm != null) {
+					System.out.println(currentForm);
+					
+					currentForm.setAroundCovid(covidForm.isAroundCovid());
+					currentForm.setHasCovid(covidForm.isHasCovid());
+					currentForm.setDateAnswered(covidForm.getDateAnswered());
+					
+					System.out.println(currentForm);
+					covidQuestionDao.save(currentForm);
+					success = true;
+				}
+				else if(currentForm == null){
+					covidQuestionDao.save(covidForm);
+					success = true;
+				}
+				
 			}
 			catch(Exception e) {
 				e.printStackTrace();
@@ -113,11 +133,14 @@ public class UserServiceImpl implements UserService {
 		Date currentDate = new Date();
 		
 		if(user != null) {
-			CovidQuestion covid = covidQuestionDao.findByUser(user);
+//			CovidQuestion covid = covidQuestionDao.findByUser(user);
+			Date oldDate = new GregorianCalendar(2020, Calendar.FEBRUARY, 13).getTime();
+			CovidQuestion covid = new CovidQuestion(1, user, false, false, oldDate);
 			
-			if(covid == null || covid.getDateAnswered() == null) {
+			if(covid.getDateAnswered() == null) {
 				isAfterFourteenDays = true; //show new COVID-19 form if it's null
-			} else {
+			}
+			else {
 				long difference = currentDate.getTime() - covid.getDateAnswered().getTime();
 				double daysBetween = (difference / (1000*60*60*24));
 				
@@ -125,6 +148,7 @@ public class UserServiceImpl implements UserService {
 					isAfterFourteenDays = true; //show new COVID-19 form to user if the last date they answered was less than 14 days ago
 				}
 			}
+			
 		}
 		
 		return isAfterFourteenDays;
