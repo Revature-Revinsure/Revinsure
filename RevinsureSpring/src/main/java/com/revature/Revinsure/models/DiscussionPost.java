@@ -42,7 +42,7 @@ public class DiscussionPost {
 	
 	@Column(name = "date_submitted")
 	@DateTimeFormat(pattern = "MM.dd.yyyy")
-	private LocalDate  dateOfBirth;
+	private LocalDate dateSubmitted;
 	
 	@JsonIgnore
 	@ManyToOne

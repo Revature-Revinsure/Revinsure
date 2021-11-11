@@ -1,6 +1,9 @@
 package com.revature.Revinsure.controllers;
 
+import java.util.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -37,7 +40,7 @@ public class ForumController {
 		
 		if(session.getAttribute("loggedInUser") == null) {
 			List<DiscussionPost> discussion = new ArrayList<>();
-			DiscussionPost dp = new DiscussionPost(-1, "Sorry but you must login to see the forum.", null);
+			DiscussionPost dp = new DiscussionPost(-1, "Sorry but you must login to see the forum.", "", LocalDate.now(), new User());
 			
 			discussion.add(dp);
 			
@@ -52,7 +55,7 @@ public class ForumController {
 	public List<DiscussionResponse> getAllResponsesByPost(HttpSession session,@RequestBody DiscussionPost currentPost) {
 		if(session.getAttribute("loggedInUser") == null) {
 			List<DiscussionResponse> discussion = new ArrayList<>();
-			DiscussionResponse dr = new DiscussionResponse(-1, "Sorry but you must login to see the forum.", null, null);
+			DiscussionResponse dr = new DiscussionResponse(-1, "Sorry but you must login to see the forum.", LocalDate.now(), new User(), new DiscussionPost());
 			
 			discussion.add(dr);
 			
