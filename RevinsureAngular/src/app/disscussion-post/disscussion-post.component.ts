@@ -33,7 +33,20 @@ export class DisscussionPostComponent implements OnInit {
   }
 
   addReply() {
+    let reply: DiscussionReply = {
+      id: -1,
+      content: this.replyForm.value.replyString,
 
+    }
+    console.log(reply)
+
+    this.discussionPostService.postReply(reply).subscribe(
+      (data) => {
+        console.log(data);
+        this.getAllReplies();
+      }
+
+    );
   }
 
 }
