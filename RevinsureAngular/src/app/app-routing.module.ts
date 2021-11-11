@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClaimComponent } from './claim/claim.component';
 import { RoutGuard } from './route.guard';
 import { DisscussionBoardComponent } from './disscussion-board/disscussion-board.component';
+import { DisscussionPostComponent } from './disscussion-post/disscussion-post.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'file-claim', component: ClaimComponent, canActivate: [RoutGuard] },
   { path: 'user-info', component: PatientPortalComponent, canActivate: [RoutGuard] },
-  { path: 'disscussion-board', component: DisscussionBoardComponent/*, canActivate: [RoutGuard] */},
+  { path: 'disscussion-board', component: DisscussionBoardComponent/*, canActivate: [RoutGuard] */ },
+  { path: 'discussion-post', component: DisscussionPostComponent },
   { path: 'home', component: DashboardComponent, canActivate: [RoutGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }

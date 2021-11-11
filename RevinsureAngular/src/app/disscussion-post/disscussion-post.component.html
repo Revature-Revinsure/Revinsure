@@ -1,1 +1,9 @@
-<p>disscussion-post works!</p>
+<h2>{{currentPost.title}}</h2>
+<h4 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{currentPost.content}}</h4>
+
+<ng-container *ngFor="let reply of currentReplies">
+
+    <p>{{ reply.content }}</p>
+    <p>{{ reply.dateSubmitted}}</p>
+
+</ng-container>

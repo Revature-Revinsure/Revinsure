@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DiscussionPost } from '../models/discussion-post';
+import { DataService } from '../service/data.service';
 import { DisscussionBoardService } from '../service/discussion-board.service';
 
 @Component({
@@ -12,7 +14,7 @@ export class DisscussionBoardComponent implements OnInit {
 
   public postList: DiscussionPost[] = [];
 
-  constructor(private formBuilder: FormBuilder, private discussionBoardService: DisscussionBoardService) { }
+  constructor(private formBuilder: FormBuilder, private discussionBoardService: DisscussionBoardService, private dataService: DataService, private router: Router) { }
 
 
 
@@ -35,6 +37,7 @@ export class DisscussionBoardComponent implements OnInit {
         this.postList = response;
         console.log(response);
         console.log(this.postList);
+
       }
     );
 
@@ -42,7 +45,8 @@ export class DisscussionBoardComponent implements OnInit {
 
   selectPost(post: DiscussionPost) {
     console.log(post);
-
+    this.dataService.currentPost = post;
+    this.router.navigate(['/discussion-post']);
   }
 
   //sortPage(){}
