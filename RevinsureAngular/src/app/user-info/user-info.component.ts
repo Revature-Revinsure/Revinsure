@@ -1,7 +1,10 @@
 import { Component, OnInit, NgModule } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { LoginComponent } from '../login/login.component';
 import { User } from '../models/user';
 import { UserInfo } from '../models/user-info';
 import { DataService } from '../service/data.service';
+import { LoginService } from '../service/login.service';
 import { UserProfileService } from '../service/user-profile.service';
 
 @Component({
@@ -11,7 +14,7 @@ import { UserProfileService } from '../service/user-profile.service';
 })
 export class UserInfoComponent implements OnInit {
 
-  constructor(private userProfileService: UserProfileService, private dataService:DataService) { }
+  constructor(private userProfileService: UserProfileService, private dataService: DataService, private formBuilder: FormBuilder, private loginService: LoginService) { }
 
   currentUser!: User;
 
@@ -21,21 +24,28 @@ export class UserInfoComponent implements OnInit {
   editPassword: boolean = false;
   editUserInfo: boolean = false;
 
-  newEmail: string = "";
-  newPassword: string = "";
+  updateEmailForm = this.formBuilder.group({
+    newEmail: ["", [Validators.required, Validators.email]],
+  });
+  updatePasswordForm = this.formBuilder.group({
+    newPassword: ["", Validators.required],
+  });
+  updateInfoForm = this.formBuilder.group({
+    newFirstName: ["", Validators.required],
+    newLastName: ["", Validators.required],
+    newAddress: ["", Validators.required],
+    newState: ["", Validators.required],
+    newCity: ["", Validators.required],
+    newZip: ["", Validators.required],
+  });
 
-  newFirstName: string = "";
-  newLastName: string = "";
-  newAddress: string = "";
-  newState: string = "";
-  newCity: string = "";
-  newZip: string = "";
+
   //needs to be a user info object
 
 
   ngOnInit(): void {
-   this.currentUser = this.dataService.currentUser;
-   this.userInfo = this.dataService.userInfo;
+    this.currentUser = this.dataService.currentUser;
+    this.userInfo = this.dataService.userInfo;
   }
 
   //getUserInfo(){}
@@ -43,8 +53,6 @@ export class UserInfoComponent implements OnInit {
   //getUser{}
 
   toggleEmail() {
-    console.log("running toggle email");
-    console.log(this.editEmail);
     if (this.editEmail == false) {
       this.editEmail = true;
     } else {
@@ -53,8 +61,6 @@ export class UserInfoComponent implements OnInit {
   }
 
   togglePassword() {
-    console.log("running toggle password");
-    console.log(this.editPassword);
     if (this.editPassword == false) {
       this.editPassword = true;
     } else {
@@ -63,8 +69,6 @@ export class UserInfoComponent implements OnInit {
   }
 
   toggleUserInfo() {
-    console.log("running toggle user info");
-    console.log(this.editPassword);
     if (this.editUserInfo == false) {
       this.editUserInfo = true;
     } else {
@@ -74,68 +78,38 @@ export class UserInfoComponent implements OnInit {
 
 
   updateEmail() {
-    console.log("running update email");
-    console.log(this.newEmail);
-
-    this.userProfileService.updateEmail(this.newEmail).subscribe(
-      response => {
-        console.log(response.status);
-      }
-    )
-
+    let userForm = this.formBuilder.group({
+      email: this.updateEmailForm.value.newEmail,
+      password: this.currentUser.password
+    });
+    this.userProfileService.updateEmail(this.updateEmailForm.value.newEmail).subscribe(
+      (data) => this.loginService.loginRequestWithPost(userForm).subscribe(
+        (data) => this.dataService.currentUser = data.body!
+      )
+    );
   }
 
   updatePassword() {
-    console.log("running update password");
-    console.log(this.newPassword);
-
-    this.userProfileService.updatePassword(this.newPassword).subscribe(
-      response => {
-        console.log(response.status);
-
-        //if status = 200 then show updated green check mark window
-      }
-    )
+    let userForm = this.formBuilder.group({
+      email: this.updateEmailForm.value.newEmail,
+      password: this.currentUser.password
+    });
+    this.userProfileService.updatePassword(this.updatePasswordForm.value.newPassword).subscribe(
+      () => this.loginService.loginRequestWithPost(userForm).subscribe(
+        (data) => this.dataService.currentUser = data.body!
+      )
+    );
   }
 
   updateUserInfo() {
-    console.log("running update user info");
-    console.log(this.newFirstName);
-    console.log(this.newLastName);
-    console.log(this.newAddress);
-    console.log(this.newCity);
-    console.log(this.newState);
-    console.log(this.newZip);
-
-    if (this.newFirstName != "") {
-      this.userInfo.firstname = this.newFirstName;
-    }
-
-    if (this.newLastName != "") {
-      this.userInfo.lastname = this.newLastName;
-    }
-
-    if (this.newAddress != "") {
-      this.userInfo.address = this.newAddress;
-    }
-
-    if (this.newCity != "") {
-      this.userInfo.city = this.newCity;
-    }
-
-    if (this.newState != "") {
-      this.userInfo.state = this.newState;
-    }
-
-    if (this.newZip != "") {
-      this.userInfo.zip = this.newZip;
-    }
-
-    this.userProfileService.updateUserInfo(this.userInfo).subscribe(
-      response => {
-        console.log(response.status);
-      }
-    )
-
+    let userForm = this.formBuilder.group({
+      email: this.currentUser.email,
+      password: this.currentUser.password
+    });
+    this.userProfileService.updateUserInfo(this.updateInfoForm).subscribe(
+      () => this.loginService.loginRequestWithPost(userForm).subscribe(
+        (data) => this.dataService.currentUser = data.body!
+      )
+    );
   }
 }

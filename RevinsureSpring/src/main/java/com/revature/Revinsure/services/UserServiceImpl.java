@@ -17,13 +17,13 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private CovidQuestionDao covidQuestionDao;
-	
+
 	@Autowired
 	private UserDao userDao;
-	
+
 	@Autowired
 	private UserInfoDao userInfoDao;
-	
+
 	public UserServiceImpl(UserDao userDao) {
 		this.userDao = userDao;
 	}
@@ -35,35 +35,36 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean authenticate(User user) {
-		
+
 		User databaseUser = getUserByEmail(user.getEmail());
 		boolean success = false;
-		
-		if(databaseUser != null && databaseUser.getPassword().equals(user.getPassword())) {
+
+		if (databaseUser != null && databaseUser.getPassword().equals(user.getPassword())) {
 			success = true;
-		} 
-		
+		}
+
 		return success;
 	}
 
 	@Override
 	public User registerUser(User user) {
-		
+
 		System.out.println(user);
 		user = userDao.save(user);
-		if(user.getId()>0) {
+		if (user.getId() > 0) {
 
 			System.out.println(user);
 
 			return user;
 		}
-		
+
 		return null;
-				
+
 	}
+
 	public boolean registerUserInfo(UserInfo userInfo) {
 		System.out.println(userInfo);
-		if(userInfoDao.save(userInfo)!=null) {
+		if (userInfoDao.save(userInfo) != null) {
 			return true;
 		}
 		return false;
@@ -72,31 +73,36 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean updatePassword(User user, String password) {
 		boolean success = false;
-		if(userDao.updatePassword(password, user.getId()) > 0) {
+		if (userDao.updatePassword(password, user.getId()) > 0) {
 			success = true;
 		}
 		return success;
 //		return userDao.updateUser(user.getEmail(), password, user.getId());
-	
+
 	}
 
 	@Override
 	public boolean updateEmail(User user, String email) {
 		boolean success = false;
-		
-		if(userDao.updateUsername(email, user.getId()) > 0) {
+
+		if (userDao.updateUsername(email, user.getId()) > 0) {
 			success = true;
 		}
 		return success;
-	
+
 	}
 
 	@Override
 	public boolean updateUserInfo(User user, UserInfo userInfo) {
-		
-		
-		return userInfoDao.updateInfo(userInfo.getFirstName(), userInfo.getLastName(), userInfo.getAddress(), userInfo.getCity(), userInfo.getState(), userInfo.getZip(), user.getId());
-		
+
+		boolean success = false;
+
+		if (userInfoDao.updateInfo(userInfo.getFirstName(), userInfo.getLastName(), userInfo.getAddress(),
+				userInfo.getCity(), userInfo.getState(), userInfo.getZip(), user.getId())>0) {
+			success = true;
+		}
+		return success;
+
 	}
 
 	@Override
@@ -110,12 +116,10 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	@Override
 	public UserInfo getUserInfo(User user) {
 		return userInfoDao.getUserInfoByUser(user);
 	}
-	
-	
-	
+
 }

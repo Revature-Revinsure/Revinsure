@@ -1,17 +1,22 @@
-
-
 <div>
-    <p>Edit Email Button</p>
+    <p>Edit Email</p>
 
     <p>{{currentUser.email}}</p>
 
-    <button class="btn btn-primary" id= "editEmail" (click)='toggleEmail()'>Edit</button>
-
-    <div *ngIf="editEmail">
-        <input class="form-control form-control-block" type = "text" [(ngModel)]='newEmail' placeholder = "New Email">
-        <button class="btn btn-primary" id= "submitEmail" (click)='updateEmail()'>Submit</button>
-    </div>
-
+    <button class="btn btn-primary" id="editEmail" (click)='toggleEmail()'>Edit</button>
+    <form [formGroup]="updateEmailForm" (ngSubmit)="updateEmail()">
+        <div *ngIf="editEmail">
+            <input class="form-control form-control-block" type="text" formControlName='newEmail'
+                placeholder="New Email">
+            <div *ngIf="updateEmailForm.controls['newEmail'].invalid && updateEmailForm.controls['newEmail'].touched"
+                class="alert alert-danger">
+                <span *ngIf="updateEmailForm.controls['newEmail'].errors">
+                    An address is required.
+                </span>
+            </div>
+            <button class="btn btn-primary" id="submitEmail" (click)='updateEmail()' [disabled]="!updateEmailForm.valid">Submit</button>
+        </div>
+    </form>
     <!--
         click this to edit your username
 
@@ -26,13 +31,20 @@
 <div>
     <p>Edit Password Button</p>
 
-    <button class="btn btn-primary" id= "editPassword" (click)='togglePassword()'>Edit</button>
-
-    <div *ngIf="editPassword">
-        <input class="form-control form-control-block" type = "text" [(ngModel)]='newPassword' placeholder = "New Password">
-        <button class="btn btn-primary" id= "submitPassword" (click)='updatePassword()'>Submit</button>
-    </div>
-
+    <button class="btn btn-primary" id="editPassword" (click)='togglePassword()'>Edit</button>
+    <form [formGroup]="updatePasswordForm" (ngSubmit)="updatePassword()">
+        <div *ngIf="editPassword">
+            <input class="form-control form-control-block" type="text" formControlName='newPassword'
+                placeholder="New Password">
+            <div *ngIf="updatePasswordForm.controls['newPassword'].invalid && updatePasswordForm.controls['newPassword'].touched"
+                class="alert alert-danger">
+                <span *ngIf="updatePasswordForm.controls['newPassword'].errors">
+                    An address is required.
+                </span>
+            </div>
+            <button class="btn btn-primary" id="submitPassword" type="submit" [disabled]="!updatePasswordForm.valid">Submit</button>
+        </div>
+    </form>
     <!--
         click this to edit your password
 
@@ -46,33 +58,63 @@
 <p>UserInfo</p>
 
 <div>
-    <p>{{userInfo.firstname}}  {{userInfo.lastname}}</p>
-    <p>Address:  {{userInfo.address}}</p>
-    <p>City:  {{userInfo.city}}</p>
-    <p>State:  {{userInfo.state}}</p>
-    <p>Zip:  {{userInfo.zip}}</p>
+    <p>{{userInfo.firstName}} {{userInfo.lastName}}</p>
+    <p>Address: {{userInfo.address}}</p>
+    <p>City: {{userInfo.city}}</p>
+    <p>State: {{userInfo.state}}</p>
+    <p>Zip: {{userInfo.zip}}</p>
 </div>
-<button class="btn btn-primary" id= "editUserInfo" (click)='toggleUserInfo()'>Edit</button>
+<button class="btn btn-primary" id="editUserInfo" (click)='toggleUserInfo()'>Edit</button>
 
 <div class=container *ngIf="editUserInfo">
 
     <div class="container">
-        
-		<div>
-			<h1 class="title">User Info</h1>
-		</div>
-		<div>
-				<div class="row"> 
-					<div class="col">
-						<input class="form-control form-control-block" type = "text" [(ngModel)]='newFirstName' placeholder = "{{userInfo.firstname}} ">
-						<input class="form-control form-control-block" type = "text" [(ngModel)]='newLastName' placeholder = "{{userInfo.lastname}}">	
-						<input class="form-control form-control-block" type = "text" [(ngModel)]='newAddress' placeholder = "{{userInfo.address}}">
-					</div>
+
+        <div>
+            <h1 class="title">User Info</h1>
+        </div>
+        <div>
+            <form [formGroup]="updateInfoForm" (ngSubmit)="updateUserInfo()">
+                <div class="row">
+                    <div class="col">
+                        <input class="form-control form-control-block" type="text" formControlName='newFirstName'
+                            placeholder="{{userInfo.firstName}} ">
+                        <div *ngIf="updateInfoForm.controls['newFirstName'].invalid && updateInfoForm.controls['newFirstName'].touched"
+                            class="alert alert-danger">
+                            <span *ngIf="updateInfoForm.controls['newFirstName'].errors">
+                                A first name is required.
+                            </span>
+                        </div>
+                        <input class="form-control form-control-block" type="text" formControlName='newLastName'
+                            placeholder="{{userInfo.lastName}}">
+                        <div *ngIf="updateInfoForm.controls['newLastName'].invalid && updateInfoForm.controls['newLastName'].touched"
+                            class="alert alert-danger">
+                            <span *ngIf="updateInfoForm.controls['newLastName'].errors">
+                                A last name is required.
+                            </span>
+                        </div>
+                        <input class="form-control form-control-block" type="text" formControlName='newAddress'
+                            placeholder="{{userInfo.address}}">
+                        <div *ngIf="updateInfoForm.controls['newAddress'].invalid && updateInfoForm.controls['newAddress'].touched"
+                            class="alert alert-danger">
+                            <span *ngIf="updateInfoForm.controls['newAddress'].errors">
+                                An address is required.
+                            </span>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col">
-                            <input class="form-control form-control-block" type = "text" [(ngModel)]='newCity' placeholder = "{{userInfo.city}}">
-                            <select class="form-control form-control-block" type = "text" [(ngModel)]='newState' placeholder = "state">
-                                <option value="" selected >{{userInfo.state}}</option>
+                            <input class="form-control form-control-block" type="text" formControlName='newCity'
+                                placeholder="{{userInfo.city}}">
+                            <div *ngIf="updateInfoForm.controls['newCity'].invalid && updateInfoForm.controls['newCity'].touched"
+                                class="alert alert-danger">
+                                <span *ngIf="updateInfoForm.controls['newCity'].errors">
+                                    An address is required.
+                                </span>
+                            </div>
+                            <select class="form-control form-control-block" type="text" formControlName='newState'
+                                placeholder="state">
+                                <option value="" selected>{{userInfo.state}}</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -125,29 +167,28 @@
                                 <option value="WI">Wisconsin</option>
                                 <option value="WY">Wyoming</option>
                             </select>
-                            <input class="form-control form-control-block" type = "text" [(ngModel)]='newZip' placeholder = "{{userInfo.zip}}">
-                    <div>
-                        <button class="form-control form-control-block" (click)='updateUserInfo()'>Submit</button>
+                            <div *ngIf="updateInfoForm.controls['newState'].invalid && updateInfoForm.controls['newState'].touched"
+                                class="alert alert-danger">
+                                <span *ngIf="updateInfoForm.controls['newState'].errors">
+                                    An address is required.
+                                </span>
+                            </div>
+                            <input class="form-control form-control-block" type="text" formControlName='newZip'
+                                placeholder="{{userInfo.zip}}">
+                            <div *ngIf="updateInfoForm.controls['newZip'].invalid && updateInfoForm.controls['newZip'].touched"
+                                class="alert alert-danger">
+                                <span *ngIf="updateInfoForm.controls['newZip'].errors">
+                                    An address is required.
+                                </span>
+                            </div>
+                            <div>
+                                <button class="form-control form-control-block" type="submit" [disabled]="!updateInfoForm.valid">Submit</button>
+                            </div>
+
+                        </div>
                     </div>
-                
-            </div>
+                </div>
+            </form>
         </div>
-
-
-    <!--
-    <div *ngIf="editUserInfo">
-        <input class="form-control form-control-block" type = "text" [(ngModel)]='userInfo' placeholder = "New UserInfo">
-        <button class="btn btn-primary" id= "submitUserInfo" (click)='updateUserInfo()'>Submit</button>
     </div>
-   
-        Use this container to populate user info object
-        maybe add little pencil icon somewhere to go 
-        into edit mode?
-
-        once in edit mode allow them to change basic user info
-        send data to db once 'confirm' button is clicked
-    -->
-
 </div>
-
-

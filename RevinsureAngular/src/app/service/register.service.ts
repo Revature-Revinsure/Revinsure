@@ -59,8 +59,8 @@ export class RegisterService {
     let fullURL: string = this.dataService.baseURL + addOnURL;
     return this.httpClient.post<UserInfo>(fullURL, {
       "id": -1,
-      "firstName": infoForm.firstname,
-      "lastName": infoForm.lastname,
+      "firstName": infoForm.firstName,
+      "lastName": infoForm.lastName,
       "address": infoForm.address,
       "city": infoForm.city,
       "state": infoForm.state,

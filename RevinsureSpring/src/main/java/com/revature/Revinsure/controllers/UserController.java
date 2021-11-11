@@ -100,8 +100,7 @@ public class UserController {
 
 			userService.updateUserInfo(u, userInfo);
 			response.setStatus(200);
-			User currentUser = userService.getUserByEmail(u.getEmail());
-			session.setAttribute("user", currentUser);
+			session.setAttribute("user", u);
 
 		}
 	}

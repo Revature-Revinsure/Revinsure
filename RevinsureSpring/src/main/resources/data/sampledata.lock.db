@@ -1,6 +1,6 @@
 #FileLock
-#Wed Nov 10 17:50:42 EST 2021
-server=10.0.0.5\:61877
-hostName=10.0.0.5
+#Wed Nov 10 19:05:01 CST 2021
+server=192.168.86.59\:59121
+hostName=MSI.lan
 method=file
-id=17d0c0bd6a08ee960190f93be1b5fe300f35aff3a95
+id=17d0c86ce93e5d96598dcc7e472edcda86c7801a6b4

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { UserInfo } from '../models/user-info';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,15 @@ export class UserProfileService {
     return this.httpClient.post<String>(this.baseUrl + "/user/updatePassword", password, { withCredentials: true, observe: 'response' as 'response' })
   }
 
-  updateUserInfo(userInfo: UserInfo): Observable<HttpResponse<any>> {
-    return this.httpClient.post<UserInfo>(this.baseUrl + "/user/updateUserInfo", userInfo, { withCredentials: true, observe: 'response' as 'response' })
+  updateUserInfo(userInfoForm: FormGroup): Observable<HttpResponse<any>> {
+
+    return this.httpClient.post<UserInfo>(this.baseUrl + "/user/updateUserInfo", {
+      "firstName": userInfoForm.value.newFirstName,
+      "lastName": userInfoForm.value.newLastName,
+      "address": userInfoForm.value.newAddress,
+      "city": userInfoForm.value.newCity,
+      "state": userInfoForm.value.newState,
+      "zip": userInfoForm.value.newZip
+    }, { withCredentials: true, observe: 'response' as 'response' })
   }
 }
