@@ -21,7 +21,7 @@ export class ResetPasswordComponent implements OnInit {
   });
 
   resetPassword(){
-    console.log(this.resetPassForm);
+    
     let forgetfulUser: User = {
       id: -1, 
       email: this.resetPassForm.value.email, 
@@ -32,12 +32,12 @@ export class ResetPasswordComponent implements OnInit {
     if(this.resetPassForm.valid){
       this.resetPasswordService.userExists(this.resetPassForm.value.email).subscribe(
         (data)=> {
-          console.log(data);
+          
           if(data.body){
             this.resetPasswordService.updateUserPassword(forgetfulUser).subscribe(
 
               (data)=>{
-                  console.log(data);
+                  
               }
             );
           }

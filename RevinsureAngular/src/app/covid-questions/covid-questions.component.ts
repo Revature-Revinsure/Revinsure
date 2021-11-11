@@ -33,12 +33,12 @@ export class CovidQuestionsComponent implements OnInit {
               aroundCovid: this.haveORbeenA,
               dateAnswered: this.currentDate
             }
-            console.log(this.covidQ);
+            
 
     return this.covidService.submitCovidForm(this.covidQ).subscribe(
       response => {
         this.message = response.body?.message;
-        console.log(this.message);
+        
 
         if(this.dataService.currentUser.type == "EMPLOYEE"){
           this.router.navigate(['/employeeHome']);
@@ -55,14 +55,14 @@ export class CovidQuestionsComponent implements OnInit {
 
   onChangedB(value: boolean) {
     this.haveORbeenA = value;
-    console.log(this.haveORbeenA);
+    
   }
 
 
   onChangedA(value: boolean) {
     this.haveORnot = value;
 
-    console.log(this.haveORnot);
+    
 
 
   }

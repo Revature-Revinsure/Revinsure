@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginform.valid) {
-      console.log(this.loginform);
+      
       this.loginService.loginRequestWithPost(this.loginform).subscribe(
         (data) => {
           if (data.body != null) {
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.covidService.getCurrentForm().subscribe(
       response => {
         showForm = response;
-        console.log(showForm);
+        
 
         if(showForm){
           this.router.navigate(['/covid-question']);

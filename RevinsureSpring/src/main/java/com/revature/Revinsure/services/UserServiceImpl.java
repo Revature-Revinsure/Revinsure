@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public boolean registerUserInfo(UserInfo userInfo) {
-		System.out.println(userInfo);
+		
 		if (userInfoDao.save(userInfo) != null) {
 			return true;
 		}
@@ -140,7 +140,7 @@ public class UserServiceImpl implements UserService {
 		if(user != null) {
 			CovidQuestion covid = covidQuestionDao.findByUser(user);
 			
-			if(covid.getDateAnswered() == null) {
+			if(covid == null || covid.getDateAnswered() == null) {
 				isAfterFourteenDays = true; //show new COVID-19 form if it's null
 			}
 			else {

@@ -124,7 +124,7 @@ public class UserController {
 	@PostMapping(value = "/register")
 	public User register(HttpSession session, @RequestBody User user) {
 //		user.setInfo(userInfo);
-		System.out.println(user);
+		
 		user = userService.registerUser(user);
 		session.setAttribute("user", user);
 		return user;
@@ -136,7 +136,7 @@ public class UserController {
 //		user.setInfo(userInfo);
 
 		userInfo.setUser((User) session.getAttribute("user"));
-		System.out.println(userInfo);
+		
 		boolean result = userService.registerUserInfo(userInfo);
 
 		return result;
@@ -145,9 +145,9 @@ public class UserController {
 
 	@PostMapping(value = "/register/check")
 	public boolean checkUser(@RequestBody User user) {
-		System.out.println(user);
+		
 		User result = userService.getUserByEmail(user.getEmail());
-		System.out.println(result);
+		
 		if (result == null) {
 
 			return false;
@@ -159,7 +159,7 @@ public class UserController {
 
 	@PutMapping(value = "/updatePasswordByEmail")
 	public boolean changePasswordBeforeLogin(@RequestBody User user) {
-		System.out.println(user);
+		
 		boolean result = userService.updatePasswordByEmail(user);
 
 		return result;

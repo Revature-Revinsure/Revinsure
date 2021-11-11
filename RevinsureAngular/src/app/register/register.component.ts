@@ -70,14 +70,13 @@ export class RegisterComponent implements OnInit {
     if (this.registerform.valid) {
       this.registerService.userExists(this.registerform.value.email).subscribe(
         (data) => {
-          console.log('this data: ' + data);
-          console.log('this data.body: ' + data.body);
+          
           if(data.body == null) {
             this.registerService.registerNewUser(unregisteredUser).subscribe(
               (data) => {
                 this.registerService.registerNewUserInfo(newUserInfo).subscribe(
                     (data) => {
-                      console.log(data.body);
+                      
                       if(data.body) {
                         window.alert("Your registration was successful! Login to continue.");
                         //TODO: create Message as model class, and return that instead of window.alert

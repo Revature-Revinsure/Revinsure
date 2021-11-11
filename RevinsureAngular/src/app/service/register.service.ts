@@ -21,7 +21,7 @@ export class RegisterService {
   constructor(private httpClient: HttpClient, private dataService: DataService) { }
 
   userExists(email: string): Observable<HttpResponse<boolean>> {
-    console.log(email);
+    
     let options = {
       withCredentials: true,
       observe: 'response' as 'response',
@@ -31,9 +31,7 @@ export class RegisterService {
 
     };
 
-    console.log('The options is: ' + options);
-    console.log('The options.body is: ' + options.body);
-    console.log('The options.body.email is: ' + options.body.email);
+    
     let addOnURL: string = '/user/register/check';
     let fullURL: string = this.dataService.baseURL + addOnURL;
     return this.httpClient.post<HttpResponse<boolean>>(fullURL, options);

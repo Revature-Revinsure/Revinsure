@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getCurrentUserClaims().subscribe(
       (data) => {
         if (data.body != null) {
-          console.log(data.body)
+          
           this.userClaims = data.body;
           this.dataService.userClaims = data.body;
         }

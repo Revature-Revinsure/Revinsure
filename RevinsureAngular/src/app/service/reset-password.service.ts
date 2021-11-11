@@ -17,7 +17,7 @@ export class ResetPasswordService {
     observe: 'response' as 'response'
   };
   userExists(email: string): Observable<HttpResponse<boolean>> {
-    console.log(email);
+    
     let options = {
       withCredentials: true,
       observe: 'response' as 'response',
@@ -33,7 +33,7 @@ export class ResetPasswordService {
 
   updateUserPassword(user: User):Observable<HttpResponse<boolean>>{
 
-    console.log(user);
+    
     let addOnURL: string = '/user/updatePasswordByEmail';
     let fullURL: string = this.dataService.baseURL + addOnURL;
 
