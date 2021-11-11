@@ -4,8 +4,8 @@ export interface UserInfo {
 
     id: number;
     //user: User;
-    firstname: String;
-    lastname: String;
+    firstName: String;
+    lastName: String;
     address: String;
     city: String;
     state: String;

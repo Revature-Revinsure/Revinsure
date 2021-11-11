@@ -1,9 +1,12 @@
 package com.revature.Revinsure.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +24,7 @@ import com.revature.Revinsure.services.ClaimService;
 public class ClaimController {
 	
 	@Autowired
-	private ClaimService cServ;
+	private ClaimService claimService;
 	
 	//new claim
 	@PostMapping("/claim")
@@ -32,7 +35,7 @@ public class ClaimController {
 //		User user = (User) session.getAttribute("user");//attribute with the user goes here
 		User user = new User(1, "lauren.pena@revature.net", "2108Java", UserType.PATIENT, null, null, null);
 		
-		if(cServ.addClaim(user, claim)) {
+		if(claimService.addClaim(user, claim)) {
 			message.setMessage("Claim submitted successfully.");
 		}
 		else {
@@ -40,6 +43,12 @@ public class ClaimController {
 		}
 		
 		return message;
+	}
+	
+	@GetMapping(value = "/userClaims")
+	public List<Claim> getUserClaims(HttpSession session) {
+		User u = (User) session.getAttribute("user");
+		return claimService.getUserClaims(u);
 	}
 
 }

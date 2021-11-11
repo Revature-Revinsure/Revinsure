@@ -35,6 +35,7 @@ public class CovidQuestion {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
+
 	
 	@Column(name = "has_covid")
 	private boolean hasCovid;
