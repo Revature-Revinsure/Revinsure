@@ -20,7 +20,9 @@
         <span *ngIf="loginform.controls['password'].errors">
             Password is required.
         </span>
+        
     </div>
+    <a routerLink="/reset-password" > Forgot Password? </a>
     <button type="submit">Login</button>
     <p class="mb-5 pb-lg-2">Don't have an account? <a routerLink="/register">Register
         here</a></p>

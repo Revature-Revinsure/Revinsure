@@ -18,13 +18,16 @@ public interface UserService {
 	
 	boolean updateEmail(User user, String email);
 	
-	boolean updateUserInfo(User user, UserInfo userInfo);
+	boolean updateUserInfo(User user, UserInfo userInfo); //Part of patient profile feature
 	
 	boolean createOrUpdateCovidForm(User user, CovidQuestion covidform);
+
+	boolean updatePasswordByEmail(User user);
 
 	boolean registerUserInfo(UserInfo userInfo);
 	
 	boolean checkIfAfterFourteenDays(User user);
 
-	
+	UserInfo getUserInfo(User user);
+
 }

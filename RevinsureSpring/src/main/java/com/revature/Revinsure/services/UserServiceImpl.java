@@ -1,13 +1,9 @@
 package com.revature.Revinsure.services;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
-import org.hibernate.internal.build.AllowSysOut;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.revature.Revinsure.models.CovidQuestion;
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserInfo;
@@ -20,13 +16,13 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private CovidQuestionDao covidQuestionDao;
-	
+
 	@Autowired
 	private UserDao userDao;
-	
+
 	@Autowired
 	private UserInfoDao userInfoDao;
-	
+
 	public UserServiceImpl(UserDao userDao) {
 		this.userDao = userDao;
 	}
@@ -38,32 +34,32 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean authenticate(User user) {
-		
+
 		User databaseUser = getUserByEmail(user.getEmail());
 		boolean success = false;
-		
-		if(databaseUser.getPassword().equals(user.getPassword())) {
+
+		if (databaseUser != null && databaseUser.getPassword().equals(user.getPassword())) {
 			success = true;
-		} 
-		
+		}
+
 		return success;
 	}
 
 	@Override
 	public User registerUser(User user) {
-		
 		user = userDao.save(user);
-		if(user.getId()>0) {
+		if (user.getId() > 0) {
 
 			return user;
 		}
-		
+
 		return null;
-				
+
 	}
+
 	public boolean registerUserInfo(UserInfo userInfo) {
 		System.out.println(userInfo);
-		if(userInfoDao.save(userInfo)!=null) {
+		if (userInfoDao.save(userInfo) != null) {
 			return true;
 		}
 		return false;
@@ -71,20 +67,36 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean updatePassword(User user, String password) {
-		// TODO Auto-generated method stub
-		return false;
+		int result = userDao.updatePasswordByEmail(password, user.getEmail());
+		boolean success = false;
+		if (result >0) {
+			success = true;
+		}
+		return success;			
 	}
 
 	@Override
 	public boolean updateEmail(User user, String email) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+
+		if (userDao.updateUsername(email, user.getId()) > 0) {
+			success = true;
+		}
+		return success;
+
 	}
 
 	@Override
 	public boolean updateUserInfo(User user, UserInfo userInfo) {
-		// TODO Auto-generated method stub
-		return false;
+
+		boolean success = false;
+
+		if (userInfoDao.updateInfo(userInfo.getFirstName(), userInfo.getLastName(), userInfo.getAddress(),
+				userInfo.getCity(), userInfo.getState(), userInfo.getZip(), user.getId())>0) {
+			success = true;
+		}
+		return success;
+
 	}
 
 	@Override
@@ -145,5 +157,19 @@ public class UserServiceImpl implements UserService {
 		return isAfterFourteenDays;
 	}
 
-	
+	@Override
+	public boolean updatePasswordByEmail(User user) {
+		int result = userDao.updatePasswordByEmail(user.getPassword(), user.getEmail());
+		boolean success = false;
+		if (result >0) {
+			success = true;
+		}
+		return success;		
+	}
+
+
+	public UserInfo getUserInfo(User user) {
+		return userInfoDao.getUserInfoByUser(user);
+	}
+
 }

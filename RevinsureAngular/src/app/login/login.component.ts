@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
     private covidService: CovidQuestionsService) { }
 
   ngOnInit(): void {
-    sessionStorage.setItem('isLoggedIn',"false");
   }
 
   loginform = this.formBuilder.group({
