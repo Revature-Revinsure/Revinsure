@@ -1,5 +1,3 @@
-import { Claim } from "./claim";
-
 export interface User{
 
     id:number,

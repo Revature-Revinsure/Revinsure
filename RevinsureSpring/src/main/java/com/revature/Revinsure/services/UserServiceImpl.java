@@ -1,22 +1,19 @@
 package com.revature.Revinsure.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
-
-import com.revature.Revinsure.models.Claim;
 import com.revature.Revinsure.models.CovidQuestion;
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserInfo;
-import com.revature.Revinsure.repo.CovidQuestionDao;
+//import com.revature.Revinsure.repo.CovidQuestionDao;
 import com.revature.Revinsure.repo.UserDao;
 import com.revature.Revinsure.repo.UserInfoDao;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	private CovidQuestionDao covidQuestionDao;
+//	@Autowired
+//	private CovidQuestionDao covidQuestionDao;
 
 	@Autowired
 	private UserDao userDao;
@@ -72,13 +69,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean updatePassword(User user, String password) {
+		int result = userDao.updatePasswordByEmail(password, user.getEmail());
 		boolean success = false;
-		if (userDao.updatePassword(password, user.getId()) > 0) {
+		if (result >0) {
 			success = true;
 		}
-		return success;
-//		return userDao.updateUser(user.getEmail(), password, user.getId());
-
+		return success;			
 	}
 
 	@Override
@@ -118,6 +114,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public boolean updatePasswordByEmail(User user) {
+		int result = userDao.updatePasswordByEmail(user.getPassword(), user.getEmail());
+		boolean success = false;
+		if (result >0) {
+			success = true;
+		}
+		return success;		
+	}
+
+
 	public UserInfo getUserInfo(User user) {
 		return userInfoDao.getUserInfoByUser(user);
 	}

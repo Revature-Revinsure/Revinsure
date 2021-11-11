@@ -1,6 +1,5 @@
 package com.revature.Revinsure.controllers;
 
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -8,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserInfo;
@@ -54,7 +56,6 @@ public class UserController {
 		if (u.getId() == -1) {
 
 			response.setStatus(400);
-			
 
 		} else {
 
@@ -64,6 +65,16 @@ public class UserController {
 			session.setAttribute("user", currentUser);
 
 		}
+
+	}
+
+	@PutMapping(value = "/updatePassword")
+	public boolean changePasswordAfterLogin(HttpSession session, @RequestBody User user) {
+
+		User oldUser = (User) session.getAttribute("user");
+		boolean result = userService.updatePassword(oldUser, user.getPassword());
+
+		return result;
 
 	}
 
@@ -128,13 +139,25 @@ public class UserController {
 	}
 
 	@PostMapping(value = "/register/check")
-	public boolean checkUser(@RequestBody String email) {
-		User result = userService.getUserByEmail(email);
+	public boolean checkUser(@RequestBody User user) {
+		System.out.println(user);
+		User result = userService.getUserByEmail(user.getEmail());
+		System.out.println(result);
 		if (result == null) {
+
 			return false;
 
 		}
 		return true;
+
+	}
+
+	@PutMapping(value = "/updatePasswordByEmail")
+	public boolean changePasswordBeforeLogin(@RequestBody User user) {
+		System.out.println(user);
+		boolean result = userService.updatePasswordByEmail(user);
+
+		return result;
 
 	}
 

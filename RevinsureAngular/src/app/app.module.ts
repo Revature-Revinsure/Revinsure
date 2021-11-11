@@ -14,11 +14,11 @@ import { DisscussionPostComponent } from './disscussion-post/disscussion-post.co
 import { UserInfoComponent } from './user-info/user-info.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FormGroup } from '@angular/forms';
 import { RoutGuard } from './route.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { ClaimService } from './service/claim.service';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import { ClaimService } from './service/claim.service';
     DisscussionBoardComponent,
     DisscussionPostComponent,
     DashboardComponent,
+    ResetPasswordComponent,
     UserInfoComponent,
   ],
   imports: [
