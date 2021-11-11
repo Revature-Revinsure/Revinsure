@@ -11,7 +11,7 @@ import { DataService } from './data.service';
 })
 export class CovidQuestionsService {
 
-  baseUrl: String = this.dataService.BaseURL;
+  baseUrl: String = this.dataService.baseURL;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

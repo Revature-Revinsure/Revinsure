@@ -15,7 +15,7 @@ export class ClaimService {
 
   constructor(private http: HttpClient, private dataService: DataService) { }
 
-  baseUrl: string = this.dataService.BaseURL;
+  baseUrl: string = this.dataService.baseURL;
   claim!: Claim; 
 
   httpOptions = {
