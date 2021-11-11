@@ -114,12 +114,12 @@ public class TestUserServices extends RevinsureApplicationTests{
 		User testUser6 = new User(-1, "unregistered@email.com", "fakepass", null);
 		
 		
-		when(userDao.updatePassword(testUser1.getPassword(), testUser1.getEmail())).thenReturn(1);
-		when(userDao.updatePassword(testUser2.getPassword(), testUser2.getEmail())).thenReturn(0);
-		when(userDao.updatePassword(testUser3.getPassword(), testUser3.getEmail())).thenReturn(0);
-		when(userDao.updatePassword(testUser4.getPassword(), testUser4.getEmail())).thenReturn(0);
-		when(userDao.updatePassword(testUser5.getPassword(), testUser5.getEmail())).thenReturn(0);
-		when(userDao.updatePassword(testUser6.getPassword(), testUser6.getEmail())).thenReturn(0);
+		when(userDao.updatePasswordByEmail(testUser1.getPassword(), testUser1.getEmail())).thenReturn(1);
+		when(userDao.updatePasswordByEmail(testUser2.getPassword(), testUser2.getEmail())).thenReturn(0);
+		when(userDao.updatePasswordByEmail(testUser3.getPassword(), testUser3.getEmail())).thenReturn(0);
+		when(userDao.updatePasswordByEmail(testUser4.getPassword(), testUser4.getEmail())).thenReturn(0);
+		when(userDao.updatePasswordByEmail(testUser5.getPassword(), testUser5.getEmail())).thenReturn(0);
+		when(userDao.updatePasswordByEmail(testUser6.getPassword(), testUser6.getEmail())).thenReturn(0);
 		
 		
 		assertTrue(userService.updatePasswordByEmail(testUser1));

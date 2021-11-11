@@ -27,7 +27,7 @@ export class ResetPasswordService {
 
     };
     let addOnURL: string = '/user/register/check';
-    let fullURL: string = this.dataService.BaseURL + addOnURL;
+    let fullURL: string = this.dataService.baseURL + addOnURL;
     return this.httpClient.post<boolean>(fullURL, {"email":email}, this.httpOptions);
   }
 
@@ -35,7 +35,7 @@ export class ResetPasswordService {
 
     console.log(user);
     let addOnURL: string = '/user/updatePasswordByEmail';
-    let fullURL: string = this.dataService.BaseURL + addOnURL;
+    let fullURL: string = this.dataService.baseURL + addOnURL;
 
     return this.httpClient.put<boolean>(fullURL,{
       "email" : user.email,

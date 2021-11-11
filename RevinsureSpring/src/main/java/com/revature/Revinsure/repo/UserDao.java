@@ -12,17 +12,21 @@ import org.springframework.stereotype.Repository;
 import com.revature.Revinsure.models.User;
 
 @Repository("userDao")
+@Transactional
 public interface UserDao extends JpaRepository <User, Integer> {
 
 	@Transactional
 	@Modifying
 	@Query("update User u set u.password = ?1 where u.email = ?2")
-	int updatePassword(String password, String email);
+	int updatePasswordByEmail(String password, String email);
+	
+	@Modifying
+	@Query("UPDATE User u SET u.email = ?1 WHERE u.id = ?2")
+	int updateUsername(String email, int id);
+	
+	
 
-	User findByEmail(String email);
-
+	
 	User getUserByEmail(String email);
 
-	
-	
 }

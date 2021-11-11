@@ -1,11 +1,11 @@
-import { User } from "./user";
+//import { User } from "./user";
 
 export interface UserInfo {
 
     id: number;
-    user: User;
-    firstname: String;
-    lastname: String;
+    //user: User;
+    firstName: String;
+    lastName: String;
     address: String;
     city: String;
     state: String;

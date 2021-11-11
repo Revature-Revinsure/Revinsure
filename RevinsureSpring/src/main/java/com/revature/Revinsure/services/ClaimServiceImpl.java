@@ -47,8 +47,7 @@ public class ClaimServiceImpl implements ClaimService {
 
 	@Override
 	public List<Claim> getUserClaims(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		return claimDao.getClaimByUser(user);
 	}
 
 	@Override

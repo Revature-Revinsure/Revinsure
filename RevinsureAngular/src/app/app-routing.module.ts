@@ -8,13 +8,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClaimComponent } from './claim/claim.component';
 import { RoutGuard } from './route.guard';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-
+import { UserInfoComponent } from './user-info/user-info.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'file-claim', component: ClaimComponent, canActivate: [RoutGuard] },
-  { path: 'user-info', component: PatientPortalComponent, canActivate: [RoutGuard] },
+  { path: 'user-info', component: UserInfoComponent, canActivate: [RoutGuard] },
   { path: 'home', component: DashboardComponent, canActivate: [RoutGuard] },
   { path: 'reset-password', component:ResetPasswordComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
