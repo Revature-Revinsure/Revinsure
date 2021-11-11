@@ -91,27 +91,20 @@ public class UserServiceImpl implements UserService {
 	public boolean createOrUpdateCovidForm(User user, CovidQuestion covidForm) {
 		boolean success = false;
 		
-		
-		
-		
 		if(covidForm != null && covidForm.getDateAnswered() != null) {
 			covidForm.setUser(user);
-//			System.out.println(covidForm);
 			
 			try {
 				CovidQuestion currentForm = covidQuestionDao.findByUser(user);
 				if(currentForm != null) {
-					System.out.println(currentForm);
 					
 					currentForm.setAroundCovid(covidForm.isAroundCovid());
 					currentForm.setHasCovid(covidForm.isHasCovid());
 					currentForm.setDateAnswered(covidForm.getDateAnswered());
 					
-					System.out.println(currentForm);
 					covidQuestionDao.save(currentForm);
 					success = true;
-				}
-				else if(currentForm == null){
+				} else {
 					covidQuestionDao.save(covidForm);
 					success = true;
 				}
@@ -133,9 +126,7 @@ public class UserServiceImpl implements UserService {
 		Date currentDate = new Date();
 		
 		if(user != null) {
-//			CovidQuestion covid = covidQuestionDao.findByUser(user);
-			Date oldDate = new GregorianCalendar(2020, Calendar.FEBRUARY, 13).getTime();
-			CovidQuestion covid = new CovidQuestion(1, user, false, false, oldDate);
+			CovidQuestion covid = covidQuestionDao.findByUser(user);
 			
 			if(covid.getDateAnswered() == null) {
 				isAfterFourteenDays = true; //show new COVID-19 form if it's null

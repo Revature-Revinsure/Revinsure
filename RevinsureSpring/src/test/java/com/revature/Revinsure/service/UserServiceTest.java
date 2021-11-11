@@ -94,10 +94,17 @@ public class UserServiceTest extends RevinsureApplicationTests {
 	
 	@Test
 	public void createOrUpdateCovidForm() {
+		User existingUser = new User(78,"alreadyhere@gmail.com","password", UserType.PATIENT);
+		Date oldDate = new GregorianCalendar(2020, Calendar.FEBRUARY, 13).getTime();
+		CovidQuestion existingCovidQuestion = new CovidQuestion(94, existingUser, false, false, oldDate);
+		CovidQuestion updatedExistingCovidQuestion = new CovidQuestion(94, existingUser, true, true, new Date());
+		when(covidDao.findByUser(fakeUser)).thenReturn(null);
 		when(covidDao.save(fakeCovidQuestion)).thenReturn(updatedFakeCovidQuestion);
 		when(covidDao.save(nullDate)).thenReturn(nullDate);
+		when(covidDao.findByUser(existingUser)).thenReturn(existingCovidQuestion);
 		
 		assertTrue(userService.createOrUpdateCovidForm(fakeUser, fakeCovidQuestion));
+		assertTrue(userService.createOrUpdateCovidForm(existingUser, updatedExistingCovidQuestion));
 		assertFalse(userService.createOrUpdateCovidForm(fakeUser, null));
 		assertFalse(userService.createOrUpdateCovidForm(fakeUser, nullDate));
 	}
