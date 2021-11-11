@@ -1,26 +1,32 @@
 package com.revature.Revinsure.service;
 
+import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.junit.jupiter.api.Test;
-
+import org.mockito.MockitoAnnotations;
 
 import com.revature.Revinsure.RevinsureApplicationTests;
+import com.revature.Revinsure.models.CovidQuestion;
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserType;
+import com.revature.Revinsure.repo.CovidQuestionDao;
 import com.revature.Revinsure.repo.UserDao;
+import com.revature.Revinsure.repo.UserInfoDao;
 import com.revature.Revinsure.services.UserService;
 import com.revature.Revinsure.services.UserServiceImpl;
 
@@ -30,17 +36,27 @@ public class UserServiceTest extends RevinsureApplicationTests {
 	@MockBean
 	private static UserDao userDao;
 	
-	private static User fakeUser = new User(-1,"fake@gmail.com","fake", UserType.PATIENT);     
-	private static User realUser = new User(1,"realEmail@hotmail.com","real", UserType.EMPLOYEE);     
-	private static User secondUser = new User(2,"realEmail@gmail.com","totallylegit", UserType.PATIENT);
+	@MockBean
+	private static UserInfoDao userInfoDao;
+	
+	@MockBean
+	private static CovidQuestionDao covidDao;
 	
 	@Autowired
 	@InjectMocks
-	public final UserService userService = new UserServiceImpl(userDao);
+	private UserService userService = new UserServiceImpl(userDao);
+	
+	
+	private final User fakeUser = new User(-1,"fake@gmail.com","fake", UserType.PATIENT);     
+	private final User realUser = new User(1,"realEmail@hotmail.com","real", UserType.EMPLOYEE);     
+	private final User secondUser = new User(2,"realEmail@gmail.com","totallylegit", UserType.PATIENT);
+	private final CovidQuestion fakeCovidQuestion = new CovidQuestion(-1, null, false, false, new Date());
+	private final CovidQuestion updatedFakeCovidQuestion = new CovidQuestion(94, null, false, false, new Date());
+	private final CovidQuestion nullDate = new CovidQuestion(-1, null, false, false, null);
 	
 	@BeforeClass
-	void setup() {
-		MockitoAnnotations.openMocks(userDao);
+	public static void fakeMyDao() {
+		MockitoAnnotations.openMocks(covidDao);
 	}
 	
 	@Test
@@ -74,5 +90,36 @@ public class UserServiceTest extends RevinsureApplicationTests {
 		when(userDao.getUserByEmail("realEmail@hotmail.com")).thenReturn(realUser);
 		assertTrue(userService.authenticate(realUser));
 		assertTrue(userService.authenticate(secondUser));
+	}
+	
+	@Test
+	public void createOrUpdateCovidForm() {
+		User existingUser = new User(78,"alreadyhere@gmail.com","password", UserType.PATIENT);
+		Date oldDate = new GregorianCalendar(2020, Calendar.FEBRUARY, 13).getTime();
+		CovidQuestion existingCovidQuestion = new CovidQuestion(94, existingUser, false, false, oldDate);
+		CovidQuestion updatedExistingCovidQuestion = new CovidQuestion(94, existingUser, true, true, new Date());
+		when(covidDao.findByUser(fakeUser)).thenReturn(null);
+		when(covidDao.save(fakeCovidQuestion)).thenReturn(updatedFakeCovidQuestion);
+		when(covidDao.save(nullDate)).thenReturn(nullDate);
+		when(covidDao.findByUser(existingUser)).thenReturn(existingCovidQuestion);
+		
+		assertTrue(userService.createOrUpdateCovidForm(fakeUser, fakeCovidQuestion));
+		assertTrue(userService.createOrUpdateCovidForm(existingUser, updatedExistingCovidQuestion));
+		assertFalse(userService.createOrUpdateCovidForm(fakeUser, null));
+		assertFalse(userService.createOrUpdateCovidForm(fakeUser, nullDate));
+	}
+	
+	@Test
+	public void checkIfAfterFourteenDays() {
+		Date oldDate = new GregorianCalendar(2020, Calendar.FEBRUARY, 13).getTime();
+		CovidQuestion oldCovidQuestion = new CovidQuestion(-1, null, false, false, oldDate);
+		
+		when(covidDao.findByUser(fakeUser)).thenReturn(oldCovidQuestion);
+		when(covidDao.findByUser(realUser)).thenReturn(fakeCovidQuestion);
+		when(covidDao.findByUser(secondUser)).thenReturn(nullDate);
+		
+		assertTrue(userService.checkIfAfterFourteenDays(fakeUser));
+		assertTrue(userService.checkIfAfterFourteenDays(secondUser));
+		assertFalse(userService.checkIfAfterFourteenDays(realUser));
 	}
 }

@@ -26,13 +26,11 @@ export class ClaimComponent implements OnInit {
       status: Status.PENDING,
       description: description};
     
-      console.log(claim);
 
     this.claimService.makeClaim(claim).subscribe(
       response => {
         this.message= response.body?.message;
 
-        console.log(this.message);
       }
     );
 
