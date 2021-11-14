@@ -6,7 +6,7 @@ Technologies Used
 * Angular - v 12.2.10
 * Amazon EC2
 * Jenkins
-* Java 8
+* Java 8 
 
 Project summary
 -----------
