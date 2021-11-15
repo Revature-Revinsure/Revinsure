@@ -6,6 +6,7 @@ import { DataService } from '../service/data.service';
 import { RegisterService } from '../service/register.service';
 import { User } from '../models/user';
 import { UserInfo } from '../models/user-info';
+import { NotificationService } from '../service/notification.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit {
     private registerService: RegisterService, 
     private router: Router,
     private formBuilder: FormBuilder,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.returnUrl = '/login';
@@ -78,7 +80,7 @@ export class RegisterComponent implements OnInit {
                     (data) => {
                       
                       if(data.body) {
-                        window.alert("Your registration was successful! Login to continue.");
+                        this.notificationService.sendMessage("Your registration was successful! Login to continue.")
                         //TODO: create Message as model class, and return that instead of window.alert
                       }
                     });                  
