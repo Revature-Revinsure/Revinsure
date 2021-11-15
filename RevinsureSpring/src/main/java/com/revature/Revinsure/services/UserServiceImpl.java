@@ -1,6 +1,5 @@
 package com.revature.Revinsure.services;
 
-
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User registerUser(User user) {
 		user = userDao.save(user);
-		if (user.getId() > 0) {
+		if (user != null) {
 
 			return user;
 		}
@@ -58,7 +57,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public boolean registerUserInfo(UserInfo userInfo) {
-		
+
 		if (userInfoDao.save(userInfo) != null) {
 			return true;
 		}
@@ -69,10 +68,10 @@ public class UserServiceImpl implements UserService {
 	public boolean updatePassword(User user, String password) {
 		int result = userDao.updatePasswordByEmail(password, user.getEmail());
 		boolean success = false;
-		if (result >0) {
+		if (result > 0) {
 			success = true;
 		}
-		return success;			
+		return success;
 	}
 
 	@Override
@@ -92,7 +91,7 @@ public class UserServiceImpl implements UserService {
 		boolean success = false;
 
 		if (userInfoDao.updateInfo(userInfo.getFirstName(), userInfo.getLastName(), userInfo.getAddress(),
-				userInfo.getCity(), userInfo.getState(), userInfo.getZip(), user.getId())>0) {
+				userInfo.getCity(), userInfo.getState(), userInfo.getZip(), user.getId()) > 0) {
 			success = true;
 		}
 		return success;
@@ -102,58 +101,58 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean createOrUpdateCovidForm(User user, CovidQuestion covidForm) {
 		boolean success = false;
-		
-		if(covidForm != null && covidForm.getDateAnswered() != null) {
+
+		if (covidForm != null && covidForm.getDateAnswered() != null) {
 			covidForm.setUser(user);
-			
+
 			try {
 				CovidQuestion currentForm = covidQuestionDao.findByUser(user);
-				if(currentForm != null) {
-					
+				if (currentForm != null) {
+
 					currentForm.setAroundCovid(covidForm.isAroundCovid());
 					currentForm.setHasCovid(covidForm.isHasCovid());
 					currentForm.setDateAnswered(covidForm.getDateAnswered());
-					
+
 					covidQuestionDao.save(currentForm);
 					success = true;
 				} else {
 					covidQuestionDao.save(covidForm);
 					success = true;
 				}
-				
-			}
-			catch(Exception e) {
+
+			} catch (Exception e) {
 				e.printStackTrace();
-				
+
 			}
 		}
-		
+
 		return success;
 	}
 
 	@Override
 	public boolean checkIfAfterFourteenDays(User user) {
-		boolean isAfterFourteenDays = false; // don't show new COVID-19 form to user if the last time the user answered is over 14 days
-		
+		boolean isAfterFourteenDays = false; // don't show new COVID-19 form to user if the last time the user answered
+												// is over 14 days
+
 		Date currentDate = new Date();
-		
-		if(user != null) {
+
+		if (user != null) {
 			CovidQuestion covid = covidQuestionDao.findByUser(user);
-			
-			if(covid == null || covid.getDateAnswered() == null) {
-				isAfterFourteenDays = true; //show new COVID-19 form if it's null
-			}
-			else {
+
+			if (covid == null || covid.getDateAnswered() == null) {
+				isAfterFourteenDays = true; // show new COVID-19 form if it's null
+			} else {
 				long difference = currentDate.getTime() - covid.getDateAnswered().getTime();
-				double daysBetween = (difference / (1000*60*60*24));
-				
+				double daysBetween = (difference / (1000 * 60 * 60 * 24));
+
 				if (daysBetween >= 14) {
-					isAfterFourteenDays = true; //show new COVID-19 form to user if the last date they answered was less than 14 days ago
+					isAfterFourteenDays = true; // show new COVID-19 form to user if the last date they answered was
+												// less than 14 days ago
 				}
 			}
-			
+
 		}
-		
+
 		return isAfterFourteenDays;
 	}
 
@@ -161,12 +160,11 @@ public class UserServiceImpl implements UserService {
 	public boolean updatePasswordByEmail(User user) {
 		int result = userDao.updatePasswordByEmail(user.getPassword(), user.getEmail());
 		boolean success = false;
-		if (result >0) {
+		if (result > 0) {
 			success = true;
 		}
-		return success;		
+		return success;
 	}
-
 
 	public UserInfo getUserInfo(User user) {
 		return userInfoDao.getUserInfoByUser(user);

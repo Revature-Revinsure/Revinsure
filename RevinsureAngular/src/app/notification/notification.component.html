@@ -1,0 +1,4 @@
+<div *ngIf = notificationService.showMessage>
+    {{notificationService.message.message}}
+    <button (click)="notificationService.dismiss()">Dismiss</button>
+</div>

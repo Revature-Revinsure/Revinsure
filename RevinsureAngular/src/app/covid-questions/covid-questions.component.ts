@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {CovidQuestion} from '../models/covid-question';
 import { CovidQuestionsService } from '../service/covid-questions.service';
 import { DataService } from '../service/data.service';
+import { NotificationService } from '../service/notification.service';
 
 @Component({
   selector: 'app-covid-questions',
@@ -18,7 +19,8 @@ export class CovidQuestionsComponent implements OnInit {
   
   constructor(private covidService: CovidQuestionsService,
     private dataService: DataService,
-    private router: Router) { }
+    private router: Router,
+    private notificationService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -38,7 +40,7 @@ export class CovidQuestionsComponent implements OnInit {
     return this.covidService.submitCovidForm(this.covidQ).subscribe(
       response => {
         this.message = response.body?.message;
-        
+        this.notificationService.sendMessage(this.message);
 
         if(this.dataService.currentUser.type == "EMPLOYEE"){
           this.router.navigate(['/employeeHome']);

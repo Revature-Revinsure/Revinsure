@@ -124,7 +124,7 @@ public class UserController {
 	@PostMapping(value = "/register")
 	public User register(HttpSession session, @RequestBody User user) {
 //		user.setInfo(userInfo);
-		
+
 		user = userService.registerUser(user);
 		session.setAttribute("user", user);
 		return user;
@@ -136,7 +136,7 @@ public class UserController {
 //		user.setInfo(userInfo);
 
 		userInfo.setUser((User) session.getAttribute("user"));
-		
+
 		boolean result = userService.registerUserInfo(userInfo);
 
 		return result;
@@ -145,9 +145,9 @@ public class UserController {
 
 	@PostMapping(value = "/register/check")
 	public boolean checkUser(@RequestBody User user) {
-		
+
 		User result = userService.getUserByEmail(user.getEmail());
-		
+
 		if (result == null) {
 
 			return false;
@@ -159,7 +159,7 @@ public class UserController {
 
 	@PutMapping(value = "/updatePasswordByEmail")
 	public boolean changePasswordBeforeLogin(@RequestBody User user) {
-		
+
 		boolean result = userService.updatePasswordByEmail(user);
 
 		return result;
@@ -168,41 +168,42 @@ public class UserController {
 
 	@PostMapping(value = "/login")
 	public User login(HttpSession session, @RequestBody User user) {
-		
+
 		boolean isAuthenticated = userService.authenticate(user);
-		
+
 		User currentUser = userService.getUserByEmail(user.getEmail());
-		
-		if(isAuthenticated == true) {
+
+		if (isAuthenticated == true) {
+			session.setAttribute("loggedInUser", currentUser);
+			session.setAttribute("accessLevel", currentUser.getType());
 			session.setAttribute("user", currentUser);
 		} else {
 			currentUser = null;
 		}
-		
+
 		return currentUser;
 	}
-	
+
 	@GetMapping(value = "/covid")
 	public boolean checkIfDateIsAfterFourteenDays(HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		
+
 		return userService.checkIfAfterFourteenDays(user);
 	}
-	
+
 	@PostMapping(value = "/covid")
 	public Message createOrUpdateCovidAnswer(HttpSession session, @RequestBody CovidQuestion covidQuestion) {
 		Message message = new Message();
 		User user = (User) session.getAttribute("user");
-		
-		if(userService.createOrUpdateCovidForm(user, covidQuestion)) {
+
+		if (userService.createOrUpdateCovidForm(user, covidQuestion)) {
 			message.setMessage("Successfully added or updated Covid Questionnaire.");
 		} else {
 			message.setMessage("Adding or updating Covid Questionnaire failed.");
 		}
-		
+
 		return message;
 	}
-		
 
 	@GetMapping(value = "/userInfo")
 	public UserInfo getUserInfo(HttpSession session) {

@@ -19,6 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { ClaimService } from './service/claim.service';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { NotificationComponent } from './notification/notification.component';
+import { NotificationService } from './service/notification.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     DashboardComponent,
     ResetPasswordComponent,
     UserInfoComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ClaimService
+    ClaimService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })
