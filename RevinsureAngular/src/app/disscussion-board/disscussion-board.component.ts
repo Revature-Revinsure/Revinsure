@@ -27,24 +27,18 @@ export class DisscussionBoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDiscussionPosts();
-
-    console.log(this.postList);
   }
 
   getDiscussionPosts() {
     this.discussionBoardService.getAllPosts().subscribe(
       (response) => {
         this.postList = response;
-        console.log(response);
-        console.log(this.postList);
-
       }
     );
 
   }
 
   selectPost(post: DiscussionPost) {
-    console.log(post);
     this.dataService.currentPost = post;
     this.router.navigate(['/discussion-post']);
   }
@@ -58,8 +52,6 @@ export class DisscussionBoardComponent implements OnInit {
       content: this.postForm.value.postBody,
       dateSubmitted: "",
     }
-
-    console.log(post);
 
     this.discussionBoardService.createPost(post).subscribe(
       response => {

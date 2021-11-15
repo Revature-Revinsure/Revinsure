@@ -38,14 +38,11 @@ export class DisscussionPostComponent implements OnInit {
       content: this.replyForm.value.replyString,
 
     }
-    console.log(reply)
 
     this.discussionPostService.postReply(reply).subscribe(
       (data) => {
-        console.log(data);
         this.getAllReplies();
       }
-
     );
   }
 
