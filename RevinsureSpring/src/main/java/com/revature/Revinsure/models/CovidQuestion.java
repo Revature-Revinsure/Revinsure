@@ -25,24 +25,23 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "covid_forms")
 public class CovidQuestion {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "question_id")
 	private int id;
-	
+
 	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	
 	@Column(name = "has_covid")
 	private boolean hasCovid;
-	
+
 	@Column(name = "around_covid")
 	private boolean aroundCovid;
-	
+
 	@Column(name = "date_answered")
 	private Date dateAnswered;
 
@@ -52,5 +51,4 @@ public class CovidQuestion {
 				+ ", dateAnswered=" + dateAnswered + "]";
 	}
 
-	
 }

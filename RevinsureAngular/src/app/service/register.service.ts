@@ -31,7 +31,6 @@ export class RegisterService {
 
     };
 
-    
     let addOnURL: string = '/user/register/check';
     let fullURL: string = this.dataService.baseURL + addOnURL;
     return this.httpClient.post<HttpResponse<boolean>>(fullURL, options);
@@ -44,8 +43,8 @@ export class RegisterService {
     return this.httpClient.post<User>(fullURL, {
 
       "id": -1,
-      "email":unregisteredUser.email,
-      "password":unregisteredUser.password,
+      "email": unregisteredUser.email,
+      "password": unregisteredUser.password,
       "type": unregisteredUser.type
 
 

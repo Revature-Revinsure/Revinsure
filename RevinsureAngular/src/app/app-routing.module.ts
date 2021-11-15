@@ -7,6 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClaimComponent } from './claim/claim.component';
 import { RoutGuard } from './route.guard';
+import { DisscussionBoardComponent } from './disscussion-board/disscussion-board.component';
+import { DisscussionPostComponent } from './disscussion-post/disscussion-post.component';
 import { CovidQuestionsComponent } from './covid-questions/covid-questions.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { UserInfoComponent } from './user-info/user-info.component';
@@ -16,7 +18,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'file-claim', component: ClaimComponent, canActivate: [RoutGuard] },
   { path: 'covid-question', component: CovidQuestionsComponent, canActivate: [RoutGuard] },
-  { path: 'user-info', component: PatientPortalComponent, canActivate: [RoutGuard] },
+  { path: 'user-info', component: UserInfoComponent, canActivate: [RoutGuard] },
+  { path: 'disscussion-board', component: DisscussionBoardComponent/*, canActivate: [RoutGuard] */ },
+  { path: 'discussion-post', component: DisscussionPostComponent },
   { path: 'home', component: DashboardComponent, canActivate: [RoutGuard] },
   { path: 'reset-password', component:ResetPasswordComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },

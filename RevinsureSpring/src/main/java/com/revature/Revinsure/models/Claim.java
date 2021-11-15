@@ -32,25 +32,25 @@ public class Claim {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "claim_id")
 	private int id;
-	
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@Column(name = "date_of_service")
 	private Date dateOfService;
-	
+
 	@Column(name = "date_of_claim")
 	private Date dateOfClaim;
-	
+
 	@Column(name = "amount")
 	private double amount;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status")
 	private Status status;
-	
+
 	@Column(name = "description")
 	private String description;
 
@@ -59,6 +59,5 @@ public class Claim {
 		return "Claim [id=" + id + ", user=" + user.getId() + ", dateOfService=" + dateOfService + ", dateOfClaim="
 				+ dateOfClaim + ", amount=" + amount + ", status=" + status + ", description=" + description + "]";
 	}
-	
-	
+
 }

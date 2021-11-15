@@ -31,12 +31,12 @@ export class UserInfoComponent implements OnInit {
     newPassword: ["", Validators.required],
   });
   updateInfoForm = this.formBuilder.group({
-    newFirstName: ["", Validators.required],
-    newLastName: ["", Validators.required],
-    newAddress: ["", Validators.required],
-    newState: ["", Validators.required],
-    newCity: ["", Validators.required],
-    newZip: ["", Validators.required],
+    newFirstName: [this.dataService.userInfo.firstName, Validators.required],
+    newLastName: [this.dataService.userInfo.lastName, Validators.required],
+    newAddress: [this.dataService.userInfo.address, Validators.required],
+    newState: [this.dataService.userInfo.state, Validators.required],
+    newCity: [this.dataService.userInfo.city, Validators.required],
+    newZip: [this.dataService.userInfo.zip, Validators.required],
   });
 
 
@@ -84,7 +84,10 @@ export class UserInfoComponent implements OnInit {
     });
     this.userProfileService.updateEmail(this.updateEmailForm.value.newEmail).subscribe(
       (data) => this.loginService.loginRequestWithPost(userForm).subscribe(
-        (data) => this.dataService.currentUser = data.body!
+        (data) => {
+          this.dataService.currentUser = data.body!;
+          this.currentUser = data.body!;
+        }
       )
     );
   }
@@ -108,7 +111,9 @@ export class UserInfoComponent implements OnInit {
     });
     this.userProfileService.updateUserInfo(this.updateInfoForm).subscribe(
       () => this.loginService.loginRequestWithPost(userForm).subscribe(
-        (data) => this.dataService.currentUser = data.body!
+        (data) => {
+          this.dataService.currentUser = data.body!;
+        }
       )
     );
   }

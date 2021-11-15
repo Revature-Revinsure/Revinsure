@@ -13,7 +13,7 @@ import com.revature.Revinsure.models.UserInfo;
 
 @Repository("claimDao")
 @Transactional
-public interface ClaimDao extends JpaRepository <Claim, Integer> {
+public interface ClaimDao extends JpaRepository<Claim, Integer> {
 
 	List<Claim> getClaimByUser(User user);
 }

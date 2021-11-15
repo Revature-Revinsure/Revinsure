@@ -18,31 +18,36 @@ import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserType;
 import com.revature.Revinsure.services.ClaimService;
 
-@RestController
-@CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
+@RestController("claimController")
+@CrossOrigin(origins = { "http://localhost:4200" }, allowCredentials = "true")
 @RequestMapping("/api")
 public class ClaimController {
-	
+
 	@Autowired
 	private ClaimService claimService;
-	
-	//new claim
+
+	// new claim
 	@PostMapping("/claim")
-	public Message submitClaim(@RequestBody Claim claim, HttpSession session) {
+	public Message submitClaim(HttpSession session, @RequestBody Claim claim) {
 		Message message = new Message();
-		
-		User user = (User) session.getAttribute("user");
-		
-		if(claimService.addClaim(user, claim)) {
-			message.setMessage("Claim submitted successfully.");
+
+		if ((session.getAttribute("accessLevel") == null)
+				|| !session.getAttribute("accessLevel").equals(UserType.PATIENT)) {
+			message.setMessage("access denied");
+			return message;
 		}
-		else {
+
+		User user = (User) session.getAttribute("user");
+
+		if (claimService.addClaim(user, claim)) {
+			message.setMessage("Claim submitted successfully.");
+		} else {
 			message.setMessage("Claim submission failed.");
 		}
-		
+
 		return message;
 	}
-	
+
 	@GetMapping(value = "/userClaims")
 	public List<Claim> getUserClaims(HttpSession session) {
 		User u = (User) session.getAttribute("user");

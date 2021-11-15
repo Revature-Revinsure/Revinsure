@@ -1,5 +1,6 @@
 package com.revature.Revinsure.models;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,22 +33,28 @@ public class DiscussionPost {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "post_id")
 	private int id;
-	
+
 	@Column(name = "post_title")
-	private String title;//the users question, more info can provided in a response
-	
+	private String title;// the users question, more info can provided in a response
+
+	@Column(name = "post_content")
+	private String content;
+
+	@Column(name = "date_submitted")
+	@DateTimeFormat(pattern = "MM.dd.yyyy")
+	private LocalDate dateSubmitted;
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@OneToMany(mappedBy = "post")
-	private List<DiscussionResponse> responses;
+
+//	@OneToMany(mappedBy = "post")
+//	private List<DiscussionResponse> responses;
 
 	@Override
 	public String toString() {
-		return "DiscussionPost [id=" + id + ", title=" + title + ", user=" + user.getId() + ", responses=" + responses + "]";
+		return "DiscussionPost [id=" + id + ", title=" + title + ", user=" + user.getId() + "]";
 	}
-	
-	
+
 }
