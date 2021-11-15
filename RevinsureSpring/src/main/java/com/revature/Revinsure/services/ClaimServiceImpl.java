@@ -16,7 +16,7 @@ public class ClaimServiceImpl implements ClaimService {
 
 	@Autowired
 	private ClaimDao claimDao;
-	
+
 	public ClaimServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
@@ -24,31 +24,26 @@ public class ClaimServiceImpl implements ClaimService {
 	@Override
 	public boolean addClaim(User user, Claim claim) {
 		boolean success = false;
-		
-		if(claim != null && claim.getDateOfClaim() != null && claim.getDescription() != null && claim.getStatus() != null) {
+
+		if (claim != null && claim.getDateOfClaim() != null && claim.getDescription() != null
+				&& claim.getStatus() != null) {
 			claim.setUser(user);
-			
+
 			try {
 				claimDao.save(claim);
 				success = true;
-			}
-			catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
-				
+
 			}
 		}
-		
-		
-		
-		
-		
+
 		return success;
 	}
 
 	@Override
 	public List<Claim> getUserClaims(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		return claimDao.getClaimByUser(user);
 	}
 
 	@Override

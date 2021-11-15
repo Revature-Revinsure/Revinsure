@@ -1,0 +1,194 @@
+<div>
+    <p>Edit Email</p>
+
+    <p>{{currentUser.email}}</p>
+
+    <button class="btn btn-primary" id="editEmail" (click)='toggleEmail()'>Edit</button>
+    <form [formGroup]="updateEmailForm" (ngSubmit)="updateEmail()">
+        <div *ngIf="editEmail">
+            <input class="form-control form-control-block" type="text" formControlName='newEmail'
+                placeholder="New Email">
+            <div *ngIf="updateEmailForm.controls['newEmail'].invalid && updateEmailForm.controls['newEmail'].touched"
+                class="alert alert-danger">
+                <span *ngIf="updateEmailForm.controls['newEmail'].errors">
+                    An address is required.
+                </span>
+            </div>
+            <button class="btn btn-primary" id="submitEmail" (click)='updateEmail()' [disabled]="!updateEmailForm.valid">Submit</button>
+        </div>
+    </form>
+    <!--
+        click this to edit your username
+
+        once editied click confirm to persist changes
+
+        dont let user's use emails that already exist
+
+        use *ngIf, if edit button is clicked then populate the rest
+    -->
+</div>
+
+<div>
+    <p>Edit Password Button</p>
+
+    <button class="btn btn-primary" id="editPassword" (click)='togglePassword()'>Edit</button>
+    <form [formGroup]="updatePasswordForm" (ngSubmit)="updatePassword()">
+        <div *ngIf="editPassword">
+            <input class="form-control form-control-block" type="text" formControlName='newPassword'
+                placeholder="New Password">
+            <div *ngIf="updatePasswordForm.controls['newPassword'].invalid && updatePasswordForm.controls['newPassword'].touched"
+                class="alert alert-danger">
+                <span *ngIf="updatePasswordForm.controls['newPassword'].errors">
+                    An address is required.
+                </span>
+            </div>
+            <button class="btn btn-primary" id="submitPassword" type="submit" [disabled]="!updatePasswordForm.valid">Submit</button>
+        </div>
+    </form>
+    <!--
+        click this to edit your password
+
+        once editied click confirm to persist changes
+
+        dont let user's use un-safe passwords
+
+    -->
+</div>
+
+<p>UserInfo</p>
+
+<div>
+    <p>{{userInfo.firstName}} {{userInfo.lastName}}</p>
+    <p>Address: {{userInfo.address}}</p>
+    <p>City: {{userInfo.city}}</p>
+    <p>State: {{userInfo.state}}</p>
+    <p>Zip: {{userInfo.zip}}</p>
+</div>
+<button class="btn btn-primary" id="editUserInfo" (click)='toggleUserInfo()'>Edit</button>
+
+<div class=container *ngIf="editUserInfo">
+
+    <div class="container">
+
+        <div>
+            <h1 class="title">User Info</h1>
+        </div>
+        <div>
+            <form [formGroup]="updateInfoForm" (ngSubmit)="updateUserInfo()">
+                <div class="row">
+                    <div class="col">
+                        <input class="form-control form-control-block" type="text" formControlName='newFirstName'
+                            placeholder="{{userInfo.firstName}} ">
+                        <div *ngIf="updateInfoForm.controls['newFirstName'].invalid && updateInfoForm.controls['newFirstName'].touched"
+                            class="alert alert-danger">
+                            <span *ngIf="updateInfoForm.controls['newFirstName'].errors">
+                                A first name is required.
+                            </span>
+                        </div>
+                        <input class="form-control form-control-block" type="text" formControlName='newLastName'
+                            placeholder="{{userInfo.lastName}}">
+                        <div *ngIf="updateInfoForm.controls['newLastName'].invalid && updateInfoForm.controls['newLastName'].touched"
+                            class="alert alert-danger">
+                            <span *ngIf="updateInfoForm.controls['newLastName'].errors">
+                                A last name is required.
+                            </span>
+                        </div>
+                        <input class="form-control form-control-block" type="text" formControlName='newAddress'
+                            placeholder="{{userInfo.address}}">
+                        <div *ngIf="updateInfoForm.controls['newAddress'].invalid && updateInfoForm.controls['newAddress'].touched"
+                            class="alert alert-danger">
+                            <span *ngIf="updateInfoForm.controls['newAddress'].errors">
+                                An address is required.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-control form-control-block" type="text" formControlName='newCity'
+                                placeholder="{{userInfo.city}}">
+                            <div *ngIf="updateInfoForm.controls['newCity'].invalid && updateInfoForm.controls['newCity'].touched"
+                                class="alert alert-danger">
+                                <span *ngIf="updateInfoForm.controls['newCity'].errors">
+                                    An address is required.
+                                </span>
+                            </div>
+                            <select class="form-control form-control-block" type="text" formControlName='newState'
+                                placeholder="state">
+                                <option value="" selected>{{userInfo.state}}</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                            <div *ngIf="updateInfoForm.controls['newState'].invalid && updateInfoForm.controls['newState'].touched"
+                                class="alert alert-danger">
+                                <span *ngIf="updateInfoForm.controls['newState'].errors">
+                                    An address is required.
+                                </span>
+                            </div>
+                            <input class="form-control form-control-block" type="text" formControlName='newZip'
+                                placeholder="{{userInfo.zip}}">
+                            <div *ngIf="updateInfoForm.controls['newZip'].invalid && updateInfoForm.controls['newZip'].touched"
+                                class="alert alert-danger">
+                                <span *ngIf="updateInfoForm.controls['newZip'].errors">
+                                    An address is required.
+                                </span>
+                            </div>
+                            <div>
+                                <button class="form-control form-control-block" type="submit" [disabled]="!updateInfoForm.valid">Submit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

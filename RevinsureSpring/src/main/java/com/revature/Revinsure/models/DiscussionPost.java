@@ -33,29 +33,28 @@ public class DiscussionPost {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "post_id")
 	private int id;
-	
+
 	@Column(name = "post_title")
-	private String title;//the users question, more info can provided in a response
-	
+	private String title;// the users question, more info can provided in a response
+
 	@Column(name = "post_content")
 	private String content;
-	
+
 	@Column(name = "date_submitted")
 	@DateTimeFormat(pattern = "MM.dd.yyyy")
 	private LocalDate dateSubmitted;
-	
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 //	@OneToMany(mappedBy = "post")
 //	private List<DiscussionResponse> responses;
 
 	@Override
 	public String toString() {
-		return "DiscussionPost [id=" + id + ", title=" + title + ", user=" + user.getId() +  "]";
+		return "DiscussionPost [id=" + id + ", title=" + title + ", user=" + user.getId() + "]";
 	}
-	
-	
+
 }

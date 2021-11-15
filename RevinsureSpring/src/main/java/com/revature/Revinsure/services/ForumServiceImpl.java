@@ -29,10 +29,10 @@ public class ForumServiceImpl implements ForumService {
 	public boolean createNewPost(User user, DiscussionPost post) {
 		post.setUser(user);
 		post.setDateSubmitted(LocalDate.now());
-		
+
 		boolean success = false;
 		if (discussionPostDao.save(post) != null) {
-			success=true;
+			success = true;
 		}
 
 		return success;
@@ -57,7 +57,7 @@ public class ForumServiceImpl implements ForumService {
 
 		boolean success = false;
 		if (discussionResponseDao.save(response) != null) {
-			success=true;
+			success = true;
 		}
 
 		return success;

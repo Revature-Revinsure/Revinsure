@@ -10,13 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-
 
 @Data
 @NoArgsConstructor
@@ -25,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "users_table")
 public class User {
-	
+
 	public User(int id, String email, String password, UserType type) {
 		super();
 		this.id = id;
@@ -38,31 +37,29 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private int id;
-	
-	@Column(name = "email")
+
+	@Column(name = "email", unique = true)
 	private String email;
-	
+
 	@Column(name = "password")
 	private String password;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_type")
 	private UserType type;
-	
+
 //	@OneToOne(mappedBy = "user")
 //	private UserInfo info;
 //	
 //	@OneToOne(mappedBy = "user")
 //	private CovidQuestion question;
-	
+
 	@OneToMany(mappedBy = "user")
 	private List<Claim> claims;
 
 	@OneToMany(mappedBy = "user")
 	private List<DiscussionPost> posts;
-	
+
 	@OneToMany(mappedBy = "user")
 	private List<DiscussionResponse> responses;
 }
-
-

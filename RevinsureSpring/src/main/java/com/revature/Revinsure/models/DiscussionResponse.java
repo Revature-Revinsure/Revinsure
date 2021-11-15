@@ -32,19 +32,19 @@ public class DiscussionResponse {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "response_id")
 	private int id;
-	
+
 	@Column(name = "content")
 	private String content;
-	
+
 	@Column(name = "date_submitted")
 	@DateTimeFormat(pattern = "MM.dd.yyyy")
 	private LocalDate dateSubmitted;
-	
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "post_id")
@@ -52,8 +52,8 @@ public class DiscussionResponse {
 
 	@Override
 	public String toString() {
-		return "DiscussionResponse [id=" + id + ", content=" + content + ", user=" + user.getId() + ", post=" + post.getId() + "]";
+		return "DiscussionResponse [id=" + id + ", content=" + content + ", user=" + user.getId() + ", post="
+				+ post.getId() + "]";
 	}
-	
-	
+
 }
