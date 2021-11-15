@@ -3,6 +3,7 @@ package com.revature.Revinsure.services;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,8 @@ import com.revature.Revinsure.repo.DiscussionResponseDao;
 @Service("forumService")
 public class ForumServiceImpl implements ForumService {
 
+	private static final Logger log = Logger.getLogger(ForumServiceImpl.class);
+	
 	@Autowired
 	private DiscussionPostDao discussionPostDao;
 
@@ -32,6 +35,7 @@ public class ForumServiceImpl implements ForumService {
 
 		boolean success = false;
 		if (discussionPostDao.save(post) != null) {
+			log.info("createNewPost called for post: " + post.toString());
 			success = true;
 		}
 
@@ -57,6 +61,7 @@ public class ForumServiceImpl implements ForumService {
 
 		boolean success = false;
 		if (discussionResponseDao.save(response) != null) {
+			log.info("createNewResponse called for response: " + response.toString());
 			success = true;
 		}
 
@@ -65,12 +70,13 @@ public class ForumServiceImpl implements ForumService {
 
 	@Override
 	public List<DiscussionResponse> getResponsesForPost(DiscussionPost post) {
-
+		log.info("getResponsesForPost called for post: " + post.toString());
 		return discussionResponseDao.findByPostId(post.getId());
 	}
 
 	@Override
 	public List<DiscussionPost> getAllPosts() {
+		log.info("getAllPosts called.");
 		return discussionPostDao.findAllByOrderByIdDesc();
 	}
 

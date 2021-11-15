@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,8 @@ import com.revature.Revinsure.services.ForumService;
 @CrossOrigin(origins = { "http://localhost:4200" }, allowCredentials = "true")
 public class ForumController {
 
+	private static final Logger log = Logger.getLogger(ForumController.class);
+	
 	@Autowired
 	private ForumService forumService;
 
@@ -37,14 +40,14 @@ public class ForumController {
 
 	@GetMapping(value = "/post")
 	public List<DiscussionPost> getAllPosts(HttpSession session) {
-
+		log.debug("getAllPosts has been called.");
 		if (session.getAttribute("loggedInUser") == null) {
 			List<DiscussionPost> discussion = new ArrayList<>();
 			DiscussionPost dp = new DiscussionPost(-1, "Sorry but you must login to see the forum.", "",
 					LocalDate.now(), new User());
 
 			discussion.add(dp);
-
+			log.warn("an unauthenticated user tried to getAllPosts!");
 			return discussion;
 		}
 
@@ -54,13 +57,14 @@ public class ForumController {
 	@PostMapping(value = "/get/response")
 	public List<DiscussionResponse> getAllResponsesByPost(HttpSession session,
 			@RequestBody DiscussionPost currentPost) {
+		log.debug("getAllResponsesByPost has been called.");
 		if (session.getAttribute("loggedInUser") == null) {
 			List<DiscussionResponse> discussion = new ArrayList<>();
 			DiscussionResponse dr = new DiscussionResponse(-1, "Sorry but you must login to see the forum.",
 					LocalDate.now(), new User(), new DiscussionPost());
 
 			discussion.add(dr);
-
+			log.warn("an unauthenticated user tried to getAllResponsesByPost!");
 			return discussion;
 		}
 
@@ -72,7 +76,7 @@ public class ForumController {
 
 	@PostMapping(value = "/post")
 	public boolean makePost(HttpSession session, @RequestBody DiscussionPost currentPost) {
-
+		log.debug("makePost has been called.");
 		if (session.getAttribute("loggedInUser") == null) {
 
 			return false;
@@ -85,7 +89,7 @@ public class ForumController {
 
 	@PostMapping(value = "/response")
 	public boolean makeResponse(HttpSession session, @RequestBody DiscussionResponse currentResponse) {
-
+		log.debug("makeResponse has been called.");
 		if (session.getAttribute("loggedInUser") == null) {
 
 			return false;

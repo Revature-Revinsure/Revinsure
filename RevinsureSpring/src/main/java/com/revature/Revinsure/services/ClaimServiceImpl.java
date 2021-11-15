@@ -2,6 +2,7 @@ package com.revature.Revinsure.services;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,8 @@ import com.revature.Revinsure.repo.UserDao;
 @Service("claimService")
 public class ClaimServiceImpl implements ClaimService {
 
+	private static final Logger log = Logger.getLogger(ClaimServiceImpl.class);
+	
 	@Autowired
 	private ClaimDao claimDao;
 
@@ -31,8 +34,10 @@ public class ClaimServiceImpl implements ClaimService {
 
 			try {
 				claimDao.save(claim);
+				log.info("addClaim called for claim: " + claim.toString());
 				success = true;
 			} catch (Exception e) {
+				log.warn("An exception has been caught!");
 				e.printStackTrace();
 
 			}
@@ -43,6 +48,7 @@ public class ClaimServiceImpl implements ClaimService {
 
 	@Override
 	public List<Claim> getUserClaims(User user) {
+		log.info("getUserClaims called for user id: " + user.getId());
 		return claimDao.getClaimByUser(user);
 	}
 
