@@ -52,16 +52,16 @@ public class ClaimServiceImpl implements ClaimService {
 		return claimDao.getClaimByUser(user);
 	}
 
-	@Override
-	public boolean updateClaimStatus(Claim claim, Status newStatus) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<Claim> getAllClaims() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public boolean updateClaimStatus(Claim claim, Status newStatus) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
+//
+//	@Override
+//	public List<Claim> getAllClaims() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

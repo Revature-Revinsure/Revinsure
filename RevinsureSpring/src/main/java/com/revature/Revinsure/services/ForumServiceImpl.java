@@ -56,14 +56,16 @@ public class ForumServiceImpl implements ForumService {
 
 	@Override
 	public boolean createNewResponse(User user, DiscussionResponse response) {
-		response.setUser(user);
-		response.setDateSubmitted(LocalDate.now());
-
 		boolean success = false;
-		if (discussionResponseDao.save(response) != null) {
-			log.info("createNewResponse called for response: " + response.toString());
-			success = true;
+		if(response != null && response.getContent() != null && response.getPost() != null) {
+			response.setUser(user);
+			response.setDateSubmitted(LocalDate.now());
+			if (discussionResponseDao.save(response) != null) {
+				log.info("createNewResponse called for response: " + response.toString());
+				success = true;
+			}	
 		}
+
 
 		return success;
 	}

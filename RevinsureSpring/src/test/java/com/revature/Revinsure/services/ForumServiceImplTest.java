@@ -1,4 +1,4 @@
-package com.revature.Revinsure.service;
+package com.revature.Revinsure.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -24,20 +24,24 @@ import org.junit.jupiter.api.Test;
 
 import com.revature.Revinsure.RevinsureApplicationTests;
 import com.revature.Revinsure.models.DiscussionPost;
+import com.revature.Revinsure.models.DiscussionResponse;
 import com.revature.Revinsure.models.User;
 import com.revature.Revinsure.models.UserType;
 import com.revature.Revinsure.repo.DiscussionPostDao;
+import com.revature.Revinsure.repo.DiscussionResponseDao;
 import com.revature.Revinsure.services.ForumService;
 import com.revature.Revinsure.services.ForumServiceImpl;
 
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class DiscussionPostTest extends RevinsureApplicationTests {
+public class ForumServiceImplTest extends RevinsureApplicationTests {
 	
 	@MockBean
 	private static DiscussionPostDao discussionPostDao;
 	
+	@MockBean
+	private static DiscussionResponseDao discussionResponseDao;
 	
 	
 	private static DiscussionPost fakePost = new DiscussionPost(-1, "post title", "post content", LocalDate.now(), new User());
@@ -84,5 +88,29 @@ public class DiscussionPostTest extends RevinsureApplicationTests {
 		assertTrue(forumService.createNewPost(fakeUser, fakePost2));
 		
 	}
+	
+	
+	@Test
+	public void testCreateNewResponse() {
+		DiscussionResponse fakeResponse = new DiscussionResponse(-1, "fake content", null, null, firstPost);
+		DiscussionResponse updatedFakeResponse = new DiscussionResponse(1, "fake content", null, null, firstPost);
+		DiscussionResponse nullContentResponse = new DiscussionResponse(-1, null, null, null, firstPost);
+		DiscussionResponse nullPostResponse = new DiscussionResponse(-1, "fake content", null, null, null);
+		
+		User user = new User(1, "realEmail@hotmail.com", "real", UserType.EMPLOYEE);
+		
+		
+		when(discussionResponseDao.save(fakeResponse)).thenReturn(updatedFakeResponse);
+		when(discussionResponseDao.save(nullContentResponse)).thenReturn(nullContentResponse);
+		when(discussionResponseDao.save(nullPostResponse)).thenReturn(nullPostResponse);
+		
+		
+		assertTrue(forumService.createNewResponse(user, fakeResponse));
+		assertFalse(forumService.createNewResponse(user, null));
+		assertFalse(forumService.createNewResponse(user, nullContentResponse));
+		assertFalse(forumService.createNewResponse(user, nullPostResponse));
+	}
+	
+	
 }
 

@@ -23,7 +23,7 @@ import com.revature.Revinsure.repo.ClaimDao;
 import java.util.Date;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ClaimServiceTest extends RevinsureApplicationTests {
+public class ClaimServiceImplTest extends RevinsureApplicationTests {
 
 	@MockBean
 	private static ClaimDao claimDao;
