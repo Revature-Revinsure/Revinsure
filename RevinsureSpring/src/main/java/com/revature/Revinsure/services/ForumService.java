@@ -18,7 +18,7 @@ public interface ForumService {
 
 	List<DiscussionPost> getAllPosts(); // any user can see the whole forum
 
-//	List<DiscussionPost> getPostsByUser(User user);
+	List<DiscussionPost> getPostsByUser(User user);
 
 	boolean createNewResponse(User user, DiscussionResponse response);
 

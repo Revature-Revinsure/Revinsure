@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from './models/user';
+import { DataService } from './service/data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +11,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'RevinsureAngular';
 
-  constructor(private router: Router) { }
-
+  constructor(private router: Router, private dataService: DataService) { let currentUser: User = this.dataService.currentUser;}
+  
   logout(): void {
     sessionStorage.clear();
     this.router.navigate(['/login']);

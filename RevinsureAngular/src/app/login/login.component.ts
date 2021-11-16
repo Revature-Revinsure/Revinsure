@@ -31,9 +31,7 @@ export class LoginComponent implements OnInit {
         (data) => {
           if (data.body != null) {
             sessionStorage.setItem('isLoggedIn',"true");
-
             this.dataService.currentUser = data.body;
-            this.dataService.userPosts = data.body['posts'];
             this.getCovidForm();
           }
         }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Claim } from '../models/claim';
+import { DiscussionPost } from '../models/discussion-post';
 import { UserInfo } from '../models/user-info';
 
 @Injectable({
@@ -12,6 +13,18 @@ export class DashboardService {
 
   getCurrentUserClaims(){
     return this.httpClient.get<Claim[]>("http://localhost:8000/api/userClaims",
+      { withCredentials: true, observe: 'response' as 'response' }
+    );
+  }
+
+  getAllUserClaims(){
+    return this.httpClient.get<Claim[]>("http://localhost:8000/api/allClaims",
+      { withCredentials: true, observe: 'response' as 'response' }
+    );
+  }
+
+  getCurrentUserPosts(){
+    return this.httpClient.get<DiscussionPost[]>("http://localhost:8000/discussion/myPosts",
       { withCredentials: true, observe: 'response' as 'response' }
     );
   }

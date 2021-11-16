@@ -1,34 +1,94 @@
- 
-
-<ng-container>
-<div class="row" *ngIf="userClaims">
-    <button class="btn btn-primary" (click)='toggleViewClaims()'>Click to view your claims</button>
-</div>
-
-<div class="row" *ngIf="!userClaims">
-    <h5>You have no claims</h5>
-    <a routerLink="/file-claim">Click here to file a claim</a>
-</div>
-</ng-container>
-
-<div *ngIf="viewClaims">
-    <ng-container *ngFor="let claim of userClaims">
-        <h5>{{claim.id}}</h5>
-        <h5>{{claim.dateOfService | date }}</h5>
-        <h5>{{claim.dateOfClaim | date}}</h5>
-        <h5>{{claim.amount}}</h5>
-        <h5>{{claim.status}}</h5>
-        <h5>{{claim.description}}</h5>
-    </ng-container>
-</div>
-
-<div>
-    <ng-container *ngFor="let post of userPosts">
-        <div class="container-fluid">
-            <h5>{{post.title}}</h5>
-            <h5>{{post.dateSubmitted}}</h5>
-            <h5>{{post.content}}</h5>
-            <button class="btn btn-primary" (click)="selectPost(post)">View Post</button>    
+<div class="row justify-content-center">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row justify-content-evenly">
+                    <h1>Welcome {{userInfo.firstName}}!</h1>
+                    <h3 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+                        View your claims and posts below!
+                    </h3>
+                    <ng-container>
+                        <div class="col-7" *ngIf="currentUser.type=='PATIENT'">
+                            <div class="row" *ngIf="!userClaims">
+                                <h5>You have no claims</h5>
+                                <a routerLink="/file-claim">Click here to file a claim</a>
+                            </div>
+                            <ng-container *ngFor="let claim of userClaims">
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>Date of Claim:</h4>
+                                        <h5>{{claim.dateOfClaim | date }}</h5>
+                                    </div>
+                                    <div class="col">
+                                        <h4>Date of Service:</h4>
+                                        <h5>{{claim.dateOfService | date}}</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>Amount:</h4>
+                                        <h5>${{claim.amount}}</h5>
+                                    </div>
+                                    <div class="col">
+                                        <h4>Status:</h4>
+                                        <h5>{{claim.status}}</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>Description:</h4>
+                                        <h5>{{claim.description}}</h5>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="col-7" *ngIf="currentUser.type=='EMPLOYEE'">
+                            <ng-container *ngFor="let claim of allClaims">
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>Date of Claim:</h4>
+                                        <h5>{{claim.dateOfClaim | date }}</h5>
+                                    </div>
+                                    <div class="col">
+                                        <h4>Date of Service:</h4>
+                                        <h5>{{claim.dateOfService | date}}</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>Amount:</h4>
+                                        <h5>${{claim.amount}}</h5>
+                                    </div>
+                                    <div class="col">
+                                        <h4>Status:</h4>
+                                        <h5>{{claim.status}}</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>Description:</h4>
+                                        <h5>{{claim.description}}</h5>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                    <div class="col-5 float-right">
+                        <div>
+                            <ng-container *ngFor="let post of userPosts">
+                                <hr>
+                                <div class="container-fluid" (click)="selectPost(post)">
+                                    <h2>{{post.title}}</h2>
+                                    <h5>{{post.dateSubmitted}}</h5>
+                                    <h4>{{post.content}}</h4>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </ng-container>
+    </div>
 </div>

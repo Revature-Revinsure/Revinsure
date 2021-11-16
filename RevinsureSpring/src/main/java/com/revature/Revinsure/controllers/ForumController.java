@@ -50,6 +50,22 @@ public class ForumController {
 
 		return forumService.getAllPosts();
 	}
+	
+	@GetMapping(value = "/myPosts")
+	public List<DiscussionPost> getMyPosts(HttpSession session) {
+
+		if (session.getAttribute("loggedInUser") == null) {
+			List<DiscussionPost> discussion = new ArrayList<>();
+			DiscussionPost dp = new DiscussionPost(-1, "Sorry but you must login to see the forum.", "",
+					LocalDate.now(), new User());
+
+			discussion.add(dp);
+
+			return discussion;
+		}
+
+		return forumService.getAllPosts();
+	}
 
 	@PostMapping(value = "/get/response")
 	public List<DiscussionResponse> getAllResponsesByPost(HttpSession session,

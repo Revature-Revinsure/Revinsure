@@ -7,6 +7,7 @@ import { DashboardService } from '../service/dashboard.service';
 import { DataService } from '../service/data.service';
 import { LoginService } from '../service/login.service';
 import { UserProfileService } from '../service/user-profile.service';
+import { NotificationService } from '../service/notification.service';
 
 @Component({
   selector: 'app-user-info',
@@ -20,7 +21,8 @@ export class UserInfoComponent implements OnInit {
     private dataService: DataService,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private notificationService: NotificationService
   ) { }
   currentUser!: User;
   userInfo!: UserInfo;
@@ -55,7 +57,13 @@ export class UserInfoComponent implements OnInit {
         (data) => {
           this.dataService.currentUser = data.body!;
           this.currentUser = data.body!;
-        }
+          if(data.status == 200){
+            this.notificationService.sendMessage("Email successfully updated.");
+          }
+          else{
+            this.notificationService.sendMessage("Email update failed.");
+          }
+                }
       )
     );
   }
@@ -67,7 +75,14 @@ export class UserInfoComponent implements OnInit {
     });
     this.userProfileService.updatePassword(this.updatePasswordForm.value.newPassword).subscribe(
       () => this.loginService.loginRequestWithPost(userForm).subscribe(
-        (data) => this.dataService.currentUser = data.body!
+        (data) => {this.dataService.currentUser = data.body!
+          if(data.status==200){
+            this.notificationService.sendMessage("Password successfully updated.");
+          }
+          else{
+            this.notificationService.sendMessage("Password update failed.");
+          }
+        }
       )
     );
   }
@@ -78,6 +93,12 @@ export class UserInfoComponent implements OnInit {
         (data) => {
           this.dataService.userInfo = data.body!;
           this.userInfo = data.body!;
+          if(data.status == 200){
+            this.notificationService.sendMessage("User information successfully updated.");
+          }
+          else {
+            this.notificationService.sendMessage("User information update failed.");
+          }
         }
       )
     );

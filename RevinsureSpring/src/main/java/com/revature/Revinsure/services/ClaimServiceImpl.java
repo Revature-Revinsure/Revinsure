@@ -51,7 +51,7 @@ public class ClaimServiceImpl implements ClaimService {
 
 	@Override
 	public List<Claim> getAllClaims() {
-		return null;
+		return claimDao.findAll();
 	}
 
 }

@@ -13,6 +13,7 @@ export class DataService {
   currentPost!: DiscussionPost;
   userPosts!: DiscussionPost[];
   userClaims!: Claim[];
+  allClaims!:Claim[];
   constructor() { }
 
 }
