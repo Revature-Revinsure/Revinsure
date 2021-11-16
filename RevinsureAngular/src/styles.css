@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+div,p {
+    font-family: 'Futura Std Book';
+    color: #474C55;
+}
+body{
+    background-color: #f8f8f8;
+}
+h1,h2{
+    font-family: 'Futura Std Medium';
+    color: #F26925;
+}
+h3,h4{
+    font-family: 'Futura Std Medium';
+    color: #72A4C2;
+}
+h5,h6{
+    font-family: 'Futura Std Medium';
+    color: #474C55;
+}
+a{
+    font-family: 'Futura Std Book Oblique';
+    color:#fcb414;
+}
+a:hover{
+    color:#e3a212;
+}
+.btn{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.btn-primary, .btn-primary:focus{
+background-color: #72A4C2;
+border-color: #80adc8;
+}
+.btn-primary:hover{
+    background-color: #507388;
+    border-color: #5b839b;
+}
+.btn-primary:active{
+    background-color: #446274;
+    border-color: #507388;
+}
+.btn-primary:disabled{
+    background-color: #72A4C2;
+    border-color: #80adc8;
+    }
+@font-face {
+    font-family: 'Futura Std Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: url(assets/FuturaStdMedium.woff);
+}
+@font-face {
+    font-family: 'Futura Std Book';
+    font-style: normal;
+    font-weight: normal;
+    src: url(assets/FuturaStdBook.woff);
+}
+@font-face {
+    font-family: 'Futura Std Book Oblique';
+    font-style: normal;
+    font-weight: normal;
+    src: url(assets/FuturaStdBookOblique.woff);
+}

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Claim } from '../models/claim';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Status } from '../models/status';
 import { Message } from '../models/message';
 import { DataService } from './data.service';
-//import { User } from '../models/user';
+import { FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -16,24 +15,21 @@ export class ClaimService {
   constructor(private http: HttpClient, private dataService: DataService) { }
 
   baseUrl: string = this.dataService.baseURL;
-  claim!: Claim; 
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-
-    withCredentials: true,
-    observe: 'response' as 'response'
-  };
-
-
-  makeClaim(claim: Claim): Observable<HttpResponse<Message>> {
+  makeClaim(claim:FormGroup): Observable<HttpResponse<Message>> {
     let addonUrl: string = "/api/claim";
     let fullUrl: string = this.baseUrl + addonUrl;
 
-    this.claim = claim;
-
-
-    return this.http.post<Message>(fullUrl, this.claim, this.httpOptions);
+    return this.http.post<Message>(fullUrl, {
+      dateOfService: claim.value.dateOfService,
+      dateOfClaim: claim.value.dateOfClaim,
+      amount: claim.value.amount,
+      status: Status.PENDING,
+      description: claim.value.description
+    }, {
+      withCredentials: true,
+      observe: 'response' as 'response'
+    });
   }
 
 }

@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { DataService } from '../service/data.service';
 import { RegisterService } from '../service/register.service';
 import { User } from '../models/user';
 import { UserInfo } from '../models/user-info';
+import { NotificationService } from '../service/notification.service';
 
 
 @Component({
@@ -20,10 +20,10 @@ export class RegisterComponent implements OnInit {
   currentUserInfo!: UserInfo;
 
   constructor(
-    private registerService: RegisterService, 
-    private router: Router,
+    private registerService: RegisterService,
     private formBuilder: FormBuilder,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.returnUrl = '/login';
@@ -50,18 +50,18 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
 
     let unregisteredUser: User = {
-      id: -1, 
-      email: this.registerform.value.email, 
+      id: -1,
+      email: this.registerform.value.email,
       password: this.registerform.value.password,
       type: this.registerform.value.type
     }
 
     let newUserInfo: UserInfo = {
       id: -1,
-     //user: unregisteredUser,
+      //user: unregisteredUser,
       firstName: this.registerform.value.firstname,
-      lastName: this.registerform.value.lastname, 
-      address: this.registerform.value.address, 
+      lastName: this.registerform.value.lastname,
+      address: this.registerform.value.address,
       city: this.registerform.value.city,
       state: this.registerform.value.state,
       zip: this.registerform.value.zip
@@ -70,22 +70,21 @@ export class RegisterComponent implements OnInit {
     if (this.registerform.valid) {
       this.registerService.userExists(this.registerform.value.email).subscribe(
         (data) => {
-          
-          if(data.body == null) {
+
+          if (data.body == null) {
             this.registerService.registerNewUser(unregisteredUser).subscribe(
               (data) => {
+                if(data.body)
                 this.registerService.registerNewUserInfo(newUserInfo).subscribe(
-                    (data) => {
-                      
-                      if(data.body) {
-                        window.alert("Your registration was successful! Login to continue.");
-                        //TODO: create Message as model class, and return that instead of window.alert
-                      }
-                    });                  
+                  (data) => {
+                    if (data.body) {
+                      this.notificationService.sendMessage("Your registration was successful! Login to continue.")
+                    }
                   });
+              });
           }
         });
     }
-  }               
+  }
 
 }

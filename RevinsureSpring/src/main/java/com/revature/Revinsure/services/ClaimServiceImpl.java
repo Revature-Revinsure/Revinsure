@@ -18,7 +18,6 @@ public class ClaimServiceImpl implements ClaimService {
 	private ClaimDao claimDao;
 
 	public ClaimServiceImpl() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -28,7 +27,6 @@ public class ClaimServiceImpl implements ClaimService {
 		if (claim != null && claim.getDateOfClaim() != null && claim.getDescription() != null
 				&& claim.getStatus() != null) {
 			claim.setUser(user);
-
 			try {
 				claimDao.save(claim);
 				success = true;
@@ -48,13 +46,11 @@ public class ClaimServiceImpl implements ClaimService {
 
 	@Override
 	public boolean updateClaimStatus(Claim claim, Status newStatus) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public List<Claim> getAllClaims() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

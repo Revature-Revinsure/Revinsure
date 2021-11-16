@@ -1,179 +1,160 @@
-<div>
-      <h2>Welcome to Revinsure</h2>  
-</div>
-<div>
-      <h4>Before you can get started, you need to register for a new account.</h4>  
-</div>
-<div>
-    <div>
-        <h5>Registration</h5>
-    </div>
-    
-    <div>
-        <form [formGroup]="registerform" (ngSubmit)="onSubmit()">
-            
-            <div class="row">
-                <input type="email" class="form-control form-control-lg" placeholder="Email@Address.com"
-                    id="email" formControlName="email" required />
-                    <label class="form-label">Email address</label>
-                    <div *ngIf="registerform.controls['email'].invalid && registerform.controls['email'].touched"
-                        class="alert alert-danger">
-                        <span *ngIf="registerform.controls['email'].errors">
-                            An email is required.
-                        </span>
-                    </div>
-            </div>
+<div class="row justify-content-center">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title display-2">Welcome to Revinsure</h2>
+                <h4 class="card-subtitle display-6">Before you can get started, you need to register for a new account.</h4>
+                <form [formGroup]="registerform" (ngSubmit)="onSubmit()">
+                    <div class="row justify-content-evenly">
+                        <div class="col">
+                            <h5>Email Address</h5>
+                            <input type="email" class="form-control form-control-lg" placeholder="Email@Address.com"
+                                id="email" formControlName="email" required />
+                            <div
+                                *ngIf="registerform.controls['email'].invalid && registerform.controls['email'].touched">
+                                Your email is required.
 
-            <div class="row">
-                <input class="form-control form-control-lg" type="password"
-                    id="password" formControlName="password" required>
-                    <label class="form-label">Password</label>
-                    <div *ngIf="registerform.controls['password'].invalid && registerform.controls['password'].touched"
-                        class="alert alert-danger">
-                        <span *ngIf="registerform.controls['password'].errors">
-                            A password is required.
-                        </span>
-                    </div>
-            </div>
-
-            <div class="row">
-                <input class="form-control form-control-lg" type="text" placeholder="John"
-                            id="firstname" formControlName="firstname" required>
-                        <label class="form-label">First Name</label>
-                        <div *ngIf="registerform.controls['firstname'].invalid && registerform.controls['firstname'].touched"
-                            class="alert alert-danger">
-                            <span *ngIf="registerform.controls['firstname'].errors">
-                                First Name is required.
-                            </span>
+                            </div>
                         </div>
-            </div>
-                    
-
-                <div class="row">
-                    <input class="form-control form-control-lg" type="text" placeholder="Doe"
-                                id="lastname" formControlName="lastname" required>
-                            <label class="form-label">Last Name</label>
-                            <div *ngIf="registerform.controls['lastname'].invalid && registerform.controls['lastname'].touched"
-                                class="alert alert-danger">
-                                <span *ngIf="registerform.controls['lastname'].errors">
-                                    Last Name is required.
-                                </span>
+                        <div class="col">
+                            <h5>Password</h5>
+                            <input class="form-control form-control-lg" type="password" id="password"
+                                formControlName="password" placeholder="Password" required>
+                            <div
+                                *ngIf="registerform.controls['password'].invalid && registerform.controls['password'].touched">
+                                A password is required.
                             </div>
-                </div>
-            
-                <div class="row">
-                    <input class="form-control form-control-lg" type="text" placeholder="123 Main St"
+                        </div>
+                    </div>
+                    <div class="row justify-content-evenly">
+                        <div class="col">
+                            <h5>First Name</h5>
+                            <input class="form-control form-control-lg" type="text" placeholder="John" id="firstname"
+                                formControlName="firstname" required>
+                            <div
+                                *ngIf="registerform.controls['firstname'].invalid && registerform.controls['firstname'].touched">
+                                Your first name is required.
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5>Last Name</h5>
+                            <input class="form-control form-control-lg" type="text" placeholder="Doe" id="lastname"
+                                formControlName="lastname" required>
+                            <div *ngIf="registerform.controls['lastname'].invalid && registerform.controls['lastname'].touched">
+                                Your last name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h5>Address</h5>
+                            <input class="form-control form-control-lg" type="text" placeholder="123 Main St"
                                 id="address" formControlName="address" required>
-                            <label class="form-label">Address</label>
-                            <div *ngIf="registerform.controls['address'].invalid && registerform.controls['address'].touched"
-                                class="alert alert-danger">
-                                <span *ngIf="registerform.controls['address'].errors">
-                                    An address is required.
-                                </span>
+                            <div *ngIf="registerform.controls['address'].invalid && registerform.controls['address'].touched">
+                                Your address is required.
                             </div>
-                </div>
-
-
-                    <div class="row">
-                        <input class="form-control form-control-lg" type="text" placeholder="Somewhere"
-                                    id="city" formControlName="city" required>
-                                <label class="form-label">City</label>
-                                <div *ngIf="registerform.controls['city'].invalid && registerform.controls['city'].touched"
-                                    class="alert alert-danger">
-                                    <span *ngIf="registerform.controls['city'].errors">
-                                        Your city is required.
-                                    </span>
-                                </div>
+                        </div>
                     </div>
-            
-                    <div>
-                        <select class="form-select form-select-lg mb-3"
-                        aria-label=".form-select-lg example" id="state" formControlName="state" required>
-                        <option value="" selected >State</option>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="CA">California</option>
-                        <option value="CO">Colorado</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="DE">Delaware</option>
-                        <option value="DC">District Of Columbia</option>
-                        <option value="FL">Florida</option>
-                        <option value="GA">Georgia</option>
-                        <option value="HI">Hawaii</option>
-                        <option value="ID">Idaho</option>
-                        <option value="IL">Illinois</option>
-                        <option value="IN">Indiana</option>
-                        <option value="IA">Iowa</option>
-                        <option value="KS">Kansas</option>
-                        <option value="KY">Kentucky</option>
-                        <option value="LA">Louisiana</option>
-                        <option value="ME">Maine</option>
-                        <option value="MD">Maryland</option>
-                        <option value="MA">Massachusetts</option>
-                        <option value="MI">Michigan</option>
-                        <option value="MN">Minnesota</option>
-                        <option value="MS">Mississippi</option>
-                        <option value="MO">Missouri</option>
-                        <option value="MT">Montana</option>
-                        <option value="NE">Nebraska</option>
-                        <option value="NV">Nevada</option>
-                        <option value="NH">New Hampshire</option>
-                        <option value="NJ">New Jersey</option>
-                        <option value="NM">New Mexico</option>
-                        <option value="NY">New York</option>
-                        <option value="NC">North Carolina</option>
-                        <option value="ND">North Dakota</option>
-                        <option value="OH">Ohio</option>
-                        <option value="OK">Oklahoma</option>
-                        <option value="OR">Oregon</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="RI">Rhode Island</option>
-                        <option value="SC">South Carolina</option>
-                        <option value="SD">South Dakota</option>
-                        <option value="TN">Tennessee</option>
-                        <option value="TX">Texas</option>
-                        <option value="UT">Utah</option>
-                        <option value="VT">Vermont</option>
-                        <option value="VA">Virginia</option>
-                        <option value="WA">Washington</option>
-                        <option value="WV">West Virginia</option>
-                        <option value="WI">Wisconsin</option>
-                        <option value="WY">Wyoming</option>
-                    </select>
+                    <div class="row justify-content-evenly">
+                        <div class="col">
+                            <h5>City</h5>
+                            <input class="form-control form-control-lg" type="text" placeholder="Somewhere" id="city"
+                                formControlName="city" required>
+                            <div *ngIf="registerform.controls['city'].invalid && registerform.controls['city'].touched">
+                                Your city is required.
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5>State</h5>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                                id="state" formControlName="state" required>
+                                <option value="" selected>Select One</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                            <div *ngIf="registerform.controls['state'].invalid && registerform.controls['state'].touched">
+                                Your state is required.
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5>Zip Code</h5>
+                            <input class="form-control form-control-lg" type="text" placeholder="12345" id="zip"
+                                formControlName="zip" required>
+                            <div *ngIf="registerform.controls['zip'].invalid && registerform.controls['zip'].touched">
+                                Your zip code is required
+                            </div>
+                        </div>
                     </div>
-            
-                    <div class="row">
-                        <input class="form-control form-control-lg" type="text" placeholder="12345"
-                                    id="zip" formControlName="zip" required>
-                                <label class="form-label">Zip code</label>
-                                <div *ngIf="registerform.controls['zip'].invalid && registerform.controls['zip'].touched"
-                                    class="alert alert-danger">
-                                    <span *ngIf="registerform.controls['zip'].errors">
-                                        A zip code is required.
-                                    </span>
-                                </div>
+                    <div class="row justify-content-between">
+                        <div class="col-7">
+                            <h5>User Type</h5>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                                id="type" formControlName="type" required>
+                                <option value="" selected>Select One</option>
+                                <option value="PATIENT">Patient</option>
+                                <option value="EMPLOYEE">Employee</option>
+                            </select>
+                            <div *ngIf="registerform.controls['type'].invalid && registerform.controls['type'].touched">
+                                Your account type is required.
+                            </div>
+                        </div>
+                        <div class="col-5 d-grid">
+                            <button class="btn btn-primary btn-lg btn-block" type="button"
+                                type="submit" [disabled]="!registerform.valid">Register</button>
+                        </div>
+                        <p>Already have an account? <a routerLink="/login">Login here</a></p>
                     </div>
-                    
-                    <div>
-                        <select class="form-select form-select-lg mb-3"
-                        aria-label=".form-select-lg example" id="type" formControlName="type" required>
-                        <option value="" selected >User Type</option>
-                        <option value="PATIENT">Patient</option>
-                        <option value="EMPLOYEE">Employee</option>
-                        </select>
-                    </div>
-            
-                    <div class="pt-1 mb-4">
-                        <button class="btn btn-dark btn-lg btn-block" type="button"
-                            type="submit">Register</button>
-                    </div>
-                    
-                    <div>
-                        <p>Already have an account? <a
-                            routerLink="/login">Login here</a></p>
-                    </div>
-        </form>        
+                </form>
+            </div>
+        </div>
     </div>
 </div>
