@@ -21,8 +21,9 @@ const routes: Routes = [
   { path: 'user-info', component: UserInfoComponent, canActivate: [RoutGuard] },
   { path: 'disscussion-board', component: DisscussionBoardComponent/*, canActivate: [RoutGuard] */ },
   { path: 'discussion-post', component: DisscussionPostComponent },
-  { path: 'home', component: DashboardComponent, canActivate: [RoutGuard] },
+  { path: 'home', component: DashboardComponent/*, canActivate: [RoutGuard] */},
   { path: 'reset-password', component:ResetPasswordComponent},
+  // { path: 'logout', component: LoginComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];

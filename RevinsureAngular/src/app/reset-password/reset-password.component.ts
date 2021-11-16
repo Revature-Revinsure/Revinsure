@@ -26,7 +26,8 @@ export class ResetPasswordComponent implements OnInit {
       id: -1, 
       email: this.resetPassForm.value.email, 
       password: this.resetPassForm.value.password,
-      type: ""
+      type: "",
+      posts: []
     }
 
     if(this.resetPassForm.valid){

@@ -1,1 +1,34 @@
-<p>dashboard works!</p>
+ 
+
+<ng-container>
+<div class="row" *ngIf="userClaims">
+    <button class="btn btn-primary" (click)='toggleViewClaims()'>Click to view your claims</button>
+</div>
+
+<div class="row" *ngIf="!userClaims">
+    <h5>You have no claims</h5>
+    <a routerLink="/file-claim">Click here to file a claim</a>
+</div>
+</ng-container>
+
+<div *ngIf="viewClaims">
+    <ng-container *ngFor="let claim of userClaims">
+        <h5>{{claim.id}}</h5>
+        <h5>{{claim.dateOfService | date }}</h5>
+        <h5>{{claim.dateOfClaim | date}}</h5>
+        <h5>{{claim.amount}}</h5>
+        <h5>{{claim.status}}</h5>
+        <h5>{{claim.description}}</h5>
+    </ng-container>
+</div>
+
+<div>
+    <ng-container *ngFor="let post of userPosts">
+        <div class="container-fluid">
+            <h5>{{post.title}}</h5>
+            <h5>{{post.dateSubmitted}}</h5>
+            <h5>{{post.content}}</h5>
+            <button class="btn btn-primary" (click)="selectPost(post)">View Post</button>    
+        </div>
+    </ng-container>
+</div>

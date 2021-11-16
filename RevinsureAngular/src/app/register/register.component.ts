@@ -53,7 +53,8 @@ export class RegisterComponent implements OnInit {
       id: -1,
       email: this.registerform.value.email,
       password: this.registerform.value.password,
-      type: this.registerform.value.type
+      type: this.registerform.value.type,
+      posts:[]
     }
 
     let newUserInfo: UserInfo = {
