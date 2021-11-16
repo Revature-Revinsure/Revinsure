@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Claim } from '../models/claim';
+import { DiscussionPost } from '../models/discussion-post';
+import { User } from '../models/user';
 import { UserInfo } from '../models/user-info';
 import { DashboardService } from '../service/dashboard.service';
 import { DataService } from '../service/data.service';
@@ -11,13 +14,33 @@ import { DataService } from '../service/data.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private dashboardService: DashboardService, private dataService: DataService) { }
-
+  constructor(private dashboardService: DashboardService, private dataService: DataService, private router: Router) { }
+  currentUser!: User;
   userInfo!: UserInfo;
   userClaims!:Claim[];
+  userPosts!: DiscussionPost[];
+  allClaims!:Claim[];
+
+  viewClaims: boolean = false;
+
   ngOnInit(): void {
     this.getInfo();
-    this.getClaims();
+    this.getMyPosts();
+    this.currentUser=this.dataService.currentUser;
+    console.log(this.currentUser) 
+    if(this.currentUser.type=="PATIENT"){
+      this.getClaims();
+    } else if(this.currentUser.type=="EMPLOYEE"){
+      this.getAllClaims();
+    }  
+  }
+  
+  toggleViewClaims(){
+    if (this.viewClaims == true){
+      this.viewClaims = false;
+    }else{
+      this.viewClaims = true;
+    }
   }
 
   getClaims() {
@@ -27,6 +50,29 @@ export class DashboardComponent implements OnInit {
           
           this.userClaims = data.body;
           this.dataService.userClaims = data.body;
+        }
+      }
+    );
+  }
+  getAllClaims() {
+    this.dashboardService.getAllUserClaims().subscribe(
+      (data) => {
+        if (data.body != null) {
+          console.log(data);
+          this.allClaims = data.body;
+          this.dataService.allClaims = data.body;
+        }
+      }
+    );
+  }
+
+  getMyPosts() {
+    this.dashboardService.getCurrentUserPosts().subscribe(
+      (data) => {
+        if (data.body != null) {
+          
+          this.userPosts = data.body;
+          this.dataService.userPosts = data.body;
         }
       }
     );
@@ -43,4 +89,8 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  selectPost(post: DiscussionPost) {
+    this.dataService.currentPost = post;
+    this.router.navigate(['/discussion-post']);
+  }
 }

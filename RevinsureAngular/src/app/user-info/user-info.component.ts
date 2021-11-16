@@ -3,9 +3,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { LoginComponent } from '../login/login.component';
 import { User } from '../models/user';
 import { UserInfo } from '../models/user-info';
+import { DashboardService } from '../service/dashboard.service';
 import { DataService } from '../service/data.service';
 import { LoginService } from '../service/login.service';
 import { UserProfileService } from '../service/user-profile.service';
+import { NotificationService } from '../service/notification.service';
 
 @Component({
   selector: 'app-user-info',
@@ -14,68 +16,36 @@ import { UserProfileService } from '../service/user-profile.service';
 })
 export class UserInfoComponent implements OnInit {
 
-  constructor(private userProfileService: UserProfileService, private dataService: DataService, private formBuilder: FormBuilder, private loginService: LoginService) { }
-
+  constructor(
+    private userProfileService: UserProfileService,
+    private dataService: DataService,
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private dashboardService: DashboardService,
+    private notificationService: NotificationService
+  ) { }
   currentUser!: User;
-
   userInfo!: UserInfo;
 
-  editEmail: boolean = false;
-  editPassword: boolean = false;
-  editUserInfo: boolean = false;
-
   updateEmailForm = this.formBuilder.group({
-    newEmail: ["", [Validators.required, Validators.email]],
+    newEmail: [null, [Validators.required, Validators.email]],
   });
   updatePasswordForm = this.formBuilder.group({
-    newPassword: ["", Validators.required],
+    newPassword: [null, Validators.required],
   });
   updateInfoForm = this.formBuilder.group({
-    newFirstName: [this.dataService.userInfo.firstName, Validators.required],
-    newLastName: [this.dataService.userInfo.lastName, Validators.required],
-    newAddress: [this.dataService.userInfo.address, Validators.required],
+    newFirstName: [null, Validators.required],
+    newLastName: [null, Validators.required],
+    newAddress: [null, Validators.required],
     newState: [this.dataService.userInfo.state, Validators.required],
-    newCity: [this.dataService.userInfo.city, Validators.required],
-    newZip: [this.dataService.userInfo.zip, Validators.required],
+    newCity: [null, Validators.required],
+    newZip: [null, Validators.required],
   });
-
-
-  //needs to be a user info object
-
 
   ngOnInit(): void {
     this.currentUser = this.dataService.currentUser;
     this.userInfo = this.dataService.userInfo;
   }
-
-  //getUserInfo(){}
-
-  //getUser{}
-
-  toggleEmail() {
-    if (this.editEmail == false) {
-      this.editEmail = true;
-    } else {
-      this.editEmail = false;
-    }
-  }
-
-  togglePassword() {
-    if (this.editPassword == false) {
-      this.editPassword = true;
-    } else {
-      this.editPassword = false;
-    }
-  }
-
-  toggleUserInfo() {
-    if (this.editUserInfo == false) {
-      this.editUserInfo = true;
-    } else {
-      this.editUserInfo = false;
-    }
-  }
-
 
   updateEmail() {
     let userForm = this.formBuilder.group({
@@ -87,7 +57,13 @@ export class UserInfoComponent implements OnInit {
         (data) => {
           this.dataService.currentUser = data.body!;
           this.currentUser = data.body!;
-        }
+          if(data.status == 200){
+            this.notificationService.sendMessage("Email successfully updated.");
+          }
+          else{
+            this.notificationService.sendMessage("Email update failed.");
+          }
+                }
       )
     );
   }
@@ -99,20 +75,30 @@ export class UserInfoComponent implements OnInit {
     });
     this.userProfileService.updatePassword(this.updatePasswordForm.value.newPassword).subscribe(
       () => this.loginService.loginRequestWithPost(userForm).subscribe(
-        (data) => this.dataService.currentUser = data.body!
+        (data) => {this.dataService.currentUser = data.body!
+          if(data.status==200){
+            this.notificationService.sendMessage("Password successfully updated.");
+          }
+          else{
+            this.notificationService.sendMessage("Password update failed.");
+          }
+        }
       )
     );
   }
 
   updateUserInfo() {
-    let userForm = this.formBuilder.group({
-      email: this.currentUser.email,
-      password: this.currentUser.password
-    });
     this.userProfileService.updateUserInfo(this.updateInfoForm).subscribe(
-      () => this.loginService.loginRequestWithPost(userForm).subscribe(
+      () => this.dashboardService.getCurrentUserInfo().subscribe(
         (data) => {
-          this.dataService.currentUser = data.body!;
+          this.dataService.userInfo = data.body!;
+          this.userInfo = data.body!;
+          if(data.status == 200){
+            this.notificationService.sendMessage("User information successfully updated.");
+          }
+          else {
+            this.notificationService.sendMessage("User information update failed.");
+          }
         }
       )
     );

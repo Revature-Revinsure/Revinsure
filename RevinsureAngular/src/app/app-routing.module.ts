@@ -19,9 +19,9 @@ const routes: Routes = [
   { path: 'file-claim', component: ClaimComponent, canActivate: [RoutGuard] },
   { path: 'covid-question', component: CovidQuestionsComponent, canActivate: [RoutGuard] },
   { path: 'user-info', component: UserInfoComponent, canActivate: [RoutGuard] },
-  { path: 'disscussion-board', component: DisscussionBoardComponent/*, canActivate: [RoutGuard] */ },
-  { path: 'discussion-post', component: DisscussionPostComponent },
-  { path: 'home', component: DashboardComponent, canActivate: [RoutGuard] },
+  { path: 'disscussion-board', component: DisscussionBoardComponent, canActivate: [RoutGuard]},
+  { path: 'discussion-post', component: DisscussionPostComponent, canActivate: [RoutGuard]},
+  { path: 'home', component: DashboardComponent, canActivate: [RoutGuard]},
   { path: 'reset-password', component:ResetPasswordComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }

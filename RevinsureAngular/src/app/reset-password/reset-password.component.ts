@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { User } from '../models/user';
 import { ResetPasswordService } from '../service/reset-password.service';
+import {NotificationService} from '../service/notification.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -11,7 +12,8 @@ import { ResetPasswordService } from '../service/reset-password.service';
 export class ResetPasswordComponent implements OnInit {
  
 
-  constructor(private formBuilder:FormBuilder,private resetPasswordService: ResetPasswordService) { }
+  constructor(private formBuilder:FormBuilder,private resetPasswordService: ResetPasswordService,
+    private notificationService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +28,8 @@ export class ResetPasswordComponent implements OnInit {
       id: -1, 
       email: this.resetPassForm.value.email, 
       password: this.resetPassForm.value.password,
-      type: ""
+      type: "",
+      posts: []
     }
 
     if(this.resetPassForm.valid){
@@ -37,7 +40,12 @@ export class ResetPasswordComponent implements OnInit {
             this.resetPasswordService.updateUserPassword(forgetfulUser).subscribe(
 
               (data)=>{
-                  
+                  if(data){
+                    this.notificationService.sendMessage("Password successfully reset.");
+                  }
+                  else{
+                    this.notificationService.sendMessage("Password reset failed.");
+                  }
               }
             );
           }

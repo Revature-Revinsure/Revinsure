@@ -11,7 +11,9 @@ export class DataService {
   userInfo!: UserInfo;
   currentUser!: User;
   currentPost!: DiscussionPost;
+  userPosts!: DiscussionPost[];
   userClaims!: Claim[];
+  allClaims!:Claim[];
   constructor() { }
 
 }

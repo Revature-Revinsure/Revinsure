@@ -27,13 +27,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginform.valid) {
-      
       this.loginService.loginRequestWithPost(this.loginform).subscribe(
         (data) => {
           if (data.body != null) {
             sessionStorage.setItem('isLoggedIn',"true");
             this.dataService.currentUser = data.body;
-
             this.getCovidForm();
           }
         }

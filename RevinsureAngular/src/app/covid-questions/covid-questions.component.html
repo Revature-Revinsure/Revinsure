@@ -1,18 +1,34 @@
-<div>
-    <div>
-      <div>
+<div class="row justify-content-center">
+  <div class="col-9">
+    <div class="card">
+      <div class="card-body">
         <h2>Covid Questionnaire</h2>
-        <div>Today's Date</div>
-        {{currentDate | date: 'yyyy-MM-dd'}}
-        <div>Have You Had Covid-19 with in the last 14 days</div>
-        <input #haveOrnot type="checkbox" id="haveOrnot" name="haveORnot" [checked]="haveORnot" (change)="onChangedA(haveOrnot.checked)" >
-        <label for="haveOrnot"> I have</label><br>
-
-        <div>Have You Been Around Covid-19 with in the last 14 days</div>
-        <input #haveOrbeenA type="checkbox" id="haveOrbeenA" name="haveORnot" [checked]="haveORbeenA" (change)="onChangedB(haveOrbeenA.checked)" >
-        <label for="haveOrbeenA"> I have</label><br>
-        
-        <button name ="submitCovid" type ="submit" (click)="submit()">Submit</button>       
+        <h4>{{currentDate | date: 'yyyy-MM-dd'}}</h4>
+        <div class="row justify-content-evenly">
+          <div class="col">
+            <h5>Have You Been Around Covid-19 with in the last 14 days</h5>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="haveORbeenA" #haveOrbeenA type="checkbox"
+                name="haveORbeenA" [checked]="haveORbeenA" (change)="onChangedB(haveOrbeenA.checked)">
+              <h5 class="form-check-label" for="flexSwitchCheckDefault">&nbsp;&nbsp;I have</h5>
+            </div>
+          </div>
+          <div class="col">
+            <h5>Have You Had Covid-19 with in the last 14 days</h5>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="haveOrnot" #haveOrnot name="haveORnot"
+                [checked]="haveORnot" (change)="onChangedA(haveOrnot.checked)">
+              <h5 class="form-check-label" for="flexSwitchCheckDefault">&nbsp;&nbsp;I have</h5>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-evenly">
+          <div class="col d-grid">
+            <button name="submitCovid" class="btn btn-primary btn-lg btn-block" type="submit"
+              (click)="submit()">Submit</button>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 </div>

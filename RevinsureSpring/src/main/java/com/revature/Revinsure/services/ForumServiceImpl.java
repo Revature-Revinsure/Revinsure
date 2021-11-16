@@ -82,10 +82,9 @@ public class ForumServiceImpl implements ForumService {
 		return discussionPostDao.findAllByOrderByIdDesc();
 	}
 
-//	@Override
-//	public List<DiscussionPost> getPostsByUser(User user) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public List<DiscussionPost> getPostsByUser(User user) {
+		return discussionPostDao.getPostByUser(user);
+	}
 
 }

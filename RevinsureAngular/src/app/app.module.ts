@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -16,7 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RoutGuard } from './route.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
 import { ClaimService } from './service/claim.service';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { NotificationComponent } from './notification/notification.component';
@@ -46,12 +44,6 @@ import { NotificationService } from './service/notification.service';
     HttpClientModule
   ],
   providers: [RoutGuard,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
     ClaimService,
     NotificationService
   ],

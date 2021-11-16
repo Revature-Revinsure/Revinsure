@@ -1,30 +1,53 @@
-<form [formGroup]="loginform" (ngSubmit)="login()">
+<div class="row justify-content-center">
+    <div class="col-9">
+        <div class="card">
+            <img src="../../assets/loginpage.jpg" class="card-img-top" alt="..." />
+            <h2 class="display-2">Welcome to Revinsure</h2>
+            <h4 class="display-4">Login Below</h4>
+            <div class="card-body">
+                <form [formGroup]="loginform" (ngSubmit)="login()">
+                    <div class="row justify-content-evenly">
+                        <div class="col">
+                            <h5>Email Address</h5>
+                            <input type="email" class="form-control form-control-lg" placeholder="Email@Address.com"
+                                formControlName="email" required />
 
-    <h5>Sign into your account</h5>
+                            <div *ngIf="loginform.controls['email'].invalid && loginform.controls['email'].touched">
+                                <span *ngIf="loginform.controls['email'].errors">
+                                    Email is required.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5>Password</h5>
+                            <input type="password" class="form-control form-control-lg" placeholder="Password"
+                                formControlName="password" required />
 
-
-    <input type="email" class="form-control form-control-lg" placeholder="Email@Address.com" formControlName="email"
-        required />
-    <label class="form-label" for="form2Example17">Email address</label>
-    <div *ngIf="loginform.controls['email'].invalid && loginform.controls['email'].touched">
-        <span *ngIf="loginform.controls['email'].errors">
-            Email is required.
-        </span>
+                            <div
+                                *ngIf="loginform.controls['password'].invalid && loginform.controls['password'].touched">
+                                <span *ngIf="loginform.controls['password'].errors">
+                                    Password is required.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-3 d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg"
+                                [disabled]="!loginform.valid">Login</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center text-center">
+                        <div class="col-8 d-grid">
+                            <p>
+                                <a routerLink="/reset-password">Forgot Password</a>
+                                or don't have an account? <a routerLink="/register">
+                                    Register Here</a>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <input type="password" class="form-control form-control-lg" placeholder="Password" formControlName="password"
-        required />
-    <label class="form-label" for="form2Example27">Password</label>
-    <div *ngIf="loginform.controls['password'].invalid && loginform.controls['password'].touched"
-        class="alert alert-danger">
-        <span *ngIf="loginform.controls['password'].errors">
-            Password is required.
-        </span>
-        
-    </div>
-    <a routerLink="/reset-password" > Forgot Password? </a>
-    <button type="submit">Login</button>
-    <p class="mb-5 pb-lg-2">Don't have an account? <a routerLink="/register">Register
-        here</a></p>
-
-</form>
+</div>

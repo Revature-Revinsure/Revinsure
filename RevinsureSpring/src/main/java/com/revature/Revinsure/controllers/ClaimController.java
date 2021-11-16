@@ -59,5 +59,11 @@ public class ClaimController {
 		log.debug("getUserClaims has been called for user id: " + u.getId());
 		return claimService.getUserClaims(u);
 	}
+	
+	@GetMapping(value = "/allClaims")
+	public List<Claim> getAllClaims(HttpSession session) {
+		User u = (User) session.getAttribute("user");
+		return claimService.getAllClaims();
+	}
 
 }
