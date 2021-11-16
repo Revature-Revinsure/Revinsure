@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,17 +24,21 @@ import com.revature.Revinsure.services.ClaimService;
 @RequestMapping("/api")
 public class ClaimController {
 
+	private static final Logger log = Logger.getLogger(ClaimController.class);
+	
 	@Autowired
 	private ClaimService claimService;
 
 	// new claim
 	@PostMapping("/claim")
 	public Message submitClaim(HttpSession session, @RequestBody Claim claim) {
+		log.debug("submitClaim has been called.");
 		Message message = new Message();
 
 		if ((session.getAttribute("accessLevel") == null)
 				|| !session.getAttribute("accessLevel").equals(UserType.PATIENT)) {
 			message.setMessage("access denied");
+			log.debug(message);
 			return message;
 		}
 
@@ -44,13 +49,14 @@ public class ClaimController {
 		} else {
 			message.setMessage("Claim submission failed.");
 		}
-
+		log.debug(message);
 		return message;
 	}
 
 	@GetMapping(value = "/userClaims")
 	public List<Claim> getUserClaims(HttpSession session) {
 		User u = (User) session.getAttribute("user");
+		log.debug("getUserClaims has been called for user id: " + u.getId());
 		return claimService.getUserClaims(u);
 	}
 	
