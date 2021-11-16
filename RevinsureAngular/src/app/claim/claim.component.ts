@@ -11,7 +11,7 @@ import { NotificationService } from '../service/notification.service';
   styleUrls: ['./claim.component.css']
 })
 export class ClaimComponent implements OnInit {
-  message: string | undefined = "";
+  message!: string;
   currentDate: number = Date.now();
   currentUser:UserInfo = this.dataService.userInfo;
   constructor(private claimService: ClaimService,
@@ -26,13 +26,13 @@ export class ClaimComponent implements OnInit {
     dateOfClaim: [this.currentDate],
     dateOfService: [null, Validators.required],
     amount: [null, Validators.required],
-    description: [null, Validators.required],
+    description: [null,Validators.required],
   })
 
   submitClaim() {
     this.claimService.makeClaim(this.claimForm).subscribe(
       (response) => {
-        this.message = response.body?.message;
+        this.message = response.body!.message!;
         this.notificationService.sendMessage(this.message);
       }
     );

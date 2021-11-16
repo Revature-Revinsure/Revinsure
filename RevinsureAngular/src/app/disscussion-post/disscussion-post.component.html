@@ -1,24 +1,46 @@
-<h2>{{currentPost.title}}</h2>
-<h4 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{currentPost.content}}</h4>
-
-<ng-container *ngFor="let reply of currentReplies">
-
-    <p>{{ reply.content }}</p>
-    <p>{{ reply.dateSubmitted}}</p>
-
-</ng-container>
-<div>
-    <form [formGroup]="replyForm" (ngSubmit)='addReply()'>
-        <input type="text" placeholder="New reply" formControlName="replyString" required>
-        <div *ngIf="replyForm.controls['replyString'].invalid && replyForm.controls['replyString'].touched"
-            class="alert alert-danger">
-            <span *ngIf="replyForm.controls['replyString'].errors">
-                Post Title is required.
-            </span>
+<div class="row justify-content-center">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row justify-content-evenly">
+                    <div class="col-8">
+                        <h2>{{currentPost.title}}</h2>
+                        <h4 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+                            {{currentPost.content}}
+                        </h4>
+                    </div>
+                    <div class="col-2 float-right">
+                        <h6>{{currentPost.dateSubmitted}}</h6>
+                    </div>
+                </div>
+                <ng-container *ngFor="let reply of currentReplies">
+                    <hr>
+                    <div class="row justify-content-evenly">
+                        <div class="col-8">
+                            <h5>{{ reply.content }}</h5>
+                        </div>
+                        <div class="col-2 float-right">
+                            <h6>{{ reply.dateSubmitted}}</h6>
+                        </div>
+                    </div>
+                </ng-container>
+                <hr>
+                <form [formGroup]="replyForm" (ngSubmit)='addReply()'>
+                    <div class="row justify-content-evenly">
+                        <div class="col-11">
+                            <h5>Reply</h5>
+                            <textarea class="form-control form-control-lg"
+                                placeholder="Reply... (Max of 255 Characters)" maxlength="255" rows=4 id="replyString"
+                                formControlName="replyString" required></textarea>
+                        </div>
+                    </div>
+                    <div *ngIf="replyForm.controls['replyString'].invalid && replyForm.controls['replyString'].touched">
+                        A description is required.
+                    </div>
+                    <button class="btn btn-primary btn-lg btn-block" type="button" type="submit"
+                        [disabled]="!replyForm.valid">Submit Claim</button>
+                </form>
+            </div>
         </div>
-
-        <div class="pt-1 mb-4">
-            <button class="btn btn-dark btn-lg btn-block" type="submit">Submit</button>
-        </div>
-    </form>
+    </div>
 </div>

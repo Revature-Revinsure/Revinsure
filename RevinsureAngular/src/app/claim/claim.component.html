@@ -23,7 +23,7 @@
           <div class="row justify-content-evenly">            
             <div class="col-8">
               <h5>Diagnosis or Nature of Illness or Injury</h5>
-              <textarea class="form-control form-control-lg" placeholder="Description..." rows=4 id="description"
+              <textarea class="form-control form-control-lg" placeholder="Description... (Max of 255 Characters)" maxlength="255" rows=4 id="description"
                 formControlName="description" required></textarea>
               <div *ngIf="claimForm.controls['description'].invalid && claimForm.controls['description'].touched">
                 A description is required.
