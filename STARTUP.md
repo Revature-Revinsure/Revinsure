@@ -2,11 +2,11 @@
 -----------
 ## Jenkins setup
 
-Navigate to http://54.173.12.218:8080/jenkins/ (see Revature CoE for login credentials).
+Navigate to http://54.173.12.218:8080/jenkins/ (contact Revature CoE for login credentials).
 
 Once logged in, click "Revinsure" under Name.
 
-Select Configure on the left navbar, and ensure the following settings are correct:
+Select "Configure" on the left navbar, and ensure the following settings are correct:
 
 ### General
 * Enable discard old builds
@@ -49,6 +49,7 @@ ng build
 
 ### Post Steps
 * Select "Run only if build succeeds"
+
 In Execute shell command, write:
 ```
 #!/bin/bash
