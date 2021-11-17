@@ -1,7 +1,7 @@
 # Startup
-
-## Jenkins setup
 -----------
+## Jenkins setup
+
 Navigate to http://54.173.12.218:8080/jenkins/ (see Revature CoE for login credentials).
 Once logged in, click "Revinsure" under Name.
 Select Configure on the left navbar, and ensure the following settings are correct:
@@ -61,13 +61,12 @@ echo deploy finished
 
 ### Post-build Actions
 * S3 profile: S3 Jenkins Profile
-* Files to upload
-  - Source: **/RevinsureAngular/dist/RevinsureAngular/*
-  - Exclude: Should be blank
-  - Destination bucket: revinsure
-  - Storage class: STANDARD
-  - Bucket RegionL us-east-1
-  - Only "Flatten directories" should be checked
+* Source: \**/RevinsureAngular/dist/RevinsureAngular/*
+* Exclude: Should be blank
+* Destination bucket: revinsure
+* Storage class: STANDARD
+* Bucket RegionL us-east-1
+* Only "Flatten directories" should be checked
 * Publish Failure Result Constraint: FAILURE
 * "Don't wait for completion of concurrent builds before publishing to S3" should be unchecked
 * "Do Not Set Build Result on Failure" should be unchecked
