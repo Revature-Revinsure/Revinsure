@@ -25,7 +25,7 @@ import com.revature.Revinsure.services.UserService;
 
 @RestController("userController")
 @RequestMapping("/user")
-@CrossOrigin(origins = { "http://localhost:4200" }, allowCredentials = "true")
+@CrossOrigin(origins = { "http://localhost:4200", "http://revinsure.s3-website.us-east-1.amazonaws.com/" }, allowCredentials = "true")
 public class UserController {
 
 	private static final Logger log = Logger.getLogger(UserController.class);

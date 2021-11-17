@@ -20,7 +20,7 @@ import com.revature.Revinsure.models.UserType;
 import com.revature.Revinsure.services.ClaimService;
 
 @RestController("claimController")
-@CrossOrigin(origins = { "http://localhost:4200" }, allowCredentials = "true")
+@CrossOrigin(origins = { "http://localhost:4200", "http://revinsure.s3-website.us-east-1.amazonaws.com/" }, allowCredentials = "true")
 @RequestMapping("/api")
 public class ClaimController {
 

@@ -26,7 +26,7 @@ import com.revature.Revinsure.services.ForumService;
 
 @RestController("forumController")
 @RequestMapping("/discussion")
-@CrossOrigin(origins = { "http://localhost:4200" }, allowCredentials = "true")
+@CrossOrigin(origins = { "http://localhost:4200", "http://revinsure.s3-website.us-east-1.amazonaws.com/" }, allowCredentials = "true")
 public class ForumController {
 
 	private static final Logger log = Logger.getLogger(ForumController.class);
