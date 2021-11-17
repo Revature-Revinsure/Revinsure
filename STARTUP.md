@@ -34,10 +34,10 @@ Select Configure on the left navbar, and ensure the following settings are corre
 * With Ant should be unchecked
 
 ### Pre Steps
-* In Execute shell command, write:
-> cd /root/.jenkins/workspace/RevInsure/RevinsureAngular
-> npm update
-> ng build
+In Execute shell command, write:
+    cd /root/.jenkins/workspace/RevInsure/RevinsureAngular
+    npm update
+    ng build
 
 ### Build
 * Root POM: RevinsureSpring/pom.xml
@@ -45,13 +45,13 @@ Select Configure on the left navbar, and ensure the following settings are corre
 
 ### Post Steps
 * Select "Run only if build succeeds"
-* In Execute shell command, write:
-> #!/bin/bash
-> echo kill existing
-> pkill -f 'java -jar'
-> echo starting deploy
-> BUILD_ID=dontKillMe nohup java -jar /root/.jenkins/workspace/RevInsure/RevinsureSpring/target/Revinsure-0.0.1-SNAPSHOT.jar &
-> echo deploy finished
+In Execute shell command, write:
+    #!/bin/bash
+    echo kill existing
+    pkill -f 'java -jar'
+    echo starting deploy
+    BUILD_ID=dontKillMe nohup java -jar /root/.jenkins/workspace/RevInsure/RevinsureSpring/target/Revinsure-0.0.1-SNAPSHOT.jar &
+    echo deploy finished
 
 ### Build settings
 * No changes
