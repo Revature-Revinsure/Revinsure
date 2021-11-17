@@ -4,7 +4,7 @@
 
 Navigate to http://54.173.12.218:8080/jenkins/ (contact Revature CoE for login credentials).
 
-Once logged in, click "Revinsure" under Name.
+Go to the Maven project named "Revinsure".
 
 Select "Configure" on the left navbar, and ensure the following settings are correct:
 
@@ -42,6 +42,7 @@ cd /root/.jenkins/workspace/RevInsure/RevinsureAngular
 npm update
 ng build
 ```
+This will create the Angular project. It will save the files in a dist folder.
 
 ### Build
 * Root POM: RevinsureSpring/pom.xml
@@ -59,10 +60,15 @@ echo starting deploy
 BUILD_ID=dontKillMe nohup java -jar /root/.jenkins/workspace/RevInsure/RevinsureSpring/target/Revinsure-0.0.1-SNAPSHOT.jar &
 echo deploy finished
 ```
+This will initially kill your application and then rebuild it so that it can't be shutdown by Jenkins (which it will by default)
+
+
 ### Build settings
 * No changes
 
-### Post-build Actions
+### Post-build Actions 
+#### This will grab the Angular files from dist folder to the S3 bucket
+#### We are using Port:8000 as per our applicationContext. Ensure you have access to the port you are deploying to, whichever one it may be. Contact Revature CoE for port access.
 * S3 profile: S3 Jenkins Profile
 * Source: \*\*/RevinsureAngular/dist/RevinsureAngular/*
 * Exclude: Should be blank
