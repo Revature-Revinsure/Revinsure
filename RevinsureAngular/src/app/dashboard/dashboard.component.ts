@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   currentUser!: User;
   userInfo!: UserInfo;
   userClaims!:Claim[];
-  userPosts!: DiscussionPost[];
+  userPosts: DiscussionPost[] | undefined = undefined;
   allClaims!:Claim[];
 
   viewClaims: boolean = false;
@@ -69,11 +69,11 @@ export class DashboardComponent implements OnInit {
   getMyPosts() {
     this.dashboardService.getCurrentUserPosts().subscribe(
       (data) => {
-        if (data.body != null) {
-          
-          this.userPosts = data.body;
-          this.dataService.userPosts = data.body;
-        }
+        // if (data.body != null) {
+          console.log(data);
+          this.userPosts = data.body!;
+          this.dataService.userPosts = data.body!;
+        // }
       }
     );
   }
