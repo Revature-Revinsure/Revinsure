@@ -35,7 +35,8 @@ Select Configure on the left navbar, and ensure the following settings are corre
 
 ### Pre Steps
 In Execute shell command, write:
-```cd /root/.jenkins/workspace/RevInsure/RevinsureAngular
+```
+cd /root/.jenkins/workspace/RevInsure/RevinsureAngular
 npm update
 ng build
 ```
@@ -47,7 +48,8 @@ ng build
 ### Post Steps
 * Select "Run only if build succeeds"
 In Execute shell command, write:
-```#!/bin/bash
+```
+#!/bin/bash
 echo kill existing
 pkill -f 'java -jar'
 echo starting deploy
