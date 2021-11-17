@@ -7,7 +7,7 @@ import { UserInfo } from '../models/user-info';
   providedIn: 'root'
 })
 export class DataService {
-  baseURL: string = 'http://localhost:8000';
+  baseURL: string = 'http://54.173.12.218:8000';
   userInfo!: UserInfo;
   currentUser!: User;
   currentPost!: DiscussionPost;

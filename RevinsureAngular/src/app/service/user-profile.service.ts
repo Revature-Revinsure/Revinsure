@@ -4,15 +4,16 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserInfo } from '../models/user-info';
 import { FormGroup } from '@angular/forms';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserProfileService {
 
-  baseUrl: string = "http://localhost:8000";
+  baseUrl: string = this.dataService.baseURL;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private dataService: DataService) { }
 
   updateEmail(email: string): Observable<HttpResponse<any>> {
     return this.httpClient.post<String>(this.baseUrl + "/user/updateEmail", email, { withCredentials: true, observe: 'response' as 'response' })

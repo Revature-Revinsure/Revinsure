@@ -713,3 +713,36 @@
 2021-11-16 19:01:45 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
 2021-11-16 19:01:52 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=18, title=does it work, user=7]
 2021-11-16 19:01:55 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-17 11:08:36 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=-1, user=83, dateOfService=null, dateOfClaim=Wed Nov 17 11:08:36 CST 2021, amount=100.0, status=PENDING, description=test description]
+2021-11-17 11:08:45 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 11:08:45 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 11:08:45 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=-1, content=fake content, user=1, post=1]
+2021-11-17 11:08:45 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=post title, user=1]
+2021-11-17 11:08:45 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=, user=1]
+2021-11-17 11:08:53 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 11:08:53 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=null, lastName=null, address=null, city=null, state=null, zip=null]
+2021-11-17 11:08:53 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=0, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 11:08:53 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=null, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 11:08:53 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=null, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 11:08:53 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=null, city=Buffalo, state=New York, zip=12345]
+2021-11-17 11:08:53 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=null, state=New York, zip=12345]
+2021-11-17 11:08:53 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=null, zip=12345]
+2021-11-17 11:08:53 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=null]
+2021-11-17 11:08:53 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 1
+2021-11-17 11:08:53 INFO  UserServiceImpl:88 - updateEmail has been called for user id: -1
+2021-11-17 11:08:53 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 5
+2021-11-17 11:08:53 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 6
+2021-11-17 11:08:53 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + 1
+2021-11-17 11:08:53 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + -1
+2021-11-17 11:08:53 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + 3
+2021-11-17 11:08:53 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + -2
+2021-11-17 11:08:53 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 11:08:53 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 11:08:53 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 11:08:53 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 11:08:53 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: 0
+2021-11-17 11:08:53 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 11:08:53 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: -1
+2021-11-17 11:08:53 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 78
+2021-11-17 11:08:53 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: -1
+2021-11-17 11:08:53 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: -1
