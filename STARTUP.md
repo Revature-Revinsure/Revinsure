@@ -36,12 +36,13 @@ Select "Configure" on the left navbar, and ensure the following settings are cor
 * With Ant should be unchecked
 
 ### Pre Steps
-In Execute shell command, write this to create Angular project. It will save files in a dist folder:
+In Execute shell command, write:
 ```
 cd /root/.jenkins/workspace/RevInsure/RevinsureAngular
 npm update
 ng build
 ```
+This will create the Angular project. It will save the files in a dist folder.
 
 ### Build
 * Root POM: RevinsureSpring/pom.xml
@@ -50,7 +51,7 @@ ng build
 ### Post Steps
 * Select "Run only if build succeeds"
 
-In Execute shell command, write this to initially kill your application, rebuild it so it can't be shutdown by Jenkins (which it will by default):
+In Execute shell command, write:
 ```
 #!/bin/bash
 echo kill existing
@@ -59,11 +60,15 @@ echo starting deploy
 BUILD_ID=dontKillMe nohup java -jar /root/.jenkins/workspace/RevInsure/RevinsureSpring/target/Revinsure-0.0.1-SNAPSHOT.jar &
 echo deploy finished
 ```
+This will initially kill your application and then rebuild it so that it can't be shutdown by Jenkins (which it will by default)
+
+
 ### Build settings
 * No changes
 
 ### Post-build Actions 
-#### This will grab the Angular files from dist folder to the S3 bucket)
+#### This will grab the Angular files from dist folder to the S3 bucket
+#### We are using Port:8000 as per our applicationContext. Ensure you have access to the port you are deploying to, whichever one it may be. Contact Revature CoE for port access.
 * S3 profile: S3 Jenkins Profile
 * Source: \*\*/RevinsureAngular/dist/RevinsureAngular/*
 * Exclude: Should be blank
