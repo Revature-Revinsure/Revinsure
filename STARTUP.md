@@ -61,7 +61,7 @@ echo deploy finished
 
 ### Post-build Actions
 * S3 profile: S3 Jenkins Profile
-* Source: \**/RevinsureAngular/dist/RevinsureAngular/*
+* Source: \*\*/RevinsureAngular/dist/RevinsureAngular/*
 * Exclude: Should be blank
 * Destination bucket: revinsure
 * Storage class: STANDARD
