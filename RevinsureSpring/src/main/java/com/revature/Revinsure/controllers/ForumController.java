@@ -67,7 +67,8 @@ public class ForumController {
 			return discussion;
 		}
 
-		return forumService.getAllPosts();
+		User u = (User) session.getAttribute("loggedInUser");
+		return forumService.getPostsByUser(u);
 	}
 
 	@PostMapping(value = "/get/response")

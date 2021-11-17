@@ -588,3 +588,128 @@
 2021-11-16 15:40:08 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 78
 2021-11-16 15:40:08 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: -1
 2021-11-16 15:40:08 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: -1
+2021-11-16 18:02:50 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=1, firstName=Fake, lastName=User, address=456 Oak, city=Town, state=AL, zip=23456]
+2021-11-16 18:03:33 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 1
+2021-11-16 18:03:33 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:03:33 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:04:24 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:04:24 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:05:47 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:06:17 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:06:17 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:06:48 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:06:48 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:07:47 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:08:22 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:08:22 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:08:32 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:08:32 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:09:13 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:10:38 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:10:38 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:11:02 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:11:02 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:11:09 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:11:13 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:11:13 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:12:59 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:12:59 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:13:14 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:13:14 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:13:54 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:13:54 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:14:13 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:14:13 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:15:35 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:17:09 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:17:21 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:17:36 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:17:36 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:18:53 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:19:11 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:19:11 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:19:36 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=4, user=1, dateOfService=Sun Oct 31 17:00:00 PDT 2021, dateOfClaim=Tue Nov 16 18:19:16 PST 2021, amount=2550.65, status=PENDING, description=I broke my legs]
+2021-11-16 18:19:48 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:19:48 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:20:08 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:20:21 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:20:21 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:20:47 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:21:38 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=homepage dont work!, user=1]
+2021-11-16 18:21:38 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:21:42 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:21:42 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:22:40 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:23:04 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:23:04 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:23:11 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:23:11 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:23:24 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:24:10 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=6, firstName=Other, lastName=Faker, address=888 Baldwin, city=Places, state=OH, zip=99999]
+2021-11-16 18:24:31 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 6
+2021-11-16 18:24:31 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:24:31 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-16 18:29:47 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:29:47 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-16 18:33:03 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:33:17 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:33:17 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-16 18:33:19 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=5, title=homepage dont work!, user=6]
+2021-11-16 18:33:21 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:33:21 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-16 18:33:56 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:34:14 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:34:14 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-16 18:34:16 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=5, title=homepage dont work!, user=6]
+2021-11-16 18:34:18 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:34:18 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-16 18:39:25 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=1, firstName=Fake, lastName=Userguy, address=567 Oak, city=Place, state=PA, zip=55555]
+2021-11-16 18:39:43 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 1
+2021-11-16 18:39:43 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:40:08 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=4, user=1, dateOfService=Sun Oct 31 17:00:00 PDT 2021, dateOfClaim=Tue Nov 16 18:39:50 PST 2021, amount=455.99, status=PENDING, description=broke my angular]
+2021-11-16 18:40:14 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:40:16 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:40:40 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=angular works maybe, user=1]
+2021-11-16 18:40:40 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:40:44 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=5, title=angular works maybe, user=1]
+2021-11-16 18:40:52 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=6, content=I'll say, user=1, post=5]
+2021-11-16 18:40:52 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=5, title=angular works maybe, user=1]
+2021-11-16 18:40:55 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:40:58 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=5, title=angular works maybe, user=1]
+2021-11-16 18:41:01 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-16 18:42:05 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=7, firstName=ReallyFake, lastName=Person, address=222 John Harrison, city=Coolbeans, state=OH, zip=12345]
+2021-11-16 18:42:30 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 7
+2021-11-16 18:42:30 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 18:42:37 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:42:41 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 18:42:43 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:42:46 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 18:42:56 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 18:44:23 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=10, firstName=John, lastName=Johnson, address=5656 Hi, city=Hi, state=HI, zip=12345]
+2021-11-16 18:44:39 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 10
+2021-11-16 18:46:55 INFO  UserController:63 - updatePassword has been called for user id: 10
+2021-11-16 18:47:37 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 10
+2021-11-16 18:47:37 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 10
+2021-11-16 18:48:43 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + 10
+2021-11-16 18:49:51 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 18:50:26 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=13, user=7, dateOfService=Sun Oct 31 17:00:00 PDT 2021, dateOfClaim=Tue Nov 16 18:49:55 PST 2021, amount=140.144444, status=PENDING, description=asdfasdfasdf]
+2021-11-16 18:54:26 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=14, user=7, dateOfService=Sun Oct 31 17:00:00 PDT 2021, dateOfClaim=Tue Nov 16 18:49:55 PST 2021, amount=140.145, status=PENDING, description=asdfasdfasdf]
+2021-11-16 18:54:32 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=15, user=7, dateOfService=Sun Oct 31 17:00:00 PDT 2021, dateOfClaim=Tue Nov 16 18:49:55 PST 2021, amount=140.146, status=PENDING, description=asdfasdfasdf]
+2021-11-16 18:54:37 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=16, user=7, dateOfService=Sun Oct 31 17:00:00 PDT 2021, dateOfClaim=Tue Nov 16 18:49:55 PST 2021, amount=140.147, status=PENDING, description=asdfasdfasdf]
+2021-11-16 18:57:33 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 18:58:06 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 18:58:25 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 18:58:26 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 18:58:47 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 19:00:50 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 19:01:09 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=17, user=7, dateOfService=Sat Nov 06 17:00:00 PDT 2021, dateOfClaim=Tue Nov 16 19:00:58 PST 2021, amount=444.44, status=PENDING, description=will it work]
+2021-11-16 19:01:09 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 19:01:19 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 19:01:31 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=does it work, user=7]
+2021-11-16 19:01:31 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-16 19:01:35 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=18, title=does it work, user=7]
+2021-11-16 19:01:43 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=19, content=I really wanted tos ee it work, user=7, post=18]
+2021-11-16 19:01:43 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=18, title=does it work, user=7]
+2021-11-16 19:01:45 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-16 19:01:52 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=18, title=does it work, user=7]
+2021-11-16 19:01:55 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7

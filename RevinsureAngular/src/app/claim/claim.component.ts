@@ -41,6 +41,7 @@ export class ClaimComponent implements OnInit {
       (response) => {
         this.message = response.body!.message!;
         this.notificationService.sendMessage(this.message);
+        this.router.navigate(["/home"]);
       }
     );
   }
