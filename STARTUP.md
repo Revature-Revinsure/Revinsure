@@ -4,7 +4,7 @@
 
 Navigate to http://54.173.12.218:8080/jenkins/ (contact Revature CoE for login credentials).
 
-Once logged in, click "Revinsure" under Name.
+Go to the Maven project named "Revinsure".
 
 Select "Configure" on the left navbar, and ensure the following settings are correct:
 
@@ -36,7 +36,7 @@ Select "Configure" on the left navbar, and ensure the following settings are cor
 * With Ant should be unchecked
 
 ### Pre Steps
-In Execute shell command, write:
+In Execute shell command, write this to create Angular project. It will save files in a dist folder:
 ```
 cd /root/.jenkins/workspace/RevInsure/RevinsureAngular
 npm update
@@ -50,7 +50,7 @@ ng build
 ### Post Steps
 * Select "Run only if build succeeds"
 
-In Execute shell command, write:
+In Execute shell command, write this to initially kill your application, rebuild it so it can't be shutdown by Jenkins (which it will by default):
 ```
 #!/bin/bash
 echo kill existing
@@ -62,7 +62,8 @@ echo deploy finished
 ### Build settings
 * No changes
 
-### Post-build Actions
+### Post-build Actions 
+#### This will grab the Angular files from dist folder to the S3 bucket)
 * S3 profile: S3 Jenkins Profile
 * Source: \*\*/RevinsureAngular/dist/RevinsureAngular/*
 * Exclude: Should be blank
