@@ -713,3 +713,206 @@
 2021-11-16 19:01:45 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
 2021-11-16 19:01:52 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=18, title=does it work, user=7]
 2021-11-16 19:01:55 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 7
+2021-11-17 05:53:26 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=1, firstName=Mike, lastName=Jones, address=123 Oak, city=Dawson, state=CA, zip=92929]
+2021-11-17 05:56:25 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 1
+2021-11-17 05:56:25 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-17 05:58:10 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=4, user=1, dateOfService=Sun Oct 31 17:00:00 PDT 2021, dateOfClaim=Wed Nov 17 05:57:29 PST 2021, amount=6445.34, status=PENDING, description=broken leg from ski accident]
+2021-11-17 05:58:11 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 1
+2021-11-17 05:58:19 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 05:59:26 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=how to upgrade policy, user=1]
+2021-11-17 05:59:26 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:00:51 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=6, firstName=Sally, lastName=Garcia, address=456 Pine, city=Metroville, state=DE, zip=11893]
+2021-11-17 06:01:11 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 6
+2021-11-17 06:01:11 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 06:02:35 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=9, user=6, dateOfService=Mon Nov 01 17:00:00 PDT 2021, dateOfClaim=Wed Nov 17 06:01:25 PST 2021, amount=612.18, status=PENDING, description=physical therapy for chronic back pain]
+2021-11-17 06:02:35 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 06:02:45 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:04:16 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=let's get more providers in-network!, user=6]
+2021-11-17 06:04:16 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:06:39 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=11, firstName=Lucas, lastName=Mitchell, address=7890 Main Street, city=Smalltown, state=GA, zip=34980]
+2021-11-17 06:06:56 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 11
+2021-11-17 06:06:56 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 11
+2021-11-17 06:09:07 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=14, user=11, dateOfService=Tue Nov 02 17:00:00 PDT 2021, dateOfClaim=Wed Nov 17 06:07:05 PST 2021, amount=8799.79, status=PENDING, description=torn ligaments from workplace injury]
+2021-11-17 06:09:07 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 11
+2021-11-17 06:09:22 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:11:28 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=thanks so much, user=11]
+2021-11-17 06:11:28 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:13:12 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=16, firstName=Regina, lastName=Lively, address=246 Willow, city=Billings, state=MT, zip=75662]
+2021-11-17 06:13:37 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 16
+2021-11-17 06:13:37 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 16
+2021-11-17 06:14:19 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=19, user=16, dateOfService=Thu Nov 04 17:00:00 PDT 2021, dateOfClaim=Wed Nov 17 06:13:40 PST 2021, amount=156.42, status=PENDING, description=yearly wellness exam]
+2021-11-17 06:14:19 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 16
+2021-11-17 06:14:43 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:14:52 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=15, title=thanks so much, user=16]
+2021-11-17 06:14:57 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:15:00 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=15, title=thanks so much, user=16]
+2021-11-17 06:15:06 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:15:09 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=15, title=thanks so much, user=16]
+2021-11-17 06:15:22 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:15:29 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=15, title=thanks so much, user=16]
+2021-11-17 06:15:33 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:15:37 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=15, title=thanks so much, user=16]
+2021-11-17 06:16:10 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=20, content=I agree! Sarah was so helpful when we spoke on the phone., user=16, post=15]
+2021-11-17 06:16:10 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=15, title=thanks so much, user=16]
+2021-11-17 06:16:14 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:17:58 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=21, firstName=Yuri, lastName=Vikosic, address=369 Elm, city=Merced, state=CA, zip=93566]
+2021-11-17 06:18:19 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 21
+2021-11-17 06:18:19 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 21
+2021-11-17 06:18:58 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=24, user=21, dateOfService=Sun Nov 07 16:00:00 PST 2021, dateOfClaim=Wed Nov 17 06:18:25 PST 2021, amount=345.88, status=PENDING, description=severe allergies treated at urgent care]
+2021-11-17 06:18:58 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 21
+2021-11-17 06:19:20 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:21:13 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=my bill is wrong, user=21]
+2021-11-17 06:21:13 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:21:23 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=25, title=my bill is wrong, user=21]
+2021-11-17 06:21:28 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:21:32 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=10, title=let's get more providers in-network!, user=21]
+2021-11-17 06:22:39 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=26, content=At least your bill was right! They can't even get that right for me!, user=21, post=10]
+2021-11-17 06:22:39 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=10, title=let's get more providers in-network!, user=21]
+2021-11-17 06:22:43 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:22:45 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 21
+2021-11-17 06:23:59 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=27, firstName=Sarah, lastName=Wilkins, address=4816 Cypress, city=Taos, state=NM, zip=73456]
+2021-11-17 06:24:17 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 27
+2021-11-17 06:24:35 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:24:40 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=15, title=thanks so much, user=27]
+2021-11-17 06:25:13 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:29:55 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:30:00 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=25, title=my bill is wrong, user=27]
+2021-11-17 06:30:04 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:35:11 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=30, firstName=Samuel, lastName=Clemenza, address=510 Maple, city=Glenville, state=CT, zip=02348]
+2021-11-17 06:35:28 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 30
+2021-11-17 06:35:35 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:35:39 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=5, title=how to upgrade policy, user=30]
+2021-11-17 06:36:02 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=33, content=I can help you with that! Call me on my direct line today., user=30, post=5]
+2021-11-17 06:36:02 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=5, title=how to upgrade policy, user=30]
+2021-11-17 06:36:08 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:36:12 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=5, title=how to upgrade policy, user=30]
+2021-11-17 06:38:12 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=34, firstName=Victoria, lastName=Gladwell, address=612 Olive, city=Benson, state=IN, zip=52100]
+2021-11-17 06:38:39 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 34
+2021-11-17 06:38:39 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 34
+2021-11-17 06:39:21 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=37, user=34, dateOfService=Tue Nov 09 16:00:00 PST 2021, dateOfClaim=Wed Nov 17 06:38:52 PST 2021, amount=26881.09, status=PENDING, description=knee replacement]
+2021-11-17 06:39:21 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 34
+2021-11-17 06:39:29 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 06:39:39 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=10, title=let's get more providers in-network!, user=34]
+2021-11-17 06:40:28 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=38, content=I wish I could have chosen a different doctor. Let's add more providers!, user=34, post=10]
+2021-11-17 06:40:28 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=10, title=let's get more providers in-network!, user=34]
+2021-11-17 06:40:30 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 34
+2021-11-17 06:46:11 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 07:32:12 WARN  ForumController:50 - an unauthenticated user tried to getAllPosts!
+2021-11-17 07:32:18 WARN  ForumController:84 - an unauthenticated user tried to getAllResponsesByPost!
+2021-11-17 07:32:36 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 07:33:23 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=10, title=let's get more providers in-network!, user=6]
+2021-11-17 07:33:27 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 07:33:31 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 07:33:32 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=10, title=let's get more providers in-network!, user=6]
+2021-11-17 07:33:34 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 07:35:23 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 07:35:27 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=25, title=my bill is wrong, user=6]
+2021-11-17 07:35:30 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 07:35:32 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=15, title=thanks so much, user=6]
+2021-11-17 07:35:33 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 07:47:29 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 07:48:06 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=39, user=6, dateOfService=Mon Nov 15 16:00:00 PST 2021, dateOfClaim=Wed Nov 17 07:47:34 PST 2021, amount=12345.22, status=PENDING, description=lasik eye surgery]
+2021-11-17 07:48:07 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 07:48:43 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=40, user=6, dateOfService=Sun Nov 14 16:00:00 PST 2021, dateOfClaim=Wed Nov 17 07:48:12 PST 2021, amount=223.44, status=PENDING, description=physical therapy for carpal tunnel]
+2021-11-17 07:48:43 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 07:48:51 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 07:49:42 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=claim processing, user=6]
+2021-11-17 07:49:42 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 07:49:44 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=41, title=claim processing, user=6]
+2021-11-17 07:50:03 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=42, content=I still have not heard back!, user=6, post=41]
+2021-11-17 07:50:03 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=41, title=claim processing, user=6]
+2021-11-17 07:50:05 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 07:51:09 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=10, title=let's get more providers in-network!, user=6]
+2021-11-17 08:15:25 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=43, firstName=Tyler, lastName=Nickl, address=566 Elm, city=Place, state=OH, zip=12345]
+2021-11-17 08:16:01 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 43
+2021-11-17 08:16:01 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 43
+2021-11-17 08:16:49 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=46, user=43, dateOfService=Sun Nov 07 16:00:00 PST 2021, dateOfClaim=Wed Nov 17 08:16:19 PST 2021, amount=875.9, status=PENDING, description=stitches on hand from kitchen accident]
+2021-11-17 08:16:49 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 43
+2021-11-17 08:17:01 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 08:17:32 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=can I enroll dependents, user=43]
+2021-11-17 08:17:32 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 08:17:42 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 43
+2021-11-17 08:17:54 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=47, title=can I enroll dependents, user=43]
+2021-11-17 08:18:04 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=48, content=I still have not heard back., user=43, post=47]
+2021-11-17 08:18:04 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=47, title=can I enroll dependents, user=43]
+2021-11-17 08:18:06 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 43
+2021-11-17 08:18:14 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 08:18:53 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 08:19:44 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 6
+2021-11-17 08:19:44 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 6
+2021-11-17 08:19:52 INFO  UserController:63 - updatePassword has been called for user id: 6
+2021-11-17 08:20:39 INFO  ClaimServiceImpl:49 - getUserClaims called for user id: 6
+2021-11-17 08:21:25 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 08:21:32 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=25, title=my bill is wrong, user=27]
+2021-11-17 08:21:45 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 08:21:49 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=15, title=thanks so much, user=27]
+2021-11-17 08:22:05 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=49, content=it's my pleasure to serve you!, user=27, post=15]
+2021-11-17 08:22:05 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=15, title=thanks so much, user=27]
+2021-11-17 08:22:11 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 08:22:14 INFO  ForumServiceImpl:75 - getResponsesForPost called for post: DiscussionPost [id=15, title=thanks so much, user=27]
+2021-11-17 08:45:42 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=-1, user=83, dateOfService=null, dateOfClaim=Wed Nov 17 08:45:42 PST 2021, amount=100.0, status=PENDING, description=test description]
+2021-11-17 08:45:44 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 08:45:44 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 08:45:44 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=-1, content=fake content, user=1, post=1]
+2021-11-17 08:45:44 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=post title, user=1]
+2021-11-17 08:45:44 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=, user=1]
+2021-11-17 08:45:46 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 08:45:46 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=null, lastName=null, address=null, city=null, state=null, zip=null]
+2021-11-17 08:45:46 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=0, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 08:45:46 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=null, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 08:45:46 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=null, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 08:45:46 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=null, city=Buffalo, state=New York, zip=12345]
+2021-11-17 08:45:46 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=null, state=New York, zip=12345]
+2021-11-17 08:45:46 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=null, zip=12345]
+2021-11-17 08:45:46 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=null]
+2021-11-17 08:45:46 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 1
+2021-11-17 08:45:46 INFO  UserServiceImpl:88 - updateEmail has been called for user id: -1
+2021-11-17 08:45:46 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 5
+2021-11-17 08:45:46 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 6
+2021-11-17 08:45:46 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + 1
+2021-11-17 08:45:46 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + -1
+2021-11-17 08:45:46 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + 3
+2021-11-17 08:45:46 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + -2
+2021-11-17 08:45:46 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 08:45:46 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 08:45:46 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 08:45:46 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 08:45:46 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: 0
+2021-11-17 08:45:46 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 08:45:46 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: -1
+2021-11-17 08:45:46 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 78
+2021-11-17 08:45:46 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: -1
+2021-11-17 08:45:46 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: -1
+2021-11-17 09:01:44 INFO  ClaimServiceImpl:35 - addClaim called for claim: Claim [id=-1, user=83, dateOfService=null, dateOfClaim=Wed Nov 17 09:01:44 PST 2021, amount=100.0, status=PENDING, description=test description]
+2021-11-17 09:01:46 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 09:01:46 INFO  ForumServiceImpl:81 - getAllPosts called.
+2021-11-17 09:01:46 INFO  ForumServiceImpl:64 - createNewResponse called for response: DiscussionResponse [id=-1, content=fake content, user=1, post=1]
+2021-11-17 09:01:46 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=post title, user=1]
+2021-11-17 09:01:46 INFO  ForumServiceImpl:38 - createNewPost called for post: DiscussionPost [id=-1, title=, user=1]
+2021-11-17 09:01:47 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 09:01:47 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=null, lastName=null, address=null, city=null, state=null, zip=null]
+2021-11-17 09:01:47 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=0, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 09:01:47 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=null, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 09:01:47 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=null, address=123 Avenue, city=Buffalo, state=New York, zip=12345]
+2021-11-17 09:01:47 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=null, city=Buffalo, state=New York, zip=12345]
+2021-11-17 09:01:47 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=null, state=New York, zip=12345]
+2021-11-17 09:01:47 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=null, zip=12345]
+2021-11-17 09:01:47 INFO  UserServiceImpl:67 - registerUserInfo has been called for userInfo: UserInfo [user=-1, firstName=Firstname, lastName=Lastname, address=123 Avenue, city=Buffalo, state=New York, zip=null]
+2021-11-17 09:01:47 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 1
+2021-11-17 09:01:47 INFO  UserServiceImpl:88 - updateEmail has been called for user id: -1
+2021-11-17 09:01:47 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 5
+2021-11-17 09:01:47 INFO  UserServiceImpl:88 - updateEmail has been called for user id: 6
+2021-11-17 09:01:47 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + 1
+2021-11-17 09:01:47 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + -1
+2021-11-17 09:01:47 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + 3
+2021-11-17 09:01:47 INFO  UserServiceImpl:100 - updateUserInfo called for user id: + -2
+2021-11-17 09:01:47 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 09:01:47 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 09:01:47 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 09:01:47 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 09:01:47 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: 0
+2021-11-17 09:01:47 INFO  UserServiceImpl:179 - updatePasswordByEmail was called for user id: -1
+2021-11-17 09:01:47 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: -1
+2021-11-17 09:01:47 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: 78
+2021-11-17 09:01:47 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: -1
+2021-11-17 09:01:47 INFO  UserServiceImpl:114 - createOrUpdateCovidForm was called for user id: -1

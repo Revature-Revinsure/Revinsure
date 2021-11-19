@@ -2,11 +2,23 @@
 
 Technologies Used
 -----------
+* Java 8
+* Maven 
 * Spring Boot - v 2.5.6
+* Spring Framework
+	* Spring MVC
+	* Spring Data
 * Angular - v 12.2.10
 * Amazon EC2
-* Jenkins
-* Java 8 
+* Jenkins - v 2.303.2
+* Amazon S3 Bucket
+* H2 Database - v 1.4.200
+* JUnit
+* Mockito
+* Log4J
+* Lombok
+* Bootstrap - v 5
+* Postman
 
 Project summary
 -----------
@@ -32,5 +44,12 @@ Stretch Goals
 6. Create a Tech Support Live Chat
 7. Add a ticketing system for healthcare claims and be reviewable in order by the Employee users
 
+Contributors
+-----------
+Alex Thorp, Brandon Zamora, Harley Burch, Janet Joseph, Jihad Abdul-Latif, Lauren Pena, Luis Ramirez, Malika Madlamane, Nate Buckley, Rayna Hinchsliff, Tyler Nickl, Yibeltal Zerihun
+
+License
+----------
+No special licenses were used for the project
 
 This repository is for Revinsure, an insurance claim submission and approval web app, completed as the final project for Revature's 2108Java training batch.
